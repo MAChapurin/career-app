@@ -1,0 +1,15 @@
+.footer {
+  padding: 32px 40px;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  color: #747474;
+}
+
+.text a {
+  color: inherit;
+  font-weight: inherit;
+}
