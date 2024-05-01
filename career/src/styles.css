@@ -8,8 +8,26 @@
   font-weight: 700;
 }
 
+:root {
+  --content-width: 1120px;
+  --main-background: #f6f6f6;
+  --component-background: #f9f9f9;
+  --button-color: #c5c5c5;
+  --active-color: #5c89ce;
+  --input-color: #747474;
+  --card-color: #202020;
+  --hover-button-color: #8caee0;
+  --shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.03);
+  --hover-shadow: 4px 4px 15px 0px rgba(0, 0, 0, 0.08);
+}
+
 body {
-  width: 100vw;
   min-height: 100vh;
-  background-color: #f6f6f6;
+  background-color: var(--main-background);
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --content-width: 944px;
+  }
 }

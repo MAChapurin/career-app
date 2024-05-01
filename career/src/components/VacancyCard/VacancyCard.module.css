@@ -1,17 +1,17 @@
 .card {
-  height: 204px;
-  max-width: calc((1024px - 80px - 64px) / 3);
-  background-color: #f9f9f9;
-  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.03);
+  min-height: 204px;
+  max-width: calc((var(--content-width) - 80px - 64px) / 3);
+  background-color: var(--component-background);
+  box-shadow: var(--shadow);
   border-radius: 16px;
   padding: 32px;
-  color: #202020;
+  color: var(--card-color);
   list-style-type: none;
   cursor: pointer;
 }
 
 .card:hover {
-  box-shadow: 4px 4px 15px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--hover-shadow);
 }
 
 .headingAndHover {

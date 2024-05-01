@@ -1,8 +1,8 @@
-import styles from './VacansyCard.module.css';
+import styles from './VacancyCard.module.css';
 import { StarSVG } from '../IconsSVG/StarSVG';
 import { HoverSVG } from '../IconsSVG/HoverSVG';
 
-export const VacansyCard = ({ vacansy }) => {
+export const VacancyCard = ({ vacansy }) => {
   return (
     <li className={styles.card}>
       <div className={styles.headingAndHover}>

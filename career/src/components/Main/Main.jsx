@@ -1,11 +1,11 @@
 import { FilterList } from '../Filterlist/FilterList';
-import { VacansyList } from '../VacancyList/VacansyList';
+import { VacancyList } from '../VacancyList/VacancyList';
 
 export const Main = () => {
   return (
     <main>
       <FilterList />
-      <VacansyList />
+      <VacancyList />
     </main>
   );
 };
