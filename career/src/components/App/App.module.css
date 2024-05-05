@@ -1,5 +1,4 @@
 .wrapper {
-  width: var(--content-width);
+  max-width: var(--container-max-width);
   margin-inline: auto;
-  margin-top: 80px;
 }

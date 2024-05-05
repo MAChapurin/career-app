@@ -1,10 +1,11 @@
-import { FilterList } from '../Filterlist/FilterList';
-import { VacancyList } from '../VacancyList/VacancyList';
+import { FilterList } from "@components/UI/FilterList/FilterList";
+import { VacancyList } from "@components/UI/VacancyList/VacancyList";
+import { filterItems } from "@constants";
 
 export const Main = () => {
   return (
     <main>
-      <FilterList />
+      <FilterList items={filterItems} />
       <VacancyList />
     </main>
   );

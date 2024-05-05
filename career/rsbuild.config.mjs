@@ -3,4 +3,15 @@ import { pluginReact } from '@rsbuild/plugin-react';
 
 export default defineConfig({
   plugins: [pluginReact()],
+  html: {
+    title: "Career App",
+  },
+  source: {
+    alias: {
+      "@components": "./src/components",
+      "@constants": "./src/constants",
+      "@hooks": "./src/hooks",
+      "@utils": "./src/utils",
+    }
+  },
 });
