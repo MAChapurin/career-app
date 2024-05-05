@@ -1,0 +1,55 @@
+.inputWrapper {
+  position: relative;
+}
+
+.inputWrapper .icon {
+  position: absolute;
+  top: 50%;
+  left: 24px;
+  transform: translateY(-50%);
+}
+
+.input {
+  width: 100%;
+  padding: 16px 24px 16px 56px;
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--neutral-800);
+  font-size: 12px;
+  line-height: 1.333;
+  background-color: var(--neutral-100);
+  box-shadow: var(--shadow);
+  transition: background .2s ease-in-out;
+}
+
+.inputWrapper.clearBtnShown .input {
+  padding: 16px 50px 16px 56px;
+}
+
+.input:placeholder {
+  color: var(--neutral-600);
+}
+
+.input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.input:hover,
+.input:focus {
+  background: var(--primary-100);
+}
+
+.clearBtn {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  padding: 2px;
+  color: var(--neutral-600);
+  transform: translateY(-50%);
+  transition: color .2s ease-in-out;
+}
+
+.clearBtn:hover,
+.clearBtn:focus {
+  color: var(--primary-500);
+}

@@ -1,0 +1,111 @@
+.dropdown {
+  position: relative;
+}
+
+.dropdownToggle {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 16px 24px;
+  border-radius: var(--border-radius);
+  background-color: var(--neutral-100);
+  box-shadow: var(--shadow);
+  text-align: left;
+  color: var(--neutral-600);
+  transition: border-radius .2s ease-in-out,
+    color .2s ease-in-out,
+    background .2s ease-in-out;
+}
+
+.dropdown.nested .dropdownToggle {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.dropdown.nested .dropdownToggle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--neutral-100), var(--neutral-border), var(--neutral-100));
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.title {
+  flex: 1;
+  font-size: 12px;
+  line-height: 1.333;
+}
+
+.dropdownToggle:hover,
+.dropdownToggle:focus {
+  background: var(--primary-100);
+}
+
+.dropdownToggle.active {
+  border-radius: 16px 16px 0 0;
+  color: var(--neutral-800);
+  background: var(--primary-100);
+}
+
+.dropdown.nested .dropdownToggle:hover,
+.dropdown.nested .dropdownToggle:focus,
+.dropdown.nested .dropdownToggle.active {
+  border-radius: 0;
+  color: var(--neutral-800);
+  background: var(--neutral-100);
+}
+
+.dropdownToggle svg:last-child {
+  transition: transform .2s ease-in-out;
+}
+
+.dropdownToggle.active svg:last-child {
+  transform: rotate(90deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  max-height: 0;
+  border-radius: 0 0 16px 16px;
+  background: var(--neutral-100);
+  box-shadow: var(--shadow);
+  pointer-events: none;
+  overflow: hidden;
+  transition: max-height .2s ease-in-out;
+}
+
+.dropdownMenu.active {
+  max-height: 632px;
+  pointer-events: all;
+  /* overflow-y: auto; */
+}
+
+.dropdown.nested .dropdownMenu {
+  position: static;
+  border-radius: 0;
+}
+
+.dropdownMenu label:first-child {
+  margin-top: 8px;
+}
+
+.dropdownMenu label:last-child {
+  margin-bottom: 8px;
+}
+
+.dropdownMenu label:not(:last-child) {
+  margin-bottom: 4px;
+}

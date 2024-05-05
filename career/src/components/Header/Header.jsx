@@ -1,5 +1,6 @@
+import { LogoSVG } from '@components/UI/IconsSVG/LogoSVG';
 import styles from './Header.module.css';
-import { LogoSVG } from '../IconsSVG/LogoSVG';
+import clsx from '@utils/clsx';
 
 export const Header = () => {
   return (
@@ -7,7 +8,7 @@ export const Header = () => {
       <header className={styles.header}>
         <LogoSVG />
         <menu className={styles.menu}>
-          <button type='button' className={`${styles.button} ${styles.active}`}>
+          <button type='button' className={clsx(styles.button, styles.active)}>
             Поиск вакансий
           </button>
           <button type='button' className={styles.button}>

@@ -1,0 +1,50 @@
+.label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 24px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.333;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.input {
+  position: absolute;
+  left: -5000px;
+}
+
+.input~.checkbox {
+  position: relative;
+  color: var(--neutral-400);
+  transition: color .2s ease-in-out;
+}
+
+.input~.checkbox::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid currentColor;
+  border-radius: 4px;
+}
+
+.input~.checkbox svg {
+  opacity: 0;
+  transform: translateX(0.4px);
+  transition: opacity .2s ease-in-out;
+}
+
+.input:checked~.checkbox {
+  color: var(--primary-500);
+}
+
+.label:hover .checkbox,
+.label:focus .checkbox {
+  color: var(--primary-400);
+}
+
+.input:checked~.checkbox svg {
+  opacity: 1;
+}
