@@ -14,7 +14,11 @@ export const Dropdown = ({
   active = false
 }) => {
   const [isActive, setIsActive] = useState(active);
-  const ref = useOutsideClickObserver(() => setIsActive(false));
+  const ref = useOutsideClickObserver(() => {
+    if (type === "default") {
+      setIsActive(false);
+    }
+  });
 
   const toggle = () => {
     setIsActive(prev => !prev);
@@ -33,31 +37,39 @@ export const Dropdown = ({
         <ChevronSVG className={styles.chevronIcon} />
       </button>
       <div className={clsx(styles.dropdownMenu, isActive && styles.active)}>
-        {items.map((item) => item.type === "dropdown" ? (
-          <Dropdown
-            key={item.name}
-            name={item.name}
-            icon={item.icon}
-            items={item.items}
-            type="nested"
-          />
-        ) : item.type === "radio" ? (
-          <RadioButton
-            key={`${item.name}-${item.value}`}
-            id={item.id}
-            name={item.name}
-            value={item.name}
-            text={item.text}
-          />
-        ) : item.type === "checkbox" ? (
-          <Checkbox
-            key={`${item.name}-${item.value}`}
-            id={item.id}
-            name={item.name}
-            value={item.name}
-            text={item.text}
-          />
-        ) : null)}
+        <ul className={styles.dropdownList}>
+          {items.map((item) => item.type === "dropdown" ? (
+            <li>
+              <Dropdown
+                key={item.name}
+                name={item.name}
+                icon={item.icon}
+                items={item.items}
+                type="nested"
+              />
+            </li>
+          ) : item.type === "radio" ? (
+            <li>
+              <RadioButton
+                key={`${item.name}-${item.value}`}
+                id={item.id}
+                name={item.name}
+                value={item.name}
+                text={item.text}
+              />
+            </li>
+          ) : item.type === "checkbox" ? (
+            <li>
+              <Checkbox
+                key={`${item.name}-${item.value}`}
+                id={item.id}
+                name={item.name}
+                value={item.name}
+                text={item.text}
+              />
+            </li>
+          ) : null)}
+        </ul>
       </div>
     </div>
   )

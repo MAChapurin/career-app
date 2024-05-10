@@ -3,11 +3,12 @@
   text-align: right;
 }
 
-.filters {
+.filterList {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 32px;
   text-align: left;
+  list-style: none;
 }
 
 .resetBtn {

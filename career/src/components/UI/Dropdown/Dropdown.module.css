@@ -98,6 +98,23 @@
   border-radius: 0;
 }
 
+.dropdownList {
+  max-height: 632px;
+  list-style: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.dropdownList::-webkit-scrollbar {
+  width: 4px;
+  background-color: transparent;
+}
+
+.dropdownList::-webkit-scrollbar-thumb {
+  background-color: #5c89ce;
+  border-radius: 2px;
+}
+
 .dropdownMenu label:first-child {
   margin-top: 8px;
 }

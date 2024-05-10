@@ -1,14 +1,11 @@
 import { FilterItem } from './FilterItem/FilterItem';
-import { BriefCaseSVG } from '../IconsSVG/BriefCaseSVG';
-import { FilterSVG } from '../IconsSVG/FilterSVG';
-import { LocationSVG } from '../IconsSVG/LocationSVG';
 import styles from './FilterList.module.css';
 import clsx from '@utils/clsx';
 
 export const FilterList = ({ items }) => {
   return (
     <section className={styles.container}>
-      <div className={styles.filters}>
+      <li className={styles.filterList}>
         {items.map((item) => (
           <FilterItem
             key={item.name}
@@ -18,7 +15,7 @@ export const FilterList = ({ items }) => {
             items={item.items}
           />
         ))}
-      </div>
+      </li>
       <button className={clsx("btn", styles.resetBtn)}>
         Сбросить все фильтры
       </button>
