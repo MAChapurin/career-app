@@ -1,0 +1,27 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.WorkerPlugin = void 0;
+const binding_1 = require("@rspack/binding");
+const base_1 = require("./base");
+const EnableChunkLoadingPlugin_1 = require("./EnableChunkLoadingPlugin");
+const EnableWasmLoadingPlugin_1 = require("./EnableWasmLoadingPlugin");
+class WorkerPlugin extends base_1.RspackBuiltinPlugin {
+    constructor(chunkLoading, wasmLoading, module, workerPublicPath) {
+        super();
+        this.chunkLoading = chunkLoading;
+        this.wasmLoading = wasmLoading;
+        this.module = module;
+        this.workerPublicPath = workerPublicPath;
+        this.name = binding_1.BuiltinPluginName.WorkerPlugin;
+    }
+    raw(compiler) {
+        if (this.chunkLoading) {
+            new EnableChunkLoadingPlugin_1.EnableChunkLoadingPlugin(this.chunkLoading).apply(compiler);
+        }
+        if (this.wasmLoading) {
+            new EnableWasmLoadingPlugin_1.EnableWasmLoadingPlugin(this.wasmLoading).apply(compiler);
+        }
+        return (0, base_1.createBuiltinPlugin)(this.name, undefined);
+    }
+}
+exports.WorkerPlugin = WorkerPlugin;

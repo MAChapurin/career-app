@@ -1,0 +1,19 @@
+{
+  "name": "career",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "rsbuild dev --open",
+    "build": "rsbuild build",
+    "preview": "rsbuild preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zustand": "^4.5.2"
+  },
+  "devDependencies": {
+    "@rsbuild/core": "^0.6.8",
+    "@rsbuild/plugin-react": "^0.6.8"
+  }
+}

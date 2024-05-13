@@ -1,0 +1,102 @@
+.card {
+  background-color: var(--neutral-100);
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius);
+  padding: 32px;
+  color: var(--neutral-800);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: var(--hover-shadow);
+}
+
+.headingAndHover {
+  display: flex;
+  gap: 16px;
+}
+
+.heading {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.icon {
+  display: none;
+}
+
+.card:hover .icon {
+  display: block;
+}
+
+.wages {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.text {
+  font-size: 12px;
+  line-height: 1.333;
+  font-weight: 500;
+}
+
+.experience {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.mb8 {
+  margin-bottom: 8px;
+}
+
+.loaderPar,
+.loaderHeader,
+.loaderCom,
+.loaderTxt,
+.loaderBall,
+.loaderExp {
+  width: 100%;
+  height: 24px;
+  background-color: var(--loader);
+  border-radius: 16px;
+}
+
+.loaderHeader {
+  margin-bottom: 8px;
+}
+
+.loaderPar {
+  width: 131px;
+  margin-bottom: 16px;
+}
+
+.loaderTxt,
+.loaderCom {
+  height: 16px;
+  width: 96px;
+  margin-bottom: 8px;
+}
+
+.loaderTxt {
+  width: 55px;
+  height: 16px;
+}
+
+.loaderBall {
+  width: 16px;
+  height: 16px;
+}
+
+.loaderExp {
+  width: 148px;
+  height: 16px;
+}

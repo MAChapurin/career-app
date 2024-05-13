@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Montserrat;
+  font-weight: 700;
+  outline: none;
+}
+
+:root {
+  --container-max-width: 1200px;
+  --container-min-width: 1024px;
+
+  --neutral-border: #efefef;
+  --loader: #e1e1e1;
+  --neutral-100: #f9f9f9;
+  --neutral-200: #f6f6f6;
+  --neutral-400: #c5c5c5;
+  --neutral-600: #747474;
+  --neutral-800: #202020;
+  --primary-100: #ebf1fa;
+  --primary-400: #8caee0;
+  --primary-500: #5c89ce;
+
+  --border-radius: 16px;
+  --shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.03);
+  --hover-shadow: 4px 4px 15px 0px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  min-height: 100vh;
+  min-width: var(--container-min-width);
+  background-color: var(--neutral-200);
+}
+
+img,
+svg {
+  display: block;
+}
+
+img {
+  object-fit: cover;
+}
+
+.btn {
+  padding: 0;
+  border: none;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  user-select: none;
+}

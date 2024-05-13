@@ -1,0 +1,9 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.RuleSetCompiler = void 0;
+class RuleSetCompiler {
+    constructor() {
+        this.references = new Map();
+    }
+}
+exports.RuleSetCompiler = RuleSetCompiler;

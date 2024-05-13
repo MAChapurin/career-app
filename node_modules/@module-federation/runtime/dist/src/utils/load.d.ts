@@ -1,0 +1,18 @@
+import { Remote, RemoteEntryExports, RemoteInfo } from '../type';
+export declare function loadEsmEntry({ entry, remoteEntryExports, }: {
+    entry: string;
+    remoteEntryExports: RemoteEntryExports | undefined;
+}): Promise<RemoteEntryExports>;
+export declare function loadEntryScript({ name, globalName, entry, createScriptHook, }: {
+    name: string;
+    globalName: string;
+    entry: string;
+    createScriptHook?: (url: string) => HTMLScriptElement | void;
+}): Promise<RemoteEntryExports>;
+export declare function getRemoteEntryUniqueKey(remoteInfo: RemoteInfo): string;
+export declare function getRemoteEntry({ remoteEntryExports, remoteInfo, createScriptHook, }: {
+    remoteInfo: RemoteInfo;
+    remoteEntryExports?: RemoteEntryExports | undefined;
+    createScriptHook?: (url: string) => HTMLScriptElement | void;
+}): Promise<RemoteEntryExports | void>;
+export declare function getRemoteInfo(remote: Remote): RemoteInfo;
