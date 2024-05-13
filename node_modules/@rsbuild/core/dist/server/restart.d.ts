@@ -1,9 +1,0 @@
-type Cleaner = () => Promise<unknown> | unknown;
-/**
- * Add a cleaner to handle side effects
- */
-export declare const onBeforeRestartServer: (cleaner: Cleaner) => void;
-export declare const restartDevServer: ({ filePath }: {
-    filePath: string;
-}) => Promise<void>;
-export {};

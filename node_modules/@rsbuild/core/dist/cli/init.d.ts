@@ -1,5 +1,0 @@
-import type { CommonOptions } from './commands';
-export declare function init({ cliOptions, isRestart, }: {
-    cliOptions?: CommonOptions;
-    isRestart?: boolean;
-}): Promise<import("@rsbuild/shared").RsbuildInstance | undefined>;
