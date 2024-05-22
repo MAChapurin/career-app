@@ -8,7 +8,7 @@ const useFrontendVacancyStore = create((set) => ({
   fetchVacancyList: async () => {
     try {
       set({ isLoading: true })
-      const response = await fetch('https://api.hh.ru/vacancies?text=frontend+developer+React&only_with_salary=true&currency_code=RUR&salary=50000&per_page=100')
+      const response = await fetch('https://api.hh.ru/vacancies?text=frontend+developer+React&only_with_salary=true&currency_code=RUR&salary=50000&order_by=publication_time&per_page=100')
       if (!response.ok) {
         set({ error: 'Отсутствует связь со сторонним сервисом' })
         throw new Error('Отсутствует связь со сторонним сервисом');
