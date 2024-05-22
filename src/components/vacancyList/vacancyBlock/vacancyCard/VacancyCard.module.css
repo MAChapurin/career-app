@@ -37,9 +37,6 @@
   line-height: 24px;
   font-weight: 700;
   color: var(--black);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .controlsBlock {
@@ -72,6 +69,16 @@
 .experience {
   display: flex;
   gap: 8px;
+  align-items: center;
+}
+
+.title,
+.salary,
+.upContent p,
+.experience {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (min-width: 1600px) {

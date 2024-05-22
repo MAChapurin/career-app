@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Main.module.css';
 import FilterList from '../../components/filterList/FilterList';
 import VacancyList from '../../components/vacancyList/VacancyList';
-import { API_DATA } from '../../data/apiData';
+import SkeletonBlock from '../../components/Skeleton/SkeletonBlock/SkeletonBlock';
+import useFrontendVacancyStore from '../../store/useFrontendVacancyStore';
 
 const Main = () => {
+  const { isLoading, vacancyList, fetchVacancyList, error } = useFrontendVacancyStore();
+
+  useEffect(() => {
+    fetchVacancyList()
+  }, []);
   return (
     <main className={styles.wrapper}>
       <div className={styles.container}>
         <FilterList />
-        <VacancyList data={API_DATA} />
+        {isLoading && <SkeletonBlock />}
+        {vacancyList.length > 0 && <VacancyList data={vacancyList} />}
+        {!isLoading && error && <>{error.code}</>}
       </div>
     </main>
   );

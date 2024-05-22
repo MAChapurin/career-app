@@ -2,13 +2,33 @@ import React from 'react';
 import styles from './VacancyCard.module.css';
 import Icon from '../../../icon/Icon';
 
-const VacancyCard = ({ index, card }) => {
+const VacancyCard = ({ card }) => {
+
+  const { name, salary, experience, area, employer } = card;
+
+  const convertСurrency = (cur) => {
+    switch (cur) {
+      case 'RUR':
+        return `₽`
+      case 'USD':
+        return '$'
+      default:
+        return cur
+    }
+  }
+
   return (
-    <li key={index} className={styles.card}>
+    <li className={styles.card}>
       <div className={styles.main}>
         <div className={styles.headerBlock}>
-          <h4 className={styles.title}>{card.title}</h4>
-          <p className={styles.salary}>{card.salary}</p>
+          <h4 className={styles.title}>{name}</h4>
+          <span className={styles.salary}>
+            {salary ?
+              `${salary.from && `от ${salary.from.toLocaleString()}` || ''} ${salary.from && salary.to && '-' || ''} ${salary.to && `до ${salary.to.toLocaleString()}` || ''} ${salary.currency ? convertСurrency(salary.currency) : ''}  `
+              :
+              'Доход не указан'
+            }
+          </span>
         </div>
         <div className={styles.controlsBlock}>
           <Icon name={'slashEye'} className={styles.eye} />
@@ -16,12 +36,12 @@ const VacancyCard = ({ index, card }) => {
       </div>
       <div className={styles.additional}>
         <div className={styles.upContent}>
-          <p>{card.company}</p>
-          <p>{card.city}</p>
+          <p>{employer.name}</p>
+          <p>{area.name}</p>
         </div>
         <p className={styles.experience}>
           <Icon name={'star'} className={styles.star} />
-          {card.experience}
+          {experience && experience.name}
         </p>
       </div>
     </li>

@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  padding: 32px 0;
+  cursor: auto;
+}
+
+.skeletonList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.skeletonItem {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  width: 100%;
+  background-color: var(--white-full);
+  box-shadow: var(--shadow);
+  border-radius: 16px;
+}
+
+.skeletonBottom {
+  display: flex;
+  gap: 8px;
+}
