@@ -1,6 +1,6 @@
-import { FilterItem } from './FilterItem/FilterItem';
-import styles from './FilterList.module.css';
-import clsx from '@utils/clsx';
+import { FilterItem } from "./FilterItem/FilterItem";
+import styles from "./FilterList.module.css";
+import clsx from "@utils/clsx";
 
 export const FilterList = ({ items }) => {
   return (

@@ -1,0 +1,41 @@
+.block {
+  padding: 32px 40px;
+  display: flex;
+  column-gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn,
+.dotts {
+  padding: 12px;
+  width: 53px;
+  height: 44px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 143%;
+  text-align: center;
+}
+
+.btn {
+  border: 0;
+  border-radius: 16px;
+  cursor: pointer;
+  background-color: var(--primary-100);
+  transition-property: color, background-color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+
+.selected {
+  cursor: auto;
+  background-color: var(--primary-500);
+  color: var(--neutral-100);
+}
+
+@media screen and (width > 1023.99px) {
+  .btn:not(.selected):hover {
+    background-color: var(--primary-400);
+    color: var(--neutral-100);
+  }
+}

@@ -1,24 +1,40 @@
-import { useEffect } from 'react';
-import { VacancyBlock } from './VacancyBlock/VacancyBlock';
-import styles from './VacancyList.module.css';
-import { useVacancyStore } from '@store/vacancyStore';
+import { useEffect, useState } from "react";
+import { VacancyBlock } from "./VacancyBlock/VacancyBlock";
+import { useVacancyStore } from "@store/vacancyStore";
+import { Pagination } from "../Pagination/Pagination";
+import styles from "./VacancyList.module.css";
+
+const defLimit = 18;
+const defCity = "Москва";
 
 export const VacancyList = () => {
-  const vacancies = useVacancyStore((state) => state.vacancies);
-  const fetchVacancies = useVacancyStore((state) => state.fetchVacancies);
+  const [vacancies, fetchVacancies, pages, loading] = useVacancyStore(
+    (state) => [
+      state.vacancies,
+      state.fetchVacancies,
+      state.pages,
+      state.loading,
+    ]
+  );
 
-  const isEmpty = vacancies.length === 0;
+  const [city, setCity] = useState(defCity);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    fetchVacancies('Москва');
+    fetchVacancies(city, page - 1, defLimit);
   }, []);
 
-  let vacancyObjects = isEmpty
+  let vacancyObjects = loading
     ? Array.from({ length: 10 }).map(() => ({
-        date: '',
+        date: "",
         vacancies: [{}, {}, {}],
       }))
     : Object.values(vacancies);
+
+  const handleSetPage = (newPage) => {
+    fetchVacancies(city, newPage - 1, defLimit);
+    setPage(newPage);
+  };
 
   return (
     <>
@@ -27,6 +43,8 @@ export const VacancyList = () => {
           <VacancyBlock date={vacancy.date} info={vacancy.vacancies} />
         </div>
       ))}
+
+      <Pagination pages={pages} page={page} handleSetPage={handleSetPage} />
     </>
   );
 };
