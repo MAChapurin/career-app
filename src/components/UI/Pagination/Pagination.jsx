@@ -22,9 +22,7 @@ export const Pagination = ({ pages = [], page = 0, handleSetPage }) => {
           <button
             key={index}
             disabled={el === page}
-            onClick={(e) => {
-              handleSetPage(el);
-            }}
+            onClick={() => handleSetPage(el)}
             className={`${styles.btn} ${el === page ? styles.selected : ""}`}
           >
             {el}
