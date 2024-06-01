@@ -18,6 +18,7 @@ export const useVacancyStore = create((set) => ({
       const data = await response.json();
       const groupedVacancies = {};
 
+
       data.items.forEach((item) => {
         const date = formatDate(item.published_at);
         if (!groupedVacancies[date]) {
