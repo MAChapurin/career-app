@@ -3,7 +3,7 @@ import { range } from "./range";
 export const getPaginationRange = (pages, page, siblings=1 ) => {
   const noInArray = 5 + siblings;
   
-  if(noInArray>=pages) {
+  if(noInArray>pages) {
     return range(1, pages);
   }
 
