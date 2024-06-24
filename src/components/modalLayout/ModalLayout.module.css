@@ -8,6 +8,8 @@
   overflow: auto;
   scrollbar-gutter: stable;
   box-shadow: var(--shadow);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
 }
 
 .modal ul {

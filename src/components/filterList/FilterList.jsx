@@ -38,7 +38,7 @@ const FilterList = () => {
           level='high'
           className={styles.filterItem}
         >
-          <ModalLayout>
+          <ModalLayout >
             <AdditionalFilters list={otherFiltersData} />
           </ModalLayout>
         </FilterItem>

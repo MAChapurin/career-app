@@ -20,48 +20,45 @@ const FilterItem = ({
   };
 
   return (
-    <>
-      <li
-        className={`${styles.wrapper} ${className}`}
-        onClick={onClick}
-        data-level={level}
+    <li
+      className={`${styles.wrapper} ${className}`}
+      onClick={onClick}
+      data-level={level}
+    >
+      <div
+        className={styles.title}
+        data-active={isOpenFilter ? 'true' : 'false'}
       >
-        <div
-          className={styles.title}
-          data-active={isOpenFilter ? 'true' : 'false'}
-        >
-          <Icon name={iconName} className={styles.icon} />
-          {(type === 'input' && (
-            <input
-              className={styles.input}
-              type='text'
-              placeholder={text}
-              value={value}
-              onChange={handleChange}
-              data-active={value ? 'true' : 'false'}
-            />
-          )) || <span className={styles.input}>{text}</span>}
-          {(type === 'dropdown' && (
-            <Icon
-              name='chevron'
-              className={`${styles.chevron} ${
-                isOpenFilter ? styles.active : ''
+        <Icon name={iconName} className={styles.icon} />
+        {(type === 'input' && (
+          <input
+            className={styles.input}
+            type='text'
+            placeholder={text}
+            value={value}
+            onChange={handleChange}
+            data-active={value ? 'true' : 'false'}
+          />
+        )) || <span className={styles.input}>{text}</span>}
+        {(type === 'dropdown' && (
+          <Icon
+            name='chevron'
+            className={`${styles.chevron} ${isOpenFilter ? styles.active : ''
               }`}
-            />
-          )) ||
-            (value && (
-              <Button
-                onClick={() => {
-                  setValue('');
-                }}
-              >
-                <Icon name='clear' className={styles.iconClear} />
-              </Button>
-            ))}
-        </div>
-        {isOpenFilter && children}
-      </li>
-    </>
+          />
+        )) ||
+          (value && (
+            <Button
+              onClick={() => {
+                setValue('');
+              }}
+            >
+              <Icon name='clear' className={styles.iconClear} />
+            </Button>
+          ))}
+      </div>
+      {isOpenFilter && children}
+    </li>
   );
 };
 

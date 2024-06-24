@@ -9,7 +9,7 @@ const Main = () => {
   const { isLoading, vacancyList, fetchVacancyList, error } = useFrontendVacancyStore();
 
   useEffect(() => {
-    fetchVacancyList()
+    fetchVacancyList(true)
   }, []);
   return (
     <main className={styles.wrapper}>

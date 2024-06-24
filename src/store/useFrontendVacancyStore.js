@@ -5,16 +5,24 @@ const useFrontendVacancyStore = create((set) => ({
   vacancyList: [],
   isLoading: false,
   error: [],
-  fetchVacancyList: async () => {
+  fetchVacancyList: async (isTodayOnly = false) => {
     try {
       set({ isLoading: true })
-      const response = await fetch('https://api.hh.ru/vacancies?text=frontend+developer+React&only_with_salary=true&currency_code=RUR&salary=50000&order_by=publication_time&per_page=100')
+      let API = `https://api.hh.ru/vacancies?text=frontend+developer+React&only_with_salary=true&currency_code=RUR&salary=50000&order_by=publication_time&per_page=100`
+      if (isTodayOnly) API += `&date_from=${new Date(Date.now())
+        .toLocaleDateString({
+          timeZone: "Europe/Moscow",
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+        })
+        .replace(/\//g, '-')}`;
+      const response = await fetch(API)
       if (!response.ok) {
-        set({ error: 'Отсутствует связь со сторонним сервисом' })
         throw new Error('Отсутствует связь со сторонним сервисом');
       }
       const data = await response.json()
-      const vacancyListData = data.items.sort((a, b) => new Date(b.published_at) - new Date(a.published_at)).map((item) => {
+      const vacancyListData = data.items.map((item) => {
         const {
           name,
           salary,

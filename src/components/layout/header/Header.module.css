@@ -3,11 +3,8 @@
   display: flex;
   justify-content: center;
   width: 100%;
-
-  background-color: var(--white-cream);
-
+  background-color: var(--white-full);
   box-shadow: var(--shadow);
-
   z-index: 50;
 }
 
