@@ -25,7 +25,7 @@ export const VacancyList = () => {
   }, []);
 
   let vacancyObjects = loading
-    ? Array.from({ length: 10 }).map(() => ({
+    ? Array.from({ length: 18 }).map(() => ({
         date: "",
         vacancies: [{}, {}, {}],
       }))

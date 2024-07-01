@@ -1,21 +1,29 @@
 export const formatDate = (dateString) => {
-  const date = new Date(dateString);
   const today = new Date();
+  const yesterday = new Date();
+  yesterday.setDate(today.getDate() - 1);
+  const blockDate = new Date(dateString);
 
-  if (date.toDateString() === today.toDateString()) {
-    return `Сегодня, ${date.getDate()} ${date.toLocaleString('default', {
-      month: 'long',
-    })}`;
-  }
-  const yesterday = new Date(today);
-  yesterday.setDate(yesterday.getDate() - 1);
-  if (date.toDateString() === yesterday.toDateString()) {
-    return `Вчера, ${date.getDate()} ${date.toLocaleString('default', {
-      month: 'long',
-    })}`;
+  let result = '';
+
+  const parameters = {
+    day: 'numeric',
+    month: 'long'
+  };
+
+  if(blockDate.getFullYear() !== today.getFullYear()) {
+    parameters.year= 'numeric';
   }
 
-  return `${date.getDate()} ${date.toLocaleString('default', {
-    month: 'long',
-  })}`;
+  const formatDate = new Intl.DateTimeFormat('ru', parameters).format(blockDate);
+
+  if(blockDate.toLocaleDateString() == today.toLocaleDateString()){
+    result = `Сегодня, ${formatDate}`;
+  } else if (blockDate.toLocaleDateString() == yesterday.toLocaleDateString()) {
+    result = `Вчера, ${formatDate}`;
+  } else {
+    result = formatDate;
+  }
+
+  return result;
 };
