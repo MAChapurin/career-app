@@ -8,6 +8,7 @@
   transition: box-shadow 0.2s ease-in-out;
 }
 
+
 .card:hover {
   box-shadow: var(--hover-shadow);
 }

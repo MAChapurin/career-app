@@ -5,29 +5,37 @@ import { APP_PAGE } from '@constants';
 import { useDetailVacancyStore } from '@store/detailVacancyStore';
 import { useRouteStore } from '@store/routeStore';
 import { useVacancyStore } from '@store/vacancyStore';
-import React, { useEffect } from 'react'
+import React, { Children, useEffect, useState } from 'react'
 
 import styles from './vacancyDetail.module.css'
 
 export const VacancyDetail = () => {
+  const [similarVacancies, setSimilarVacancies] = useState([]);
+  const [similarPage, setSimilarPage] = useState(1);
+
   const { setPageApp } = useRouteStore();
 
-  const { vacancyDetail, vacancySimilar, loading, similarPage, setSimilarPage, fetchSimilar } = useDetailVacancyStore();
-  const { blackList, addToBlackList } = useVacancyStore()
-
-  const loadMoreSimilary = () => {
-    setSimilarPage(similarPage + 1)
-  }
-
-  const handleBlackList = () => {
-    if (blackList.length && blackList.find((list) => list.id === vacancyDetail.id)) return
-    addToBlackList(vacancyDetail.id)
-  }
+  const { vacancyDetail, fetchSimilarVacancy, similaryPages } = useDetailVacancyStore();
+  const { blackList, toggleToBlackList } = useVacancyStore()
 
   useEffect(() => {
     if (!vacancyDetail.id) return
-    fetchSimilar(vacancyDetail.id, similarPage)
+    const fetchData = async () => {
+      const vac = await fetchSimilarVacancy(vacancyDetail.id, similarPage - 1)
+      if (similarPage === 1) setSimilarVacancies(vac);
+      else setSimilarVacancies([...similarVacancies, ...vac]);
+    };
+    fetchData()
   }, [similarPage, vacancyDetail.id])
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, [vacancyDetail.id])
+
 
   return (
     <>
@@ -54,9 +62,11 @@ export const VacancyDetail = () => {
                   </li>)}
               </ul>
             </div>
-            <button className={`${styles.btn} ${styles.hidBtn}`} onClick={handleBlackList}>
+            <button className={`${styles.btn} ${styles.hidBtn}`} onClick={() => toggleToBlackList(vacancyDetail.id)}>
               <HoverSVG className={styles.btnIcon} />
-              Скрыть
+
+              {blackList.includes(vacancyDetail.id) ? 'Показать' : 'Скрыть'}
+
             </button>
             <div className={styles.descr}>
               <h3 className={styles.titleDescr}>Описание</h3>
@@ -87,12 +97,21 @@ export const VacancyDetail = () => {
       <div className={styles.bottom}>
         <h3 className={styles.moreVacancy}>Похожие вакансии</h3>
         <ul className={styles.listSimilar}>
-          {vacancySimilar.map((vacancy) => (
-            <VacancyCard key={vacancy.id} vacancy={vacancy} />
+          {similarVacancies.map((vacancy) => (
+            <VacancyCard
+              key={vacancy.id}
+              vacancy={vacancy}
+              setSimilarVacancies={setSimilarVacancies}
+              setSimilarPage={setSimilarPage}
+              eye={false}
+            />
           ))}
         </ul>
         <div className={styles.btnWrapper}>
-          <button className={`${styles.btn} ${styles.lodaMore}`} onClick={() => loadMoreSimilary()}>Показать еще</button>
+          <button
+            className={`${styles.btn} ${styles.lodaMore}`}
+            disabled={similarPage - 1 >= similaryPages}
+            onClick={() => setSimilarPage(similarPage => similarPage + 1)}>Показать еще</button>
         </div>
       </div>
     </>

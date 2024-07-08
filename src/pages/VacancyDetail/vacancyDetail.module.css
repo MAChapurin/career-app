@@ -192,7 +192,7 @@
 
 .rigntSite {
   position: sticky;
-  top: 98px;
+  top: 108px;
   box-shadow: var(--shadow);
   border-radius: var(--border-radius);
   background-color: var(--neutral-100);
@@ -257,4 +257,9 @@
 
 .lodaMore:hover {
   background-color: var(--primary-400);
+}
+
+.lodaMore:disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }

@@ -4,14 +4,15 @@ import { formatDate } from '@utils/formatDate';
 
 
 
-export const useVacancyStore = create((set) => ({
+export const useVacancyStore = create((set, get) => ({
   blackList: [],
-  addToBlackList: (idBlock) => set(state => ({
-    blackList: [
-      ...state.blackList,
-      idBlock
-    ]
-  })),
+  toggleToBlackList: (idBlock) => {
+    const idInBlackList = get().blackList
+    const foundedId = idInBlackList.find((item) => item === idBlock);
+    set({
+      blackList: foundedId ? idInBlackList.filter((idItem) => idItem !== idBlock) : [...idInBlackList, idBlock]
+    })
+  },
   pages: 0,
   page: 1,
   setPage: (newPage) => set({ page: newPage }),

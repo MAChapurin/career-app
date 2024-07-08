@@ -6,22 +6,23 @@ import { useRouteStore } from '@store/routeStore';
 import { useVacancyStore } from '@store/vacancyStore';
 import styles from './VacancyCard.module.css';
 
-export const VacancyCard = ({ vacancy }) => {
+export const VacancyCard = ({ vacancy, setSimilarVacancies = () => { }, setSimilarPage = () => { }, eye = true }) => {
   const isEmpty = Object.keys(vacancy).length;
+
+  console.log(eye)
 
   const { setPageApp } = useRouteStore()
   const { fetchVacancy } = useDetailVacancyStore()
-  const { blackList, addToBlackList } = useVacancyStore()
-
+  const { toggleToBlackList } = useVacancyStore()
   const handleBlackList = (e) => {
     e.stopPropagation()
-    if (blackList.length && blackList.includes(vacancy.id)) return
-    addToBlackList(vacancy.id)
+    toggleToBlackList(vacancy.id)
   }
-
   const handleDetailVacancy = () => {
     fetchVacancy(vacancy.id)
     setPageApp(APP_PAGE.vacancy)
+    setSimilarVacancies([])
+    setSimilarPage(1)
   }
 
   return (
@@ -30,9 +31,9 @@ export const VacancyCard = ({ vacancy }) => {
         <li className={styles.card} onClick={handleDetailVacancy}>
           <div className={styles.headingAndHover}>
             <h1 className={styles.heading}>{vacancy.name}</h1>
-            <div className={styles.icon} onClick={(e) => handleBlackList(e)}>
+            {eye && <div className={styles.icon} onClick={(e) => handleBlackList(e)}>
               <HoverSVG />
-            </div>
+            </div>}
           </div>
           <p className={styles.wages}>{vacancy.wages}</p>
           <p className={`${styles.text} ${styles.mb8}`}>{vacancy.company}</p>
