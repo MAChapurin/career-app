@@ -1,16 +1,36 @@
 import { HoverSVG } from '@components/UI/IconsSVG/HoverSVG';
 import { StarSVG } from '@components/UI/IconsSVG/StarSVG';
+import { APP_PAGE } from '@constants';
+import { useDetailVacancyStore } from '@store/detailVacancyStore';
+import { useRouteStore } from '@store/routeStore';
+import { useVacancyStore } from '@store/vacancyStore';
 import styles from './VacancyCard.module.css';
 
 export const VacancyCard = ({ vacancy }) => {
   const isEmpty = Object.keys(vacancy).length;
+
+  const { setPageApp } = useRouteStore()
+  const { fetchVacancy } = useDetailVacancyStore()
+  const { blackList, addToBlackList } = useVacancyStore()
+
+  const handleBlackList = (e) => {
+    e.stopPropagation()
+    if (blackList.length && blackList.includes(vacancy.id)) return
+    addToBlackList(vacancy.id)
+  }
+
+  const handleDetailVacancy = () => {
+    fetchVacancy(vacancy.id)
+    setPageApp(APP_PAGE.vacancy)
+  }
+
   return (
     <>
       {isEmpty ? (
-        <li className={styles.card}>
+        <li className={styles.card} onClick={handleDetailVacancy}>
           <div className={styles.headingAndHover}>
             <h1 className={styles.heading}>{vacancy.name}</h1>
-            <div className={styles.icon}>
+            <div className={styles.icon} onClick={(e) => handleBlackList(e)}>
               <HoverSVG />
             </div>
           </div>

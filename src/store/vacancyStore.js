@@ -5,22 +5,30 @@ import { formatDate } from '@utils/formatDate';
 
 
 export const useVacancyStore = create((set) => ({
+  blackList: [],
+  addToBlackList: (idBlock) => set(state => ({
+    blackList: [
+      ...state.blackList,
+      idBlock
+    ]
+  })),
   pages: 0,
+  page: 1,
+  setPage: (newPage) => set({ page: newPage }),
   loading: false,
   vacancies: [],
-  fetchVacancies: async (city, page=0, limit=18) => {
+  fetchVacancies: async (city, page = 0, limit = 18) => {
 
     try {
-      set({loading: true});
+      set({ loading: true });
       const response = await fetch(
         `https://api.hh.ru/vacancies?text=frontend${city}&only_with_salary=true&page=${page}&per_page=${limit}&order_by=publication_time`
       );
       const data = await response.json();
       const groupedVacancies = {};
 
-
       data.items.forEach((item) => {
-        const date = formatDate(item.published_at);
+        const date = formatDate(item.published_at).result;
         if (!groupedVacancies[date]) {
           groupedVacancies[date] = { date: date, vacancies: [] };
         }
@@ -31,7 +39,7 @@ export const useVacancyStore = create((set) => ({
     } catch (error) {
       console.error('Ошибка:', error);
     } finally {
-      set({loading: false});
+      set({ loading: false });
     }
   },
 }));

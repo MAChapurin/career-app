@@ -8,17 +8,19 @@ const defLimit = 18;
 const defCity = "Москва";
 
 export const VacancyList = () => {
-  const [vacancies, fetchVacancies, pages, loading] = useVacancyStore(
+  const [vacancies, fetchVacancies, pages, loading, page, setPage, blackList] = useVacancyStore(
     (state) => [
       state.vacancies,
       state.fetchVacancies,
       state.pages,
       state.loading,
+      state.page,
+      state.setPage,
+      state.blackList
     ]
   );
 
   const [city, setCity] = useState(defCity);
-  const [page, setPage] = useState(1);
 
   useEffect(() => {
     fetchVacancies(city, page - 1, defLimit);
@@ -26,10 +28,10 @@ export const VacancyList = () => {
 
   let vacancyObjects = loading
     ? Array.from({ length: 18 }).map(() => ({
-        date: "",
-        vacancies: [{}, {}, {}],
-      }))
-    : Object.values(vacancies);
+      date: "",
+      vacancies: [{}, {}, {}],
+    }))
+    : (Object.values(vacancies));
 
   const handleSetPage = (newPage) => {
     fetchVacancies(city, newPage - 1, defLimit);

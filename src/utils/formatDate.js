@@ -1,4 +1,4 @@
-export const formatDate = (dateString) => {
+export const formatDate = (dateString, full = false) => {
   const today = new Date();
   const yesterday = new Date();
   yesterday.setDate(today.getDate() - 1);
@@ -11,13 +11,12 @@ export const formatDate = (dateString) => {
     month: 'long'
   };
 
-  if(blockDate.getFullYear() !== today.getFullYear()) {
-    parameters.year= 'numeric';
+  if (blockDate.getFullYear() !== today.getFullYear() || full) {
+    parameters.year = 'numeric';
   }
-
   const formatDate = new Intl.DateTimeFormat('ru', parameters).format(blockDate);
 
-  if(blockDate.toLocaleDateString() == today.toLocaleDateString()){
+  if (blockDate.toLocaleDateString() == today.toLocaleDateString()) {
     result = `Сегодня, ${formatDate}`;
   } else if (blockDate.toLocaleDateString() == yesterday.toLocaleDateString()) {
     result = `Вчера, ${formatDate}`;
@@ -25,5 +24,5 @@ export const formatDate = (dateString) => {
     result = formatDate;
   }
 
-  return result;
+  return { result, formatDate };
 };

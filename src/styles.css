@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 * {
   margin: 0;
@@ -21,6 +21,7 @@
   --neutral-600: #747474;
   --neutral-800: #202020;
   --primary-100: #ebf1fa;
+  --primary-200: #cfddf2;
   --primary-400: #8caee0;
   --primary-500: #5c89ce;
 
@@ -43,6 +44,10 @@ svg {
 img {
   object-fit: cover;
 }
+ul,
+li {
+  list-style: none;
+}
 
 .btn {
   padding: 0;
@@ -51,4 +56,17 @@ img {
   background: none;
   cursor: pointer;
   user-select: none;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 140%;
+  color: var(--neutral-800);
+}
+h4 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--neutral-800);
 }

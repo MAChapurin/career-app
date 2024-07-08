@@ -10,6 +10,11 @@ import { StarSVG } from '@components/UI/IconsSVG/StarSVG';
 import { TimeSVG } from '@components/UI/IconsSVG/TimeSVG';
 import { TomeJobSVG } from '@components/UI/IconsSVG/TomeJobSVG';
 
+export const APP_PAGE = {
+  main: '/',
+  vacancy: '/vacancy'
+}
+
 export const filterItems = [
   {
     type: 'input',

@@ -1,0 +1,260 @@
+.wrapper {
+  margin: 32px 0;
+}
+
+.btn {
+  display: flex;
+  gap: 16px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 143%;
+  align-items: center;
+  margin-bottom: 32px;
+  color: var(--primary-500);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.back:hover {
+  color: var(--primary-400);
+}
+
+.back:hover .icon path {
+  fill: var(--primary-400);
+}
+
+.icon {
+  transform: rotate(180deg);
+  width: 16px;
+  height: 16px;
+}
+
+.icon path {
+  fill: var(--primary-500);
+}
+
+.content {
+  position: relative;
+  display: flex;
+  gap: 32px;
+}
+.leftSite {
+  width: 68%;
+  padding: 32px;
+  height: fit-content;
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius);
+  background-color: var(--neutral-100);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 133%;
+  margin-bottom: 16px;
+}
+
+.wages {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 140%;
+  color: var(--neutral-800);
+}
+
+.requirements {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.requirementsList {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.requirementsItem {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 143%;
+}
+
+.requirementsIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.hidBtn {
+  border: 2px solid var(--primary-500);
+  border-radius: 16px;
+  padding: 14px 22px;
+  width: fit-content;
+  margin-bottom: 0;
+}
+
+.hidBtn:hover {
+  background-color: var(--primary-100);
+}
+
+.btnIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.btnIcon path {
+  fill: var(--primary-500);
+  stroke: var(--primary-500);
+}
+
+.titleDescr {
+  margin-bottom: 24px;
+}
+
+.descr p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  margin-bottom: 24px;
+}
+
+.descr ol,
+.descr ul {
+  margin-top: 24px;
+}
+
+.descr ol li,
+.descr ul li {
+  padding-left: 20px !important;
+  position: relative;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.descr ol li p,
+.descr ul li p {
+  margin-bottom: 0;
+}
+.descr ol li:last-child,
+.descr ul li:last-child {
+  margin-bottom: 24px;
+}
+
+.descr ol li::after,
+.descr ul li::after {
+  content: "—";
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: -50%;
+  transform: translateY(50%);
+}
+
+.skillBlock {
+  margin-top: -24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.skillTitle {
+  margin-bottom: 24px;
+}
+
+.skillList {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.skillItem {
+  border-radius: var(--border-radius);
+  padding: 4px 8px;
+  background: var(--primary-200);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 143%;
+}
+
+.published {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 143%;
+  color: #747474;
+}
+
+.rigntSite {
+  position: sticky;
+  top: 98px;
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius);
+  background-color: var(--neutral-100);
+  padding: 32px;
+  width: 32%;
+  height: fit-content;
+}
+
+.logo {
+  max-width: 100%;
+  height: 60px;
+  border-radius: var(--border-radius);
+  object-fit: cover;
+  margin-bottom: 16px;
+}
+
+.company {
+  display: block;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 140%;
+}
+.address {
+  display: block;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  margin-top: 8px;
+}
+
+.moreVacancy {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 133%;
+  padding: 32px 0;
+}
+
+.listSimilar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  list-style: none;
+  margin-bottom: 32px;
+}
+
+.btnWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lodaMore {
+  width: fit-content;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 143%;
+  color: var(--neutral-100);
+  background: var(--primary-500);
+  border-radius: 16px;
+  padding: 16px 24px;
+}
+
+.lodaMore:hover {
+  background-color: var(--primary-400);
+}
