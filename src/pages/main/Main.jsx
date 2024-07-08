@@ -4,12 +4,14 @@ import FilterList from '../../components/filterList/FilterList';
 import VacancyList from '../../components/vacancyList/VacancyList';
 import SkeletonBlock from '../../components/Skeleton/SkeletonBlock/SkeletonBlock';
 import useFrontendVacancyStore from '../../store/useFrontendVacancyStore';
+import { Pagination } from '../../components/pagination/Pagination';
 
 const Main = () => {
-  const { isLoading, vacancyList, fetchVacancyList, error } = useFrontendVacancyStore();
+  const { isLoading, vacancyList, fetchVacancyList, error, pages } = useFrontendVacancyStore();
 
   useEffect(() => {
-    fetchVacancyList(true)
+    // fetchVacancyList(true)
+    fetchVacancyList(1)
   }, []);
   return (
     <main className={styles.wrapper}>
@@ -18,6 +20,7 @@ const Main = () => {
         {isLoading && <SkeletonBlock />}
         {vacancyList.length > 0 && <VacancyList data={vacancyList} />}
         {!isLoading && error && <>{error.code}</>}
+        {pages > 1 && <Pagination pages={pages} fetchCallback={fetchVacancyList}/>}
       </div>
     </main>
   );

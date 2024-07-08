@@ -1,0 +1,62 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 32px;
+}
+
+.list {
+  width: max-content;
+  display: flex;
+  gap: 8px;
+}
+
+.item {
+  width: 53px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item p {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.btn {
+  width: 100%;
+  height: 100%;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  text-align: center;
+  border: none;
+  outline: none;
+  background: var(--btn-color);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.btn.active {
+  background: var(--blue);
+  color: var(--white-full);
+}
+
+.item.hidden {
+  display: none;
+}
+
+.item.show {
+  display: flex;
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    background: var(--lightBlue);
+    color: var(--white-full);
+  }
+}
