@@ -9,8 +9,6 @@ import styles from './VacancyCard.module.css';
 export const VacancyCard = ({ vacancy, setSimilarVacancies = () => { }, setSimilarPage = () => { }, eye = true }) => {
   const isEmpty = Object.keys(vacancy).length;
 
-  console.log(eye)
-
   const { setPageApp } = useRouteStore()
   const { fetchVacancy } = useDetailVacancyStore()
   const { toggleToBlackList } = useVacancyStore()
