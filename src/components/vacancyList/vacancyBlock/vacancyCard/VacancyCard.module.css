@@ -18,6 +18,7 @@
   font-size: 16px;
   line-height: 24px;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .main {
@@ -73,7 +74,7 @@
 }
 
 .title,
-.salary,
+/* .salary, */
 .upContent p,
 .experience {
   white-space: nowrap;

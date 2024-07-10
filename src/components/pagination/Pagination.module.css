@@ -41,6 +41,10 @@
   transition: background 0.3s, color 0.3s;
 }
 
+.btn:disabled {
+  cursor: not-allowed;
+}
+
 .btn.active {
   background: var(--blue);
   color: var(--white-full);

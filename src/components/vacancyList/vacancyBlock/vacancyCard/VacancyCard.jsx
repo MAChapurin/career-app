@@ -24,7 +24,7 @@ const VacancyCard = ({ card }) => {
           <h4 className={styles.title}>{name}</h4>
           <span className={styles.salary}>
             {salary ?
-              `${salary.from && `от ${salary.from.toLocaleString()}` || ''} ${salary.from && salary.to && '-' || ''} ${salary.to && `до ${salary.to.toLocaleString()}` || ''} ${salary.currency ? convertСurrency(salary.currency) : ''}  `
+              `${salary.from && `${salary.to ? '' : 'от'} ${salary.from.toLocaleString()}` || ''} ${salary.from && salary.to && '-' || ''} ${salary.to && `${salary.from ? '' : 'до'} ${salary.to.toLocaleString()}` || ''} ${salary.currency ? convertСurrency(salary.currency) : ''}  `
               :
               'Доход не указан'
             }

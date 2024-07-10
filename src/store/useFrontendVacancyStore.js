@@ -3,9 +3,11 @@ import daysApiFilter from '../utils/daysApiFilter'
 
 const useFrontendVacancyStore = create((set) => ({
   vacancyList: [],
+  page: 0,
   pages: 0,
   isLoading: false,
   error: [],
+  setPage: (page)=> {set({page})},
   fetchVacancyList: async (page,isTodayOnly = false) => {
     try {
       set({ isLoading: true })
@@ -23,8 +25,7 @@ const useFrontendVacancyStore = create((set) => ({
         throw new Error('Отсутствует связь со сторонним сервисом');
       }
       const data = await response.json()
-      set({pages: data?.pages - 1})
-      console.log('data => ', data)//уберу на дебаге, это для удобства проверки
+      set({pages: data?.pages})
       const vacancyListData = data.items.map((item) => {
         const {
           name,
@@ -45,7 +46,6 @@ const useFrontendVacancyStore = create((set) => ({
           id
         }
       })
-      console.log('vacancyListData =>',vacancyListData)//уберу на дебаге, это для удобства проверки
       set({ vacancyList: daysApiFilter(vacancyListData) })
     } catch (errorStatus) {
       set({ error: errorStatus })

@@ -5,4 +5,5 @@
 .container {
   display: grid;
   width: 100%;
+  min-height: calc(100vh - 200px);/*Чтобы футер при первой загрузке не прилипал к хэдеру, на глазок*/
 }
