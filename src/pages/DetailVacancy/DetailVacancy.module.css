@@ -1,0 +1,35 @@
+.wrapper {
+  margin: 32px 0;
+}
+
+.btn {
+  display: flex;
+  gap: 16px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 143%;
+  align-items: center;
+  margin-bottom: 32px;
+  color: var(--primary-500);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.back:hover {
+  color: var(--primary-400);
+}
+
+.back:hover .icon path {
+  fill: var(--primary-400);
+}
+
+.icon {
+  transform: rotate(180deg);
+  width: 16px;
+  height: 16px;
+}
+
+.icon path {
+  fill: var(--primary-500);
+}

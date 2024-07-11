@@ -4,7 +4,6 @@ import { useVacancyStore } from "@store/vacancyStore";
 import { Pagination } from "../Pagination/Pagination";
 import styles from "./VacancyList.module.css";
 
-const defLimit = 18;
 const defCity = "Москва";
 
 export const VacancyList = () => {
@@ -23,7 +22,7 @@ export const VacancyList = () => {
   const [city, setCity] = useState(defCity);
 
   useEffect(() => {
-    fetchVacancies(city, page - 1, defLimit);
+    fetchVacancies(city, page - 1);
   }, []);
 
   let vacancyObjects = loading
@@ -34,7 +33,7 @@ export const VacancyList = () => {
     : (Object.values(vacancies));
 
   const handleSetPage = (newPage) => {
-    fetchVacancies(city, newPage - 1, defLimit);
+    fetchVacancies(city, newPage - 1);
     setPage(newPage);
   };
 

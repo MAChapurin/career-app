@@ -15,6 +15,9 @@ export const APP_PAGE = {
   vacancy: '/vacancy'
 }
 
+export const LIMIT_CARD_FOR_MAIN_PAGE = 18
+export const LIMIT_CAR_FOR_SIMILARY = 6
+
 export const filterItems = [
   {
     type: 'input',

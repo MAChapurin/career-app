@@ -1,0 +1,54 @@
+.moreVacancy {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 133%;
+  padding: 32px 0;
+}
+
+.listSimilar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  list-style: none;
+  margin-bottom: 32px;
+}
+
+.btn {
+  display: flex;
+  gap: 16px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 143%;
+  align-items: center;
+  margin-bottom: 32px;
+  color: var(--primary-500);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.btnWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lodaMore {
+  width: fit-content;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 143%;
+  color: var(--neutral-100);
+  background: var(--primary-500);
+  border-radius: 16px;
+  padding: 16px 24px;
+}
+
+.lodaMore:hover {
+  background-color: var(--primary-400);
+}
+
+.lodaMore:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

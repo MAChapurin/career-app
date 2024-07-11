@@ -1,6 +1,7 @@
 import { VacancyCard } from './VacancyCard/VacancyCard';
-import styles from './VacancyBlock.module.css';
 import { useVacancyStore } from '@store/vacancyStore';
+
+import styles from './VacancyBlock.module.css';
 
 export const VacancyBlock = ({ date, info }) => {
   const { blackList } = useVacancyStore()
