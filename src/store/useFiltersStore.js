@@ -55,6 +55,7 @@ export const useFiltersStore = create((set, get) => ({
 
     clearFilters: () => {
         set({
+            city: '',
             areas: [],
             checkboxes: [],
             radios: [],
