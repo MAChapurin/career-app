@@ -8,7 +8,9 @@ export const Input = ({
   name,
   icon: Icon,
   value,
-  onChange
+  onChange,
+  count,
+  ...props
 }) => {
   const ref = useRef(null);
   const isClearBtnShown = type === "search" && !!value;
@@ -29,7 +31,10 @@ export const Input = ({
         placeholder={name}
         value={value}
         onChange={onChange}
+        count={count}
+        {...props}
       />
+      {count > 0 && <span className={clsx(styles.count, value.length === 0 && styles.countRight)}>{count}</span>}
       {isClearBtnShown && (
         <button className={clsx("btn", styles.clearBtn)} onClick={onClear}>
           <XMarkSolidSVG />

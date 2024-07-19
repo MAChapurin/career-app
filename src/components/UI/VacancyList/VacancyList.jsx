@@ -3,6 +3,7 @@ import { VacancyBlock } from "./VacancyBlock/VacancyBlock";
 import { useVacancyStore } from "@store/vacancyStore";
 import { Pagination } from "../Pagination/Pagination";
 import styles from "./VacancyList.module.css";
+import { useFilterParams } from "@hooks/useFilterParams";
 
 const defCity = "Москва";
 
@@ -19,11 +20,11 @@ export const VacancyList = () => {
     ]
   );
 
-  const [city, setCity] = useState(defCity);
+  const params = useFilterParams()
 
   useEffect(() => {
-    fetchVacancies(city, page - 1);
-  }, []);
+    fetchVacancies(params, page - 1);
+  }, [params]);
 
   let vacancyObjects = loading
     ? Array.from({ length: 18 }).map(() => ({
@@ -33,7 +34,7 @@ export const VacancyList = () => {
     : (Object.values(vacancies));
 
   const handleSetPage = (newPage) => {
-    fetchVacancies(city, newPage - 1);
+    fetchVacancies(params, newPage - 1);
     setPage(newPage);
   };
 
@@ -44,7 +45,15 @@ export const VacancyList = () => {
           <VacancyBlock date={vacancy.date} info={vacancy.vacancies} />
         </div>
       ))}
+      {Object.keys(vacancies).length === 0 &&
+        <div className={styles.container}>
+          <p className={styles.text}>
+            Не удалось найти вакансии с выбранными параметрами.<br />
+            Попробуйте другие.
+          </p>
+        </div>
 
+      }
       <Pagination pages={pages} page={page} handleSetPage={handleSetPage} />
     </>
   );

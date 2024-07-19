@@ -126,3 +126,20 @@
 .dropdownMenu label:not(:last-child) {
   margin-bottom: 4px;
 }
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16px;
+  min-width: 33px;
+  max-width: max-content;
+  padding: 8px 0px;
+  border-radius: 8px;
+  background-color: var(--primary-200);
+  color: var(--neutral-800);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+}

@@ -17,12 +17,13 @@ export const useVacancyStore = create((set, get) => ({
   setPage: (newPage) => set({ page: newPage }),
   loading: false,
   vacancies: [],
-  fetchVacancies: async (city, page = 0) => {
+  fetchVacancies: async (params, page = 0) => {
 
     try {
       set({ loading: true });
       const response = await fetch(
-        `https://api.hh.ru/vacancies?text=frontend${city}&only_with_salary=true&page=${page}&per_page=${LIMIT_CARD_FOR_MAIN_PAGE}&order_by=publication_time`
+        // `https://api.hh.ru/vacancies?text=frontend${city}&only_with_salary=true&page=${page}&per_page=${LIMIT_CARD_FOR_MAIN_PAGE}&order_by=publication_time`
+        `https://api.hh.ru/vacancies?${params}&page=${page}&per_page=${LIMIT_CARD_FOR_MAIN_PAGE}&order_by=publication_time`
       );
       const data = await response.json();
       const groupedVacancies = {};

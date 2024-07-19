@@ -3,3 +3,20 @@
   flex-direction: column;
   gap: 32px;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100dvh - 300px);
+}
+
+.text {
+  max-width: 492px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: var(--neutral-600);
+}
