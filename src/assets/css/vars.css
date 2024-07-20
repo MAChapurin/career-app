@@ -5,10 +5,11 @@
   --black: #202020;
   --blue: #5c89ce;
   --lightBlue: #8caee0;
+  --lighterBlue: #cfddf2;
   --grey: #c5c5c5;
   --darkGrey: #747474;
-  --skeleton: #E1E1E1;
-  --btn-color: #EBF1FA;
+  --skeleton: #e1e1e1;
+  --btn-color: #ebf1fa;
 
   --shadow: 0px 3px 15px 0px #00000008;
   --hover-shadow: 4px 4px 15px 0px #00000014;

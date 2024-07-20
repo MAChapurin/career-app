@@ -45,9 +45,25 @@
   justify-content: end;
 }
 
+.btn {
+  border: none;
+  height: fit-content;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 .eye {
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: 0.2s;
+}
+
+.eye path {
+  transition: 0.2s;
+}
+
+.eye:hover path {
+  stroke: var(--blue);
+  fill: var(--blue);
 }
 
 .card:hover .eye {

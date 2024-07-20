@@ -1,0 +1,244 @@
+.goBackBtn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-top: 32px;
+  padding: 0;
+}
+
+.goBackBtn:hover .goBackBtnText {
+  color: var(--lightBlue);
+}
+
+.goBackBtn:hover .arrowLeft path {
+  stroke: var(--lightBlue);
+}
+
+.arrowLeft {
+  transform: rotate(180deg);
+}
+
+.arrowLeft path {
+  transition: 0.2s;
+  stroke: var(--blue);
+}
+
+.goBackBtnText {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: var(--blue);
+  transition: color 0.2s;
+}
+
+.vacancyInfo {
+  display: flex;
+  gap: 32px;
+  padding-block: 32px;
+}
+
+.asideRight {
+  position: sticky;
+  top: 104px;
+  height: fit-content;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  box-shadow: var(--shadow);
+  background: var(--white-full);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.headerBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--black);
+  margin: 0;
+}
+
+.salary {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--black);
+}
+
+.requirementsTitle {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--black);
+  margin: 0;
+}
+
+.requirements {
+  display: flex;
+  gap: 32px;
+}
+
+.requirement {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.requirementIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.requirementDescription {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--black);
+}
+
+.hideBtn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 2px solid var(--blue);
+  border-radius: 16px;
+  padding: 16px 24px;
+  background-color: transparent;
+  cursor: pointer;
+  width: fit-content;
+  transition: background-color 0.2s;
+}
+
+.hideBtn:hover {
+  background-color: var(--btn-color);
+}
+
+.hideBtnIcon path {
+  stroke: var(--blue);
+  fill: var(--blue);
+}
+
+.hideBtnText {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--blue);
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.descriptionTitle {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--black);
+  margin: 0;
+}
+
+.descriptionContent {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--black);
+}
+
+.descriptionContent > strong {
+  margin-bottom: 24px;
+}
+
+.descriptionContent p {
+  margin: 0;
+}
+
+.descriptionContent > p {
+  margin-bottom: 24px;
+}
+
+.descriptionContent li > p {
+  display: inline;
+}
+
+.descriptionContent ol {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.descriptionContent ul {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.descriptionContent ul > li {
+  list-style-type: "— ";
+  list-style-position: inside;
+}
+
+.descriptionContent ul:last-child {
+  margin: 0;
+}
+
+.descriptionContent ol:last-child {
+  margin: 0;
+}
+
+.skillsTitle {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--black);
+  margin: 0;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--black);
+  padding: 4px 8px;
+  background-color: var(--lighterBlue);
+  border-radius: 16px;
+}
+
+.date {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 143%;
+  color: var(--darkGrey);
+}

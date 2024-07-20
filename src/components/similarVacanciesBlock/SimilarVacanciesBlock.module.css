@@ -1,0 +1,39 @@
+.block {
+}
+
+.title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--black);
+  margin: 0;
+  padding-block: 32px;
+}
+
+.btnWrapper {
+  text-align: center;
+  padding-block: 32px;
+}
+
+.btn {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 143%;
+  color: var(--white-full);
+  border: none;
+  border-radius: 16px;
+  background-color: var(--blue);
+  cursor: pointer;
+  padding: 16px 24px;
+  transition: background-color 0.2s;
+}
+
+.btn:disabled {
+  cursor: auto;
+  background-color: var(--lightBlue);
+}
+
+.btn:hover {
+  background-color: var(--lightBlue);
+}

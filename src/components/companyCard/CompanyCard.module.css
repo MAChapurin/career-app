@@ -1,0 +1,39 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px;
+  box-shadow: var(--shadow);
+  background-color: var(--white-full);
+  border-radius: 16px;
+  width: clamp(18.313rem, 3.563rem + 23.05vw, 22rem);
+}
+
+.logo {
+  object-fit: cover;
+  width: 108px;
+  height: 60px;
+  border-radius: 16px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 140%;
+  color: var(--black);
+  margin: 0;
+}
+
+.address {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--black);
+  font-style: normal;
+}

@@ -1,19 +1,39 @@
-import React, { useState } from 'react';
-import styles from './VacancyList.module.css';
-import VacancyBlock from './vacancyBlock/VacancyBlock';
-import useFrontendVacancyStore from '../../store/useFrontendVacancyStore';
-import { Pagination } from '../pagination/Pagination';
+import styles from "./VacancyList.module.css";
+import VacancyBlock from "./vacancyBlock/VacancyBlock";
+import useVacanciesStore from "../../store/useVacanciesStore";
+import { Pagination } from "../pagination/Pagination";
 
 const VacancyList = ({ data }) => {
-  const { fetchVacancyList, pages, page, setPage, isLoading } = useFrontendVacancyStore();
+  const {
+    fetchVacancyList,
+    paginationPages,
+    paginationPage,
+    setPaginationPage,
+    isLoading,
+    hideHiddenVacancies,
+  } = useVacanciesStore();
+
+  const vacancyBlocks = data.map((item, index) => (
+    <VacancyBlock key={index} title={item.date} cards={item.vacancy} />
+  ));
+
+  const handleSetPaginationPage = (page) => {
+    setPaginationPage(page);
+    hideHiddenVacancies();
+  };
+
   return (
     <>
-      <ul className={styles.wrapper}>
-        {data.map((item, index) => (
-          <VacancyBlock key={index} title={item.date} cards={item.vacancy} />
-        ))}
-      </ul>
-      {pages > 0 && <Pagination page={page} setPage={setPage} pages={pages} fetchCallback={fetchVacancyList} disabled={isLoading} />}
+      <ul className={styles.wrapper}>{vacancyBlocks}</ul>
+      {paginationPages > 0 && (
+        <Pagination
+          page={paginationPage}
+          setPage={handleSetPaginationPage}
+          pages={paginationPages}
+          fetchCallback={fetchVacancyList}
+          disabled={isLoading}
+        />
+      )}
     </>
   );
 };

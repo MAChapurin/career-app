@@ -20,3 +20,10 @@
   gap: 32px;
   grid-template-columns: repeat(3, 1fr);
 }
+
+.emptyBlockMsg {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--black);
+}
