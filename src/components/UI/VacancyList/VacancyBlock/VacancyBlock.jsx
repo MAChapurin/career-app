@@ -2,10 +2,12 @@ import { VacancyCard } from './VacancyCard/VacancyCard';
 import { useVacancyStore } from '@store/vacancyStore';
 
 import styles from './VacancyBlock.module.css';
+import { useFiltersStore } from '@store/useFiltersStore';
 
 export const VacancyBlock = ({ date, info }) => {
   const { blackList } = useVacancyStore()
-  const filterVacancy = info.filter((vacancy) => !blackList.includes(vacancy.id))
+  const { isHiddenVacancyFilterChecked } = useFiltersStore()
+  const filterVacancy = info.filter((vacancy) => isHiddenVacancyFilterChecked ? vacancy : !blackList.includes(vacancy.id))
   return (
     filterVacancy.length > 0 && <div className={styles.wrapper}>
       {date ? (

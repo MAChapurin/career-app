@@ -26,7 +26,9 @@ export const Dropdown = ({
     addTechnology,
     technologies,
     radios,
-    removeTechnology
+    removeTechnology,
+    setHiddenVacancyFilterCheckedTrue,
+    setHiddenVacancyFilterCheckedFalse
   } = useFiltersStore()
   const { groupLength } = useFiltersCounter(group)
 
@@ -45,8 +47,12 @@ export const Dropdown = ({
     const id = e.target.id
     const newParam = [name, id].join('=')
     const isChecked = e.target.checked
-    const isStack = e.target.name === 'stack'
-    if (isStack) {
+    const isStackFilter = e.target.name === 'stack'
+    const isHiddenFilter = e.target.id === 'hidden'
+    if(isHiddenFilter) {
+      isChecked ? setHiddenVacancyFilterCheckedTrue() : setHiddenVacancyFilterCheckedFalse()
+    }
+    if (isStackFilter) {
       isChecked ? addTechnology(id) : removeTechnology(id)
     } else {
       isChecked ? addCheckbox(newParam) : removeCheckbox(newParam)
@@ -109,7 +115,7 @@ export const Dropdown = ({
                   name={item.name}
                   value={item.name}
                   text={item.text}
-                  checked={checkboxes.includes(`${item.name}=${item.id}`) || technologies.includes(item.id)}
+                  checked={checkboxes.includes(`${item.name}=${item.id}`) || technologies.includes(item.id) || ''}
                   onChange={checkboxHandler}
                 />
               </li>

@@ -53,13 +53,18 @@ export const useFiltersStore = create((set, get) => ({
         sessionStorage.setItem(STORAGE_KEYS.TECHNOLOGY_KEY, JSON.stringify(get().technologies))
     },
 
+    isHiddenVacancyFilterChecked: false,
+    setHiddenVacancyFilterCheckedTrue: ()=>set({isHiddenVacancyFilterChecked: true}),
+    setHiddenVacancyFilterCheckedFalse: ()=>set({isHiddenVacancyFilterChecked: false}),
+
     clearFilters: () => {
         set({
             city: '',
             areas: [],
             checkboxes: [],
             radios: [],
-            technologies:[]
+            technologies:[],
+            isHiddenVacancyFilterChecked: false
         })
         sessionStorage.clear()
     }
