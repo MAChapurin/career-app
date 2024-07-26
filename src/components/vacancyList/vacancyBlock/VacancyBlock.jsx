@@ -14,12 +14,12 @@ const VacancyBlock = ({
   hasTitle = true,
   onVacancyClick = () => {},
 }) => {
-  const { tempHiddenVacancies, hiddenVacancies } = useVacanciesStore(
-    (state) => ({
+  const { tempHiddenVacancies, hiddenVacancies, hideHiddenVacancies } =
+    useVacanciesStore((state) => ({
       tempHiddenVacancies: state.tempHiddenVacancies,
       hiddenVacancies: state.hiddenVacancies,
-    })
-  );
+      hideHiddenVacancies: state.hideHiddenVacancies,
+    }));
   const fetchVacancyDescription = useVacancyDescriptionStore(
     (state) => state.fetchVacancyDescription
   );
@@ -49,6 +49,7 @@ const VacancyBlock = ({
           fetchVacancyDescription(card.id);
           setCurrentPage(PAGES.vacancyDescription);
           onVacancyClick();
+          hideHiddenVacancies();
         }}
       />
     );

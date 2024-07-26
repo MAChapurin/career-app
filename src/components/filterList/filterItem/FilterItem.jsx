@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import styles from './FilterItem.module.css';
-import Icon from '../../icon/Icon';
-import Button from '../../button/Button';
+import React, { useState } from "react";
+import styles from "./FilterItem.module.css";
+import Icon from "../../icon/Icon";
+import Button from "../../button/Button";
 
 const FilterItem = ({
   iconName,
-  type = 'dropdown',
+  type = "dropdown",
   text,
   isOpenFilter,
   onClick,
@@ -13,7 +13,7 @@ const FilterItem = ({
   children,
   className,
 }) => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -21,39 +21,40 @@ const FilterItem = ({
 
   return (
     <li
-      className={`${styles.wrapper} ${className}`}
+      className={`${styles.wrapper} ${
+        type === "input" && styles.inputWrapper
+      } ${className}`}
       onClick={onClick}
       data-level={level}
     >
       <div
         className={styles.title}
-        data-active={isOpenFilter ? 'true' : 'false'}
+        data-active={isOpenFilter ? "true" : "false"}
       >
         <Icon name={iconName} className={styles.icon} />
-        {(type === 'input' && (
+        {(type === "input" && (
           <input
             className={styles.input}
-            type='text'
+            type="text"
             placeholder={text}
             value={value}
             onChange={handleChange}
-            data-active={value ? 'true' : 'false'}
+            data-active={value ? "true" : "false"}
           />
         )) || <span className={styles.input}>{text}</span>}
-        {(type === 'dropdown' && (
+        {(type === "dropdown" && (
           <Icon
-            name='chevron'
-            className={`${styles.chevron} ${isOpenFilter ? styles.active : ''
-              }`}
+            name="chevron"
+            className={`${styles.chevron} ${isOpenFilter ? styles.active : ""}`}
           />
         )) ||
           (value && (
             <Button
               onClick={() => {
-                setValue('');
+                setValue("");
               }}
             >
-              <Icon name='clear' className={styles.iconClear} />
+              <Icon name="clear" className={styles.iconClear} />
             </Button>
           ))}
       </div>

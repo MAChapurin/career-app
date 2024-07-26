@@ -4,18 +4,16 @@ import styles from "./skeletonBlock.module.css";
 const SkeletonBlock = ({ count = 18, hasTitle = true }) => {
   return (
     <div className={styles.wrapper}>
-      <Skeleton width={"250px"} height={"32px"} radius={"16px"} />
+      {hasTitle && <Skeleton width={"250px"} height={"32px"} radius={"16px"} />}
       <ul className={styles.skeletonList}>
         {Array.from({ length: count }, (_, index) => (
           <li className={styles.skeletonItem} key={index}>
-            {hasTitle && (
-              <Skeleton
-                width={"225px"}
-                height={"24px"}
-                radius={"16px"}
-                mb={"4px"}
-              />
-            )}
+            <Skeleton
+              width={"225px"}
+              height={"24px"}
+              radius={"16px"}
+              mb={"4px"}
+            />
             <Skeleton
               width={"131px"}
               height={"24px"}

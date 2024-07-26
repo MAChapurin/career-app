@@ -6,17 +6,17 @@ import SkeletonBlock from "../../components/Skeleton/SkeletonBlock/SkeletonBlock
 import useVacanciesStore from "../../store/useVacanciesStore";
 
 const Vacancies = () => {
-  const { isLoading, vacancyList, fetchVacancyList, error } = useVacanciesStore(
-    (state) => ({
+  const { isLoading, vacancyList, fetchVacancyList, error, paginationPage } =
+    useVacanciesStore((state) => ({
       isLoading: state.isLoading,
       vacancyList: state.vacancyList,
       fetchVacancyList: state.fetchVacancyList,
       error: state.error,
-    })
-  );
+      paginationPage: state.paginationPage,
+    }));
 
   useEffect(() => {
-    fetchVacancyList(0);
+    fetchVacancyList(paginationPage);
   }, []);
   return (
     <main className={styles.wrapper}>

@@ -34,6 +34,15 @@
   border-bottom-right-radius: 0;
 }
 
+.inputWrapper {
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.3s;
+}
+
+.inputWrapper:hover {
+  box-shadow: var(--hover-shadow);
+}
+
 .title {
   display: flex;
   gap: 16px;
