@@ -10,6 +10,7 @@ export const useFilterParams = () => {
     const radiosParams = radios.join('&')
         .replace('experience=experience-false', '')
         .replace('salary=salary-false', '')
+        .replace('period=period-false', '')
 
     const technologiesParams = technologies.join('+')
 

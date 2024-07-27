@@ -32,7 +32,7 @@ export const useFiltersStore = create((set, get) => ({
         sessionStorage.setItem(STORAGE_KEYS.CHECKBOX_KEY, JSON.stringify(get().checkboxes))
     },
 
-    radios: sessionStorage.getItem(STORAGE_KEYS.RADIO_KEY) ? JSON.parse(sessionStorage.getItem(STORAGE_KEYS.RADIO_KEY)) : [],
+    radios: sessionStorage.getItem(STORAGE_KEYS.RADIO_KEY) ? JSON.parse(sessionStorage.getItem(STORAGE_KEYS.RADIO_KEY)) : ['period=period-false','salary=salary-false','experience=experience-false'],
     addRadio: (value) => {
         const [name] = value.split('=')
         set({
@@ -62,7 +62,7 @@ export const useFiltersStore = create((set, get) => ({
             city: '',
             areas: [],
             checkboxes: [],
-            radios: [],
+            radios: ['period=period-false','salary=salary-false','experience=experience-false'],
             technologies:[],
             isHiddenVacancyFilterChecked: false
         })

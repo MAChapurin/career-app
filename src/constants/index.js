@@ -86,7 +86,7 @@ export const filterItems = [
             name: 'period',
             value: '60',
             text: 'За все время',
-            id: '60'
+            id: 'period-false'
           },
           {
             type: 'radio',
