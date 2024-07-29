@@ -1,0 +1,44 @@
+.block {
+  position: relative;
+  display: flex;
+  column-gap: 16px;
+  cursor: pointer;
+}
+
+.input {
+  position: absolute;
+  visibility: hidden;
+}
+
+.field {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--grey);
+  border-radius: 4px;
+  transform: translateY(1px);
+  transition: border-color 0.3s ease-in-out;
+}
+
+.icon {
+  transform: translateX(1px);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.input:checked + .field{
+  border-color: var(--active-1);
+}
+
+.input:checked + .field .icon{
+  opacity: 1;
+}
+
+.text {
+  transform: translateY(0.5px);
+  font-size: 12px;
+  line-height: 16px;
+}

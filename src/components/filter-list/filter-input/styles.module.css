@@ -1,0 +1,80 @@
+.wrapper {
+  position: relative;
+}
+
+.block {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius);
+  padding: 16px 24px;
+  background-color: var(--bg-1);
+  box-shadow: var(--shadow-1);
+  cursor: pointer;
+  transition: box-shadow 0.3s, background-color 0.3s;
+}
+
+.block.opened {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.reset:hover .cross {
+  fill: var(--active-1)
+}
+
+.block:hover {
+  background-color: var(--hover-2);
+  box-shadow: var(--shadow-2);
+}
+
+.focus {
+  background-color: var(--hover-2);
+}
+
+.input {
+  height: 100%;
+  width: 100%;
+  padding-left: 16px;
+  background: transparent;
+  outline: none;
+  border: none;
+  color: var(--text-color);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 133%;
+}
+
+.reset {
+  font-size: 0;
+  cursor: pointer;
+}
+
+.dropdown {
+  padding: 8px 24px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  background-color: var(--bg-1);
+  box-shadow: var(--shadow-1);
+  cursor: default;
+  z-index: 1;
+  overflow: auto;
+  max-height: 630px;
+}
+
+.dropdown:not(.opened) {
+  display: none;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.item {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}

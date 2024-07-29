@@ -1,0 +1,30 @@
+.block {
+  padding: 16px 0 32px;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.btn {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  color: var(--active-1);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+
+@media (hover: hover) {
+  .btn:hover {
+    color: var(--hover-1);
+  }
+}

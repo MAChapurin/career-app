@@ -70,3 +70,36 @@ ul {
   padding: 0;
   list-style: none;
 }
+
+.btn-reset {
+  padding: 0;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+}
+
+
+.scrollbar-main::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-main::-webkit-scrollbar-track {
+  border-radius: 4px;
+}
+
+.scrollbar-main::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: var(--active-1);
+}
+
+.scrollbar-main:hover::-webkit-scrollbar-thumb {
+  background: var(--active-1);
+}
+
+.d-none {
+  display: none;
+}
+
+.opacity-0 {
+  opacity: 0;
+}

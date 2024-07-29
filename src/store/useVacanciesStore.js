@@ -1,5 +1,7 @@
 import { create } from "zustand";
 import daysApiFilter from "../utils/daysApiFilter";
+import { VacanciesService } from "../api/VacancyService";
+import { resetFilterCounts } from "../utils/setFilterCounts";
 
 const useVacanciesStore = create((set, get) => ({
   vacancyList: [],
@@ -11,23 +13,12 @@ const useVacanciesStore = create((set, get) => ({
     set({ paginationPage });
   },
   fetchVacancyList: async (page, isTodayOnly = false) => {
+
+    const params = get().filterParams;
     try {
       set({ isLoading: true });
-      let API = `https://api.hh.ru/vacancies?text=frontend+developer+React&only_with_salary=true&currency_code=RUR&salary=50000&order_by=publication_time&per_page=18&page=${page}`;
-      if (isTodayOnly)
-        API += `&date_from=${new Date(Date.now())
-          .toLocaleDateString({
-            timeZone: "Europe/Moscow",
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-          })
-          .replace(/\//g, "-")}`;
-      const response = await fetch(API);
-      if (!response.ok) {
-        throw new Error("Отсутствует связь со сторонним сервисом");
-      }
-      const data = await response.json();
+      const data = await VacanciesService.get(page, 18, isTodayOnly, params);
+
       set({ paginationPages: data?.pages });
       const vacancyListData = data.items.map((item) => {
         const { name, salary, area, published_at, experience, employer, id } =
@@ -61,6 +52,42 @@ const useVacanciesStore = create((set, get) => ({
   },
   hideHiddenVacancies: () => {
     set({ hiddenVacancies: get().tempHiddenVacancies });
+  },
+  filterParams: {},
+  setFilterParams: (key, value, multiple=false) => {
+    const params = get().filterParams;
+
+
+    if(multiple) {
+
+      if(!params[key]) {
+        params[key] = [];
+      }
+
+      const isset = params[key].find(el=>el===value);
+
+      if(isset) {
+        params[key] = params[key].filter(el=> el!==value);
+      } else {
+        params[key].push(value);
+      }
+
+      if(!params[key].length) {
+        delete params[key];
+      }
+
+    } else {
+      params[key] = value;
+    }
+
+    get().fetchVacancyList();
+
+  },
+
+  resetFilterParams: () => {
+    set({filterParams: {}});
+    resetFilterCounts();
+    get().fetchVacancyList();
   },
 }));
 

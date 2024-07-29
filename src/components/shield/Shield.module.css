@@ -1,0 +1,9 @@
+.block {
+  border-radius: var(--border-radius-md);
+  padding: 4px 8px;
+  background-color: var(--lighterBlue);
+  min-width: 33px;
+  height: 24px;
+  font-size: 12px;
+  line-height: 133%;
+}

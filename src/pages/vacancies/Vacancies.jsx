@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import styles from "./Vacancies.module.css";
-import FilterList from "../../components/filterList/FilterList";
 import VacancyList from "../../components/vacancyList/VacancyList";
 import SkeletonBlock from "../../components/Skeleton/SkeletonBlock/SkeletonBlock";
 import useVacanciesStore from "../../store/useVacanciesStore";
+import { FilterList } from "../../components/filter-list/FilterList";
 
 const Vacancies = () => {
   const { isLoading, vacancyList, fetchVacancyList, error, paginationPage } =

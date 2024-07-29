@@ -13,4 +13,19 @@
 
   --shadow: 0px 3px 15px 0px #00000008;
   --hover-shadow: 4px 4px 15px 0px #00000014;
+
+  --font-family: 'Montserrat', sans-serif;
+  --active-1: #5c89ce;
+  --hover-1: #8caee0;
+  --hover-2: #ebf1fa;
+  --text-color: #202020;
+  --disabled-text: #c5c5c5;
+  --gray: #747474;
+  --grey: #c5c5c5;
+  --bg-1: #f9f9f9;
+  --bg-2: #f6f6f6;
+  --shadow-1: 0 3px 15px 0 rgba(0, 0, 0, 0.03);
+  --shadow-2: 4px 4px 15px 0 rgba(0, 0, 0, 0.08);
+  --border-radius: 16px;
+  --border-radius-md: 8px;
 }
