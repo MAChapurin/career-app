@@ -6,13 +6,14 @@ import { useRouteStore } from '@store/routeStore';
 import { useVacancyStore } from '@store/vacancyStore';
 import { SekeletonCard } from './SekeletonCard';
 import styles from './VacancyCard.module.css';
+import { EyeSVG } from '@components/UI/IconsSVG/EyeSVG';
 
 export const VacancyCard = ({ vacancy, setSimilarVacancies = () => { }, setSimilarPage = () => { }, eye = true }) => {
   const isEmpty = !Object.keys(vacancy).length;
 
   const { setPageApp } = useRouteStore()
   const { fetchVacancy } = useDetailVacancyStore()
-  const { toggleToBlackList } = useVacancyStore()
+  const { blackList, toggleToBlackList } = useVacancyStore()
   const handleBlackList = (e) => {
     e.stopPropagation()
     toggleToBlackList(vacancy.id)
@@ -24,6 +25,8 @@ export const VacancyCard = ({ vacancy, setSimilarVacancies = () => { }, setSimil
     setSimilarPage(1)
   }
 
+  console.log(blackList)
+
   return (
     <>
       {isEmpty ? <SekeletonCard /> :
@@ -31,7 +34,7 @@ export const VacancyCard = ({ vacancy, setSimilarVacancies = () => { }, setSimil
           <div className={styles.headingAndHover}>
             <h1 className={styles.heading}>{vacancy.name}</h1>
             {eye && <div className={styles.icon} onClick={(e) => handleBlackList(e)}>
-              <HoverSVG />
+              {blackList.includes(vacancy.id) ? <EyeSVG className={styles.eye}/> : <HoverSVG />}
             </div>}
           </div>
           <p className={styles.wages}>{vacancy.wages}</p>

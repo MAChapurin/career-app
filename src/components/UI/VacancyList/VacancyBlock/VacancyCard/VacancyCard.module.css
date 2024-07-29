@@ -33,6 +33,15 @@
   display: none;
 }
 
+.icon svg {
+  width: 16px;
+  height: 20px;
+}
+
+.eye {
+  fill: var(--primary-400);
+}
+
 .card:hover .icon {
   display: block;
 }
