@@ -11,11 +11,29 @@ export function FilterList() {
     state.resetFilterParams,
   ]);
 
+  const copyFilterParams = { ...filterParams };
+
+  if (copyFilterParams["search_period"] === "0") {
+    delete copyFilterParams["search_period"];
+  }
+
+  if (copyFilterParams["experience"] === "doesNotMatter") {
+    delete copyFilterParams["experience"];
+  }
+
+  if (copyFilterParams["salary"] === "doesNotMatter") {
+    delete copyFilterParams["salary"];
+  }
+
   return (
     <div className={styles.block}>
       <ul className={styles.list}>
         <li>
-          <FilterItem data={cities} icon={"direction"} placeholder={"Город"} />
+          <FilterItem
+            data={cities[0]}
+            icon={"direction"}
+            placeholder={"Город"}
+          />
         </li>
 
         <li>
@@ -36,7 +54,7 @@ export function FilterList() {
           />
         </li>
       </ul>
-      {!isEmptyObj(filterParams) ? (
+      {!isEmptyObj(copyFilterParams) ? (
         <button
           className={`btn-reset ${styles.btn}`}
           onClick={() => resetFilterParams()}

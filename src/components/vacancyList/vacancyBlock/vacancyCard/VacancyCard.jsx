@@ -10,6 +10,7 @@ const VacancyCard = ({ card, condition, onClick = () => {} }) => {
     (state) => ({
       addHiddenVacancy: state.addHiddenVacancy,
       removeHiddenVacancy: state.removeHiddenVacancy,
+      tempHiddenVacancies: state.tempHiddenVacancies,
     })
   );
 

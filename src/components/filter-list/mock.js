@@ -126,35 +126,35 @@ export const sectionList = [
     items: [
       {
         name: 'JQuery',
-        value: 1
+        value: 'JQuery'
       },
       {
         name: 'JavaScript',
-        value: 2
+        value: 'JavaScript'
       },
       {
         name: 'CSS3',
-        value: 3
+        value: 'CSS3'
       },
       {
         name: 'React',
-        value: 4
+        value: 'React'
       },
       {
         name: 'Git',
-        value: 4
+        value: 'Git'
       },
       {
         name: 'Vue',
-        value: 4
+        value: 'Vue'
       },
       {
         name: 'Flexbox',
-        value: 4
+        value: 'Flexbox'
       },
       {
         name: 'HTML5',
-        value: 4
+        value: 'HTML5'
       }
     ]
   },
@@ -266,13 +266,17 @@ export const sectionList = [
         value: 'accept_handicapped'
       },
       {
+        name: 'Включая скрытые вакансии',
+        value: 'include_hidden_vacancies'
+      },
+      {
         name: 'От аккредитованных ИТ-компаний',
         value: 'accredited_it'
       },
       {
         name: 'Без вакансий от кадровых агенств',
         value: 'not_from_agency'
-      }
+      },
     ]
   },
 ];

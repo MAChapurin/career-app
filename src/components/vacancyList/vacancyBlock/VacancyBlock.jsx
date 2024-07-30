@@ -14,12 +14,17 @@ const VacancyBlock = ({
   hasTitle = true,
   onVacancyClick = () => {},
 }) => {
-  const { tempHiddenVacancies, hiddenVacancies, hideHiddenVacancies } =
-    useVacanciesStore((state) => ({
-      tempHiddenVacancies: state.tempHiddenVacancies,
-      hiddenVacancies: state.hiddenVacancies,
-      hideHiddenVacancies: state.hideHiddenVacancies,
-    }));
+  const {
+    tempHiddenVacancies,
+    hiddenVacancies,
+    hideHiddenVacancies,
+    filterParams,
+  } = useVacanciesStore((state) => ({
+    tempHiddenVacancies: state.tempHiddenVacancies,
+    hiddenVacancies: state.hiddenVacancies,
+    hideHiddenVacancies: state.hideHiddenVacancies,
+    filterParams: state.filterParams,
+  }));
   const fetchVacancyDescription = useVacancyDescriptionStore(
     (state) => state.fetchVacancyDescription
   );
@@ -30,9 +35,13 @@ const VacancyBlock = ({
 
   let hiddenCards = 0;
 
+  const isIncludeHiddenVacancies = filterParams["label"]
+    ? filterParams["label"].includes("include_hidden_vacancies")
+    : false;
+
   const cardsJsx = cards.map((card) => {
     let condition = CARD_CONDITIONS.shown;
-    if (hiddenVacancies[card.id]) {
+    if (tempHiddenVacancies[card.id] && !isIncludeHiddenVacancies) {
       condition = CARD_CONDITIONS.hidden;
       hiddenCards++;
     } else if (tempHiddenVacancies[card.id]) {

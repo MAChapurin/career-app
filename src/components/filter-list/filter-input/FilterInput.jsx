@@ -2,6 +2,7 @@ import useFilterFieldInput from "../../../hooks/useFilterFieldInput";
 import { IconCross } from "../../ui/icons";
 import { IconsFilter } from "../../icons-filter";
 import Checkbox from "../../ui/checkbox/Checkbox";
+import { Shield } from "../../shield/Shield";
 import styles from "./styles.module.css";
 
 export const FilterInput = ({ data, icon, placeholder }) => {
@@ -15,14 +16,17 @@ export const FilterInput = ({ data, icon, placeholder }) => {
     showCross,
     opened,
     ref,
-  } = useFilterFieldInput();
+    searchList,
+    checkedCityList,
+    setCheckedCityList,
+  } = useFilterFieldInput({ data });
 
   return (
-    <div className={styles.wrapper} ref={ref}>
+    <div className={`${styles.wrapper}`} ref={ref}>
       <label
         className={`${styles.block} ${inputFocus ? styles.focus : ""} ${
           opened ? styles.opened : ""
-        }`}
+        } ${showCross ? styles["hide-shield"] : ""}`}
       >
         <IconsFilter icon={icon} />
         <input
@@ -35,10 +39,23 @@ export const FilterInput = ({ data, icon, placeholder }) => {
           onBlur={handleSetBlur}
         />
         {showCross && (
-          <button onClick={handleReset} className={`btn-reset ${styles.reset}`}>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              handleReset();
+            }}
+            className={`btn-reset ${styles.reset}`}
+          >
             <IconCross className={styles.cross} />
           </button>
         )}
+        <Shield
+          className={`${!checkedCityList.length ? "opacity-0" : ""} ${
+            styles.shield
+          }`}
+        >
+          {checkedCityList.length}
+        </Shield>
       </label>
       <div
         className={`scrollbar-main ${styles.dropdown} ${
@@ -46,9 +63,41 @@ export const FilterInput = ({ data, icon, placeholder }) => {
         }`}
       >
         <ul className={`list-reset ${styles.list} `}>
-          <li>
-            <Checkbox className={styles.item}>Скоро тут будут города</Checkbox>
-          </li>
+          {searchList.length
+            ? searchList.map((el) => {
+                const isset = checkedCityList.find((item) => item.id === el.id);
+
+                return (
+                  <li key={el.id}>
+                    <Checkbox
+                      onChange={(e) => {
+                        setCheckedCityList(el);
+                      }}
+                      className={styles.item}
+                      checked={!!isset}
+                      value={el.id}
+                    >
+                      {el.name}
+                    </Checkbox>
+                  </li>
+                );
+              })
+            : checkedCityList.length
+            ? checkedCityList.map((el) => (
+                <li key={el.id}>
+                  <Checkbox
+                    onChange={(e) => {
+                      setCheckedCityList(el);
+                    }}
+                    className={styles.item}
+                    checked={true}
+                    value={el.id}
+                  >
+                    {el.name}
+                  </Checkbox>
+                </li>
+              ))
+            : ""}
         </ul>
       </div>
     </div>

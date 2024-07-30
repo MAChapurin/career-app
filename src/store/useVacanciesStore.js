@@ -1,7 +1,25 @@
 import { create } from "zustand";
 import daysApiFilter from "../utils/daysApiFilter";
 import { VacanciesService } from "../api/VacancyService";
-import { resetFilterCounts } from "../utils/setFilterCounts";
+import { isEmptyObj } from "../utils/isEmptyObj";
+import cities from '../data/cities.json';
+import { searchCityById } from "../utils/searchCity";
+
+const SESSION_FILTER_NAME = 'career-filter';
+
+const radioInitial = {
+  search_period: '0',
+  experience: 'doesNotMatter',
+  salary: 'doesNotMatter'
+};
+
+const sessionParams = sessionStorage.getItem(SESSION_FILTER_NAME) ? JSON.parse(sessionStorage.getItem(SESSION_FILTER_NAME)) : {};
+const initialfilterParams = !isEmptyObj(sessionParams) ? sessionParams : radioInitial;
+
+let initialCheckedCityList = [];
+if(!isEmptyObj(sessionParams) && sessionParams['area'] && sessionParams['area'].length) {
+  initialCheckedCityList = searchCityById(cities[0].areas, sessionParams['area']);
+}
 
 const useVacanciesStore = create((set, get) => ({
   vacancyList: [],
@@ -12,12 +30,11 @@ const useVacanciesStore = create((set, get) => ({
   setPaginationPage: (paginationPage) => {
     set({ paginationPage });
   },
-  fetchVacancyList: async (page, isTodayOnly = false) => {
+  fetchVacancyList: async (page=0, isTodayOnly = false) => {
 
-    const params = get().filterParams;
     try {
       set({ isLoading: true });
-      const data = await VacanciesService.get(page, 18, isTodayOnly, params);
+      const data = await VacanciesService.get(page, 18, isTodayOnly, get().filterParams);
 
       set({ paginationPages: data?.pages });
       const vacancyListData = data.items.map((item) => {
@@ -53,10 +70,9 @@ const useVacanciesStore = create((set, get) => ({
   hideHiddenVacancies: () => {
     set({ hiddenVacancies: get().tempHiddenVacancies });
   },
-  filterParams: {},
+  filterParams: initialfilterParams,
   setFilterParams: (key, value, multiple=false) => {
     const params = get().filterParams;
-
 
     if(multiple) {
 
@@ -80,13 +96,30 @@ const useVacanciesStore = create((set, get) => ({
       params[key] = value;
     }
 
+    sessionStorage.setItem(SESSION_FILTER_NAME, JSON.stringify(params));
+
     get().fetchVacancyList();
 
   },
 
+  checkedCityList: initialCheckedCityList,
+  setCheckedCityList: (item) => {
+    const list = get().checkedCityList;
+    const founded = list.find(el=>el.id === item.id);
+
+    if(founded) {
+      set({checkedCityList: list.filter(el=> el.id!==item.id)});
+    } else {
+      set({checkedCityList: [...list, item]});
+    }
+
+    get().setFilterParams('area', item.id, true);
+  },
+
   resetFilterParams: () => {
     set({filterParams: {}});
-    resetFilterCounts();
+    set({checkedCityList: []});
+    sessionStorage.removeItem(SESSION_FILTER_NAME);
     get().fetchVacancyList();
   },
 }));

@@ -9,3 +9,12 @@
   min-height: calc(100vh - 200px);
   /*Чтобы футер при первой загрузке не прилипал к хэдеру, на глазок*/
 }
+
+.empty {
+  text-align: center;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  text-align: center;
+  color: var(--darkGrey);
+}

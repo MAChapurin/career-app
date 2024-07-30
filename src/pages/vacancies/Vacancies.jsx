@@ -23,9 +23,15 @@ const Vacancies = () => {
       <div className={styles.container}>
         <FilterList />
         {isLoading && <SkeletonBlock />}
-        {!isLoading && vacancyList.length > 0 && (
+        {!isLoading && vacancyList.length > 0 ? (
           <VacancyList data={vacancyList} />
+        ) : (
+          <div className={styles.empty}>
+            Не удалось найти вакансии с выбранными параметрами. Попробуйте
+            другие.
+          </div>
         )}
+
         {!isLoading && error && <>{error.code}</>}
       </div>
     </main>

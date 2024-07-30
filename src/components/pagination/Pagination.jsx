@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
-import styles from './Pagination.module.css'
-import { cn } from '../../utils'
-
+import { useEffect, useState } from "react";
+import styles from "./Pagination.module.css";
+import { cn } from "../../utils";
 
 /**
  *Компонент пагинации, можно переиспользовать, параметр в коллбэке берется из стэйта компонента
@@ -16,20 +15,19 @@ import { cn } from '../../utils'
  * @example   <Pagination page={page} setPage={setPage} pages={pages} fetchCallback={fetchVacancyList}/>}
  */
 export function Pagination({ page, setPage, pages, fetchCallback, disabled }) {
-
-  const [isTouched, setIsTouched] = useState(false)
+  const [isTouched, setIsTouched] = useState(false);
 
   const handlerClick = (e) => {
-    setIsTouched(true)
-    const pageNumber = e.target.dataset?.page
+    setIsTouched(true);
+    const pageNumber = e.target.dataset?.page;
     if (e.target instanceof HTMLButtonElement && pageNumber) {
-      setPage(pageNumber > pages ? pages : pageNumber)
+      setPage(pageNumber > pages ? pages : pageNumber);
     }
-  }
+  };
 
   useEffect(() => {
-    isTouched && fetchCallback(page)
-  }, [page])
+    isTouched && fetchCallback(page);
+  }, [page]);
 
   return (
     <div className={styles.pagination}>
@@ -37,7 +35,7 @@ export function Pagination({ page, setPage, pages, fetchCallback, disabled }) {
         <li className={styles.item}>
           <button
             className={cn(styles.btn, {
-              [styles.active]: page == 0
+              [styles.active]: page == 0,
             })}
             data-page={0}
             disabled={disabled}
@@ -45,20 +43,23 @@ export function Pagination({ page, setPage, pages, fetchCallback, disabled }) {
             {1}
           </button>
         </li>
-        <li className={cn(styles.item, styles.hidden, {
-          [styles.show]: page > 3 && pages > 5
-        })}>
+        <li
+          className={cn(styles.item, styles.hidden, {
+            [styles.show]: page > 3 && pages > 5,
+          })}
+        >
           <p>...</p>
         </li>
         {Array.from({ length: pages - 2 }).map((_, index) => (
           <li
             className={cn(styles.item, styles.hidden, {
-              [styles.show]: (index > pages - 6 && page >= pages - 4)
-                || (index < 3 && page < 4)
-                || (page >= index && page <= index + 2)
-
+              [styles.show]:
+                (index > pages - 6 && page >= pages - 4) ||
+                (index < 3 && page < 4) ||
+                (page >= index && page <= index + 2),
             })}
-            key={index}>
+            key={index}
+          >
             <button
               className={cn(styles.btn, {
                 [styles.active]: page == index + 1,
@@ -70,23 +71,25 @@ export function Pagination({ page, setPage, pages, fetchCallback, disabled }) {
             </button>
           </li>
         ))}
-        <li className={cn(styles.item, styles.hidden, {
-          [styles.show]: page < pages - 4 && pages > 5
-
-        })}>
+        <li
+          className={cn(styles.item, styles.hidden, {
+            [styles.show]: page < pages - 4 && pages > 5,
+          })}
+        >
           <p>...</p>
         </li>
         <li className={styles.item}>
           <button
             className={cn(styles.btn, {
-              [styles.active]: page == pages - 1
+              [styles.active]: page == pages - 1,
             })}
             data-page={pages - 1}
-            disabled={disabled}>
+            disabled={disabled}
+          >
             {pages}
           </button>
         </li>
       </ul>
     </div>
-  )
+  );
 }

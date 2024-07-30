@@ -1,6 +1,7 @@
 import { isEmptyObj } from "../utils/isEmptyObj";
 const skipValues = [
-  'doesNotMatter'
+  'doesNotMatter',
+  'include_hidden_vacancies'
 ];
 
 export class VacanciesService {
@@ -10,7 +11,6 @@ export class VacanciesService {
 
 
     if(!isEmptyObj(params)) {
-      let url = new URL(location.href);
 
       for (const key in params) {
         if (Object.hasOwnProperty.call(params, key)) {
@@ -22,13 +22,19 @@ export class VacanciesService {
               continue;
             }
             searchStr += `&${key}=${element}`;
-            url.searchParams.set(key, element);
 
           } else {
-            element.forEach(el => {
-              searchStr += `&${key}=${el}`;
-              url.searchParams.set(key, element);
-            });
+
+            if(key !== 'query') {
+
+              element.forEach(el => {
+                if(!skipValues.includes(el)) {
+                  searchStr += `&${key}=${el}`;
+                }
+              });
+
+            }
+
           }
         }
       }
@@ -43,7 +49,16 @@ export class VacanciesService {
 
     let searchStr = VacanciesService.createSearchString(params);
 
-    let strURL = `https://api.hh.ru/vacancies?per_page=${limit}&page=${page}&order_by=publication_time&text=frontend+developer+React${searchStr}`;
+    let strURL = `https://api.hh.ru/vacancies?per_page=${limit}&page=${page}&order_by=publication_time&${searchStr}`;
+
+    let strText = '&text=frontend+developer';
+
+    if(params.query) {
+      strText += '+'+params.query.join('+');
+    }
+
+    strURL = strURL + strText;
+
 
     if(today) {
       strURL += `&date_from=${new Date(Date.now())
