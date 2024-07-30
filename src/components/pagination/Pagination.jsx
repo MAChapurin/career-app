@@ -78,17 +78,22 @@ export function Pagination({ page, setPage, pages, fetchCallback, disabled }) {
         >
           <p>...</p>
         </li>
-        <li className={styles.item}>
-          <button
-            className={cn(styles.btn, {
-              [styles.active]: page == pages - 1,
-            })}
-            data-page={pages - 1}
-            disabled={disabled}
-          >
-            {pages}
-          </button>
-        </li>
+
+        {pages > 1 ? (
+          <li className={styles.item}>
+            <button
+              className={cn(styles.btn, {
+                [styles.active]: page == pages - 1,
+              })}
+              data-page={pages - 1}
+              disabled={disabled}
+            >
+              {pages}
+            </button>
+          </li>
+        ) : (
+          ""
+        )}
       </ul>
     </div>
   );
