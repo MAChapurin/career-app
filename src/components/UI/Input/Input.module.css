@@ -19,7 +19,7 @@
   line-height: 1.333;
   background-color: var(--neutral-100);
   box-shadow: var(--shadow);
-  transition: background .2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .inputWrapper.clearBtnShown .input {
@@ -46,7 +46,7 @@
   padding: 2px;
   color: var(--neutral-600);
   transform: translateY(-50%);
-  transition: color .2s ease-in-out;
+  transition: color 0.2s ease-in-out;
 }
 
 .clearBtn:hover,
@@ -56,17 +56,17 @@
 
 .count {
   position: absolute;
-  top: 16px;
+  top: 12px;
   right: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 33px;
-  height: 12px;
+  height: 24px;
   padding: 8px 0;
   border-radius: 8px;
-  color: var(--neutral-800);
   background-color: var(--primary-200);
+  color: var(--neutral-800);
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;

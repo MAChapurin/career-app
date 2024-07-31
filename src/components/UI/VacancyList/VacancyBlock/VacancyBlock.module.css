@@ -1,6 +1,10 @@
 .wrapper {
   position: relative;
   padding: 32px 40px;
+
+  @media screen and (max-width: 1023px) {
+    padding: var(--clamp-16-32) var(--clamp-20-40);
+  }
 }
 
 .heading,
@@ -9,9 +13,18 @@
   top: 86px;
   z-index: 8;
   font-size: 24px;
-  line-height: 1.333;
+  line-height: 32px;
   color: var(--neutral-800);
   margin-bottom: 32px;
+
+  @media screen and (max-width: 1023px) {
+    font-size: var(--clamp-20-24);
+    line-height: var(--clamp-28-32);
+  }
+
+  @media screen and (max-width: 1023px) {
+    margin-bottom: var(--clamp-16-32);
+  }
 }
 
 .loader {
@@ -34,4 +47,13 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 32px;
   list-style: none;
+
+  @media screen and (max-width: 1023px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--clamp-16-32);
+  }
+
+  @media screen and (max-width: 767px) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 }

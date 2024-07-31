@@ -1,32 +1,64 @@
-import { useFiltersCounter } from "@hooks/useFiltersCounter";
-import { FilterItem } from "./FilterItem/FilterItem";
-import styles from "./FilterList.module.css";
-import clsx from "@utils/clsx";
-import { useFiltersStore } from "@store/useFiltersStore";
+import { useFiltersCounter } from '@hooks/useFiltersCounter';
+import { FilterItem } from './FilterItem/FilterItem';
+import styles from './FilterList.module.css';
+import clsx from '@utils/clsx';
+import { TABLET_START_WIDTH, MOBILE_START_WIDTH } from '@constants';
+import { useFiltersStore } from '@store/useFiltersStore';
+import useResize from '@hooks/useResize';
+import { filterItems, filterInputItems } from '@constants';
 
-export const FilterList = ({ items }) => {
-  const { allFilterLength } = useFiltersCounter()
-  const { clearFilters } = useFiltersStore()
+export const FilterList = () => {
+  const { allFilterLength, restAllLength } = useFiltersCounter();
+  const { clearFilters } = useFiltersStore();
+  const screenWidth = useResize();
+  const isTablet = screenWidth < TABLET_START_WIDTH;
+  const isMobile = screenWidth < MOBILE_START_WIDTH;
+
+  const notRestFilterItems = filterItems.slice(0, -1);
+  const restFilterItem = filterItems.at(-1);
+
   return (
     <section className={styles.container}>
-      <li className={styles.filterList}>
-        {items.map((item) => (
+      <div className={styles.filterList}>
+        {filterInputItems.map((item) => (
           <FilterItem
             key={item.name}
             type={item.type}
             name={item.name}
             icon={item.icon}
-            items={item.items}
-            value={item?.value}
-            group={item?.group}
+            isMobile={isMobile}
           />
         ))}
-      </li>
+        {isTablet ? (
+          <FilterItem
+            key={restFilterItem.name}
+            type={restFilterItem.type}
+            name={restFilterItem.name}
+            icon={restFilterItem.icon}
+            items={[...notRestFilterItems, ...restFilterItem.items]}
+            value={restAllLength}
+            group={restFilterItem?.group}
+            isMobile={isMobile}
+          />
+        ) : (
+          filterItems.map((item) => (
+            <FilterItem
+              key={item.name}
+              type={item.type}
+              name={item.name}
+              icon={item.icon}
+              items={item.items}
+              value={item?.value}
+              group={item?.group}
+            />
+          ))
+        )}
+      </div>
       <button
-        className={clsx("btn", styles.resetBtn)}
+        className={clsx('btn', styles.resetBtn)}
         style={{
           opacity: allFilterLength > 0 ? 1 : 0,
-          pointerEvents: allFilterLength > 0 ? 'all' : 'none'
+          pointerEvents: allFilterLength > 0 ? 'all' : 'none',
         }}
         onClick={clearFilters}
       >

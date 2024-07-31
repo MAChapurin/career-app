@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
   margin: 0;
@@ -11,7 +11,7 @@
 
 :root {
   --container-max-width: 1200px;
-  --container-min-width: 1024px;
+  --container-min-width: 335px;
 
   --neutral-border: #efefef;
   --loader: #e1e1e1;
@@ -28,11 +28,28 @@
   --border-radius: 16px;
   --shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.03);
   --hover-shadow: 4px 4px 15px 0px rgba(0, 0, 0, 0.08);
+
+  --clamp-28-32: clamp(1.75rem, 1.605rem + 0.62vw, 2rem);
+  --clamp-24-48: clamp(1.5rem, 0.632rem + 3.7vw, 3rem);
+  --clamp-24-32: clamp(1.5rem, 1.022rem + 2.04vw, 2rem);
+  --clamp-20-40: clamp(1.25rem, 0.527rem + 3.09vw, 2.5rem);
+  --clamp-20-24: clamp(1.25rem, 1.105rem + 0.62vw, 1.5rem);
+
+  --clamp-16-32: clamp(1rem, 0.421rem + 2.47vw, 2rem);
+  --clamp-16-24: clamp(1rem, 0.711rem + 1.23vw, 1.5rem);
+  --clamp-16-20: clamp(1rem, 0.855rem + 0.62vw, 1.25rem);
+
+  --clamp-14-16: clamp(0.875rem, 0.803rem + 0.31vw, 1rem);
+  --clamp-12-16: clamp(0.75rem, 0.605rem + 0.62vw, 1rem);
+  --clamp-12-14: clamp(0.75rem, 0.678rem + 0.31vw, 0.875rem);
+
+  --clamp-8-16: clamp(0.5rem, 0.211rem + 1.23vw, 1rem);
+  --clamp-4-8: clamp(0.25rem, 0.105rem + 0.62vw, 0.5rem);
 }
 
 body {
-  min-height: 100vh;
-  min-width: var(--container-min-width);
+  min-height: 100dvh;
+  overflow-y: auto;
   background-color: var(--neutral-200);
   scrollbar-gutter: stable;
 }
@@ -65,6 +82,7 @@ h3 {
   line-height: 140%;
   color: var(--neutral-800);
 }
+
 h4 {
   font-weight: 700;
   font-size: 16px;

@@ -10,22 +10,26 @@ import { StarSVG } from '@components/UI/IconsSVG/StarSVG';
 import { TimeSVG } from '@components/UI/IconsSVG/TimeSVG';
 import { TomeJobSVG } from '@components/UI/IconsSVG/TomeJobSVG';
 
-
 export const APP_PAGE = {
   main: '/',
-  vacancy: '/vacancy'
-}
+  vacancy: '/vacancy',
+};
 
-export const LIMIT_CARD_FOR_MAIN_PAGE = 18
-export const LIMIT_CAR_FOR_SIMILARY = 6
+export const TABLET_START_WIDTH = 1024;
+export const MOBILE_START_WIDTH = 768;
 
+export const LIMIT_CARD_FOR_MAIN_PAGE = 18;
+export const LIMIT_CAR_FOR_SIMILARY = 6;
 
-export const filterItems = [
+export const filterInputItems = [
   {
     type: 'input',
     name: 'Город',
     icon: LocationSVG,
   },
+];
+
+export const filterItems = [
   {
     type: 'dropdown',
     name: 'Тип занятости',
@@ -37,35 +41,35 @@ export const filterItems = [
         name: 'employment',
         value: 'full',
         text: 'Полная занятость',
-        id: "full"
+        id: 'full',
       },
       {
         type: 'checkbox',
         name: 'employment',
         value: 'part',
         text: 'Частичная занятость',
-        id: "part"
+        id: 'part',
       },
       {
         type: 'checkbox',
         name: 'employment',
         value: 'probation',
         text: 'Стажировка',
-        id: "probation"
+        id: 'probation',
       },
       {
         type: 'checkbox',
         name: 'employment',
         value: 'project',
         text: 'Проектная работа',
-        id: "project"
+        id: 'project',
       },
       {
         type: 'checkbox',
         name: 'employment',
         value: 'volunteer',
         text: 'Волонтерство',
-        id: "volunteer"
+        id: 'volunteer',
       },
     ],
   },
@@ -86,35 +90,35 @@ export const filterItems = [
             name: 'period',
             value: '60',
             text: 'За все время',
-            id: 'period-false'
+            id: 'period-false',
           },
           {
             type: 'radio',
             name: 'period',
             value: '30',
             text: 'За месяц',
-            id: '30'
+            id: '30',
           },
           {
             type: 'radio',
             name: 'period',
             value: '7',
             text: 'За неделю',
-            id: '7'
+            id: '7',
           },
           {
             type: 'radio',
             name: 'period',
             value: '3',
             text: 'За последние 3 дня',
-            id: '3'
+            id: '3',
           },
           {
             type: 'radio',
             name: 'period',
             value: '1',
             text: 'За сутки',
-            id: '1'
+            id: '1',
           },
         ],
       },
@@ -129,35 +133,35 @@ export const filterItems = [
             name: 'experience',
             value: 'doesnt-matter',
             text: 'Не имеет значения',
-            id: 'experience-false'
+            id: 'experience-false',
           },
           {
             type: 'radio',
             name: 'experience',
             value: '0',
             text: 'Нет опыта',
-            id: 'noExperience'
+            id: 'noExperience',
           },
           {
             type: 'radio',
             name: 'experience',
             value: 'between1And3',
             text: 'От 1 года до 3 лет',
-            id: 'between1And3'
+            id: 'between1And3',
           },
           {
             type: 'radio',
             name: 'experience',
             value: 'between3And6',
             text: 'От 3 до 6 лет',
-            id: 'between3And6'
+            id: 'between3And6',
           },
           {
             type: 'radio',
             name: 'experience',
             value: 'moreThan6',
             text: 'Более 6 лет',
-            id: 'moreThan6'
+            id: 'moreThan6',
           },
         ],
       },
@@ -172,35 +176,35 @@ export const filterItems = [
             name: 'schedule',
             value: 'fullDay',
             text: 'Полный день',
-            id: 'fullDay'
+            id: 'fullDay',
           },
           {
             type: 'checkbox',
             name: 'schedule',
             value: 'flyInFlyOut',
             text: 'Вахтовый метод',
-            id: 'flyInFlyOut'
+            id: 'flyInFlyOut',
           },
           {
             type: 'checkbox',
             name: 'schedule',
             value: 'shift',
             text: 'Сменный график',
-            id: 'shift'
+            id: 'shift',
           },
           {
             type: 'checkbox',
             name: 'schedule',
             value: 'flexible',
             text: 'Гибкий график',
-            id: 'flexible'
+            id: 'flexible',
           },
           {
             type: 'checkbox',
             name: 'schedule',
             value: 'remote',
             text: 'Удаленная работа',
-            id: 'remote'
+            id: 'remote',
           },
         ],
       },
@@ -222,49 +226,49 @@ export const filterItems = [
             name: 'stack',
             value: 'js',
             text: 'JavaScript',
-            id: 'JavaScript'
+            id: 'JavaScript',
           },
           {
             type: 'checkbox',
             name: 'stack',
             value: 'css3',
             text: 'CSS3',
-            id: 'CSS3'
+            id: 'CSS3',
           },
           {
             type: 'checkbox',
             name: 'stack',
             value: 'react',
             text: 'React',
-            id: 'react'
+            id: 'react',
           },
           {
             type: 'checkbox',
             name: 'stack',
             value: 'git',
             text: 'Git',
-            id: 'git'
+            id: 'git',
           },
           {
             type: 'checkbox',
             name: 'stack',
             value: 'vue',
             text: 'Vue',
-            id: 'vue'
+            id: 'vue',
           },
           {
             type: 'checkbox',
             name: 'stack',
             value: 'flexbox',
             text: 'Flexbox',
-            id: 'flexbox'
+            id: 'flexbox',
           },
           {
             type: 'checkbox',
             name: 'stack',
             value: 'html5',
             text: 'HTML5',
-            id: 'HTML5'
+            id: 'HTML5',
           },
         ],
       },
@@ -279,21 +283,21 @@ export const filterItems = [
             name: 'education',
             value: 'not_required_or_not_specified',
             text: 'Не требуется или не указано',
-            id: 'not_required_or_not_specified'
+            id: 'not_required_or_not_specified',
           },
           {
             type: 'checkbox',
             name: 'education',
             value: 'special_secondary',
             text: 'Среднее профессиональное',
-            id: 'special_secondary'
+            id: 'special_secondary',
           },
           {
             type: 'checkbox',
             name: 'education',
             value: 'higher',
             text: 'Высшее',
-            id: 'higher'
+            id: 'higher',
           },
         ],
       },
@@ -308,42 +312,42 @@ export const filterItems = [
             name: 'salary',
             value: '0',
             text: 'Не имеет значения',
-            id: 'salary-false'
+            id: 'salary-false',
           },
           {
             type: 'radio',
             name: 'salary',
             value: '25000',
             text: 'от 25 000 ₽',
-            id: '25000'
+            id: '25000',
           },
           {
             type: 'radio',
             name: 'salary',
             value: '50000',
             text: 'от 50 000 ₽',
-            id: '50000'
+            id: '50000',
           },
           {
             type: 'radio',
             name: 'salary',
             value: '100000',
             text: 'от 100 000 ₽',
-            id: '100000'
+            id: '100000',
           },
           {
             type: 'radio',
             name: 'salary',
             value: '150000',
             text: 'от 150 000 ₽',
-            id: '150000'
+            id: '150000',
           },
           {
             type: 'checkbox',
             name: 'only_with_salary',
             value: 'specified',
             text: 'Указан доход',
-            id: 'true'
+            id: 'true',
           },
         ],
       },
@@ -358,35 +362,35 @@ export const filterItems = [
             name: 'part_time',
             value: 'employment_part',
             text: 'Неполный день',
-            id: 'employment_part'
+            id: 'employment_part',
           },
           {
             type: 'checkbox',
             name: 'part_time',
             value: 'from_four_to_six_hours_in_a_day',
             text: 'От 4 часов в день',
-            id: 'from_four_to_six_hours_in_a_day'
+            id: 'from_four_to_six_hours_in_a_day',
           },
           {
             type: 'checkbox',
             name: 'part_time',
             value: 'start_after_sixteen',
             text: 'По вечерам',
-            id: 'start_after_sixteen'
+            id: 'start_after_sixteen',
           },
           {
             type: 'checkbox',
             name: 'part_time',
             value: 'only_saturday_and_sunday',
             text: 'По выходным',
-            id: 'only_saturday_and_sunday'
+            id: 'only_saturday_and_sunday',
           },
           {
             type: 'checkbox',
             name: 'part_time',
             value: 'employment_project',
             text: 'Разовое задание',
-            id: 'employment_project'
+            id: 'employment_project',
           },
         ],
       },
@@ -401,14 +405,14 @@ export const filterItems = [
             name: 'label',
             value: 'accept_handicapped',
             text: 'Доступные людям с инвалидностью',
-            id: 'accept_handicapped'
+            id: 'accept_handicapped',
           },
           {
             type: 'checkbox',
             name: 'label',
             value: 'hidden',
             text: 'Скрытые вакансии',
-            id: 'hidden'
+            id: 'hidden',
           },
           // {
           //   type: 'checkbox',
@@ -422,14 +426,14 @@ export const filterItems = [
             name: 'label',
             value: 'accredited_it',
             text: 'От аккредитованных ИТ компаний',
-            id: 'accredited_it'
+            id: 'accredited_it',
           },
           {
             type: 'checkbox',
             name: 'label',
             value: 'not_from_agency',
             text: 'Без вакансий от кадровых агенств',
-            id: 'not_from_agency'
+            id: 'not_from_agency',
           },
         ],
       },

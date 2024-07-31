@@ -1,21 +1,23 @@
-import { useState } from "react";
-import useOutsideClickObserver from "@hooks/useOutsideClickObserver";
-import { ChevronSVG } from "../IconsSVG/ChevronSVG";
-import clsx from "@utils/clsx";
-import styles from "./Dropdown.module.css";
-import { RadioButton } from "../RadioButton/RadioButton";
-import { Checkbox } from "../Checkbox/Checkbox";
-import { useFiltersStore } from "@store/useFiltersStore";
-import { useFiltersCounter } from "@hooks/useFiltersCounter";
-
+import useOutsideClickObserver from '@hooks/useOutsideClickObserver';
+import { ChevronSVG } from '../IconsSVG/ChevronSVG';
+import clsx from '@utils/clsx';
+import styles from './Dropdown.module.css';
+import { RadioButton } from '../RadioButton/RadioButton';
+import { Checkbox } from '../Checkbox/Checkbox';
+import { useFiltersStore } from '@store/useFiltersStore';
+import { useFiltersCounter } from '@hooks/useFiltersCounter';
+import { useState } from 'react';
+import { useVacancyStore } from '@store/vacancyStore';
 
 export const Dropdown = ({
-  type = "default",
+  type = 'default',
   name,
   icon: Icon,
   items,
   active = false,
-  group
+  group,
+  value,
+  isMobile,
 }) => {
   const [isActive, setIsActive] = useState(active);
   const {
@@ -28,12 +30,14 @@ export const Dropdown = ({
     radios,
     removeTechnology,
     setHiddenVacancyFilterCheckedTrue,
-    setHiddenVacancyFilterCheckedFalse
-  } = useFiltersStore()
-  const { groupLength } = useFiltersCounter(group)
+    setHiddenVacancyFilterCheckedFalse,
+  } = useFiltersStore();
+  const { groupLength } = useFiltersCounter(group);
+  const { setPage } = useVacancyStore();
+  const counterValue = value || groupLength;
 
   const ref = useOutsideClickObserver(() => {
-    if (type === "default") {
+    if (type === 'default') {
       setIsActive(false);
     }
   });
@@ -43,48 +47,61 @@ export const Dropdown = ({
   };
 
   const checkboxHandler = (e) => {
-    const name = e.target.name
-    const id = e.target.id
-    const newParam = [name, id].join('=')
-    const isChecked = e.target.checked
-    const isStackFilter = e.target.name === 'stack'
-    const isHiddenFilter = e.target.id === 'hidden'
-    if(isHiddenFilter) {
-      isChecked ? setHiddenVacancyFilterCheckedTrue() : setHiddenVacancyFilterCheckedFalse()
+    const name = e.target.name;
+    const id = e.target.id;
+    const newParam = [name, id].join('=');
+    const isChecked = e.target.checked;
+    const isStackFilter = e.target.name === 'stack';
+    const isHiddenFilter = e.target.id === 'hidden';
+    if (isHiddenFilter) {
+      isChecked
+        ? setHiddenVacancyFilterCheckedTrue()
+        : setHiddenVacancyFilterCheckedFalse();
     }
     if (isStackFilter) {
-      isChecked ? addTechnology(id) : removeTechnology(id)
+      isChecked ? addTechnology(id) : removeTechnology(id);
     } else {
-      isChecked ? addCheckbox(newParam) : removeCheckbox(newParam)
+      isChecked ? addCheckbox(newParam) : removeCheckbox(newParam);
     }
-  }
+    setPage(1);
+  };
 
   const radioHandler = (e) => {
-    addRadio(e.target.name + '=' + e.target.id)
-  }
+    addRadio(e.target.name + '=' + e.target.id);
+    setPage(1);
+  };
 
   return (
     <div
       ref={ref}
-      className={clsx(styles.dropdown, type === "nested" && styles.nested)}
+      className={clsx(
+        styles.dropdown,
+        type === 'nested' && styles.nested,
+        isMobile &&
+          isActive &&
+          name === 'Дополнительные фильтры' &&
+          styles.absolute
+      )}
     >
       <button
         className={clsx(
-          "btn",
+          'btn',
           styles.dropdownToggle,
           isActive && styles.active
         )}
         onClick={toggle}
       >
         <Icon className={styles.icon} />
-        <h3 className={styles.title}>{name}</h3>
-        {groupLength > 0 && <span className={styles.count}>{groupLength}</span>}
-        <ChevronSVG className={styles.chevronIcon} />
+        {(!isMobile || isActive) && <h3 className={styles.title}>{name}</h3>}
+        {counterValue > 0 && (
+          <span className={styles.count}>{counterValue}</span>
+        )}
+        {!isMobile && <ChevronSVG className={styles.chevronIcon} />}
       </button>
       <div className={clsx(styles.dropdownMenu, isActive && styles.active)}>
         <ul className={styles.dropdownList}>
           {items.map((item) =>
-            item.type === "dropdown" ? (
+            item.type === 'dropdown' ? (
               <li key={item.name}>
                 <Dropdown
                   key={item.name}
@@ -95,7 +112,7 @@ export const Dropdown = ({
                   group={item.group}
                 />
               </li>
-            ) : item.type === "radio" ? (
+            ) : item.type === 'radio' ? (
               <li key={`${item.name}-${item.value}`}>
                 <RadioButton
                   key={`${item.name}-${item.value}`}
@@ -107,7 +124,7 @@ export const Dropdown = ({
                   checked={radios.includes(`${item.name}=${item.id}`)}
                 />
               </li>
-            ) : item.type === "checkbox" ? (
+            ) : item.type === 'checkbox' ? (
               <li key={`${item.name}-${item.value}`}>
                 <Checkbox
                   key={`${item.name}-${item.value}`}
@@ -115,7 +132,11 @@ export const Dropdown = ({
                   name={item.name}
                   value={item.name}
                   text={item.text}
-                  checked={checkboxes.includes(`${item.name}=${item.id}`) || technologies.includes(item.id) || ''}
+                  checked={
+                    checkboxes.includes(`${item.name}=${item.id}`) ||
+                    technologies.includes(item.id) ||
+                    ''
+                  }
                   onChange={checkboxHandler}
                 />
               </li>

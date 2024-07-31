@@ -1,28 +1,29 @@
-import { Dropdown } from "@components/UI/Dropdown/Dropdown";
-import styles from "./FilterItem.module.css";
-import { FilterCity } from "@components/UI/FilterCity/FilterCity";
+import { Dropdown } from '@components/UI/Dropdown/Dropdown';
+import { FilterCity } from '@components/UI/FilterCity/FilterCity';
+import styles from './FilterItem.module.css';
 
 export const FilterItem = ({
-  type = "input",
+  type = 'input',
   name,
   icon: Icon,
   group,
-  items }) => {
+  items,
+  value,
+  isMobile,
+}) => {
   return (
     <div className={styles.filterItem}>
-      {type === "dropdown" ? (
+      {type === 'dropdown' ? (
         <Dropdown
           name={name}
           icon={Icon}
           items={items}
           group={group}
+          value={value}
+          isMobile={isMobile}
         />
       ) : (
-        <FilterCity
-          type="search"
-          name={name}
-          icon={Icon}
-        />
+        <FilterCity type="search" name={name} icon={Icon} isMobile={isMobile} />
       )}
     </div>
   );

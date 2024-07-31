@@ -9,16 +9,73 @@
 
 .header {
   display: flex;
+  align-items: center;
   gap: 130px;
-  padding: 26px 40px;
+  height: clamp(3.5rem, 2.543rem + 4.08vw, 4.5rem);
+  padding-inline: 24px 40px;
   margin-inline: auto;
   max-width: var(--container-max-width);
   min-width: var(--container-min-width);
+
+  @media screen and (max-width: 767px) {
+    justify-content: space-between;
+  }
+}
+
+.logo {
+  @media screen and (max-width: 1023px) {
+    height: var(--clamp-16-24);
+    width: clamp(7.375rem, 5.494rem + 8.02vw, 10.625rem);
+  }
 }
 
 .menu {
   display: flex;
   gap: 72px;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.modal {
+  z-index: 30;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+
+  visibility: hidden;
+  width: 100%;
+  height: calc(100vh - clamp(3.5rem, 2.543rem + 4.08vw, 4.5rem));
+
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+
+  background-color: var(--neutral-100);
+}
+
+.modal.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media screen and (width > 767px) {
+  .modal {
+    display: none;
+  }
+}
+
+.menuMobileWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.menuMobile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--clamp-24-32);
 }
 
 .button {
@@ -27,8 +84,8 @@
   cursor: pointer;
   color: var(--neutral-400);
   font-size: 14px;
-  line-height: 1.429;
-  transition: color .2s ease-in-out;
+  line-height: 20px;
+  transition: color 0.2s ease-in-out;
 }
 
 .button:not(.active):hover {
@@ -37,4 +94,20 @@
 
 .active {
   color: var(--primary-500);
+}
+
+.mobileMenuBtn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  @media screen and (max-width: 767px) {
+    display: block;
+  }
+}
+
+.mobileMenuIcon {
+  height: 24px;
+  width: 24px;
 }

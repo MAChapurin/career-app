@@ -4,22 +4,37 @@
   column-gap: 8px;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: 1023px) {
+    padding: var(--clamp-16-32) var(--clamp-20-40);
+    column-gap: var(--clamp-4-8);
+  }
 }
 
 .btn,
 .dotts {
-  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 53px;
   height: 44px;
-  font-weight: 500;
+
   font-size: 14px;
-  line-height: 143%;
-  text-align: center;
+  line-height: 20px;
+  font-weight: 500;
+
+  @media screen and (max-width: 1023px) {
+    font-size: var(--clamp-12-14);
+    line-height: var(--clamp-16-20);
+    width: clamp(2.563rem, 2.128rem + 1.85vw, 3.313rem);
+    height: clamp(2.25rem, 1.961rem + 1.23vw, 2.75rem);
+  }
 }
 
 .btn {
   border: 0;
-  border-radius: 16px;
+  border-radius: var(--border-radius);
   cursor: pointer;
   background-color: var(--primary-100);
   transition-property: color, background-color;

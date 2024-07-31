@@ -6,8 +6,11 @@
   color: var(--neutral-800);
   cursor: pointer;
   transition: box-shadow 0.2s ease-in-out;
-}
 
+  @media screen and (max-width: 1023px) {
+    padding: var(--clamp-16-32);
+  }
+}
 
 .card:hover {
   box-shadow: var(--hover-shadow);
@@ -21,12 +24,17 @@
 
 .heading {
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 24px;
   margin-bottom: 4px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   margin-right: auto;
+
+  @media screen and (max-width: 1023px) {
+    font-size: var(--clamp-14-16);
+    line-height: var(--clamp-20-24);
+  }
 }
 
 .icon {
@@ -36,6 +44,12 @@
 .icon svg {
   width: 16px;
   height: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .icon {
+    display: block;
+  }
 }
 
 .eye {
@@ -48,15 +62,33 @@
 
 .wages {
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 24px;
   font-weight: 500;
   margin-bottom: 16px;
+
+  @media screen and (max-width: 1023px) {
+    font-size: var(--clamp-14-16);
+    line-height: var(--clamp-20-24);
+    margin-bottom: var(--clamp-12-16);
+  }
 }
 
 .text {
   font-size: 12px;
-  line-height: 1.333;
+  line-height: 16px;
   font-weight: 500;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mb8 {
+  margin-bottom: 8px;
+
+  @media screen and (max-width: 1023px) {
+    margin-bottom: var(--clamp-4-8);
+  }
 }
 
 .experience {
@@ -64,10 +96,10 @@
   align-items: center;
   gap: 8px;
   margin-top: 16px;
-}
 
-.mb8 {
-  margin-bottom: 8px;
+  @media screen and (max-width: 1023px) {
+    margin-top: var(--clamp-8-16);
+  }
 }
 
 .loaderPar,
@@ -80,6 +112,10 @@
   height: 24px;
   background-color: var(--loader);
   border-radius: 16px;
+
+  @media screen and (max-width: 1023px) {
+    height: var(--clamp-20-24);
+  }
 }
 
 .loaderHeader {

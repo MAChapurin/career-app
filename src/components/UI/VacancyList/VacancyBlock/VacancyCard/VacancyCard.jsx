@@ -8,34 +8,45 @@ import { SekeletonCard } from './SekeletonCard';
 import styles from './VacancyCard.module.css';
 import { EyeSVG } from '@components/UI/IconsSVG/EyeSVG';
 
-export const VacancyCard = ({ vacancy, setSimilarVacancies = () => { }, setSimilarPage = () => { }, eye = true }) => {
+export const VacancyCard = ({
+  vacancy,
+  setSimilarVacancies = () => {},
+  setSimilarPage = () => {},
+  eye = true,
+}) => {
   const isEmpty = !Object.keys(vacancy).length;
 
-  const { setPageApp } = useRouteStore()
-  const { fetchVacancy } = useDetailVacancyStore()
-  const { blackList, toggleToBlackList } = useVacancyStore()
+  const { setPageApp } = useRouteStore();
+  const { fetchVacancy } = useDetailVacancyStore();
+  const { blackList, toggleToBlackList } = useVacancyStore();
   const handleBlackList = (e) => {
-    e.stopPropagation()
-    toggleToBlackList(vacancy.id)
-  }
+    e.stopPropagation();
+    toggleToBlackList(vacancy.id);
+  };
   const handleDetailVacancy = () => {
-    fetchVacancy(vacancy.id)
-    setPageApp(APP_PAGE.vacancy)
-    setSimilarVacancies([])
-    setSimilarPage(1)
-  }
-
-  console.log(blackList)
+    fetchVacancy(vacancy.id);
+    setPageApp(APP_PAGE.vacancy);
+    setSimilarVacancies([]);
+    setSimilarPage(1);
+  };
 
   return (
     <>
-      {isEmpty ? <SekeletonCard /> :
+      {isEmpty ? (
+        <SekeletonCard />
+      ) : (
         <li className={styles.card} onClick={handleDetailVacancy}>
           <div className={styles.headingAndHover}>
             <h1 className={styles.heading}>{vacancy.name}</h1>
-            {eye && <div className={styles.icon} onClick={(e) => handleBlackList(e)}>
-              {blackList.includes(vacancy.id) ? <EyeSVG className={styles.eye}/> : <HoverSVG />}
-            </div>}
+            {eye && (
+              <div className={styles.icon} onClick={(e) => handleBlackList(e)}>
+                {blackList.includes(vacancy.id) ? (
+                  <EyeSVG className={styles.eye} />
+                ) : (
+                  <HoverSVG />
+                )}
+              </div>
+            )}
           </div>
           <p className={styles.wages}>{vacancy.wages}</p>
           <p className={`${styles.text} ${styles.mb8}`}>{vacancy.company}</p>
@@ -45,7 +56,7 @@ export const VacancyCard = ({ vacancy, setSimilarVacancies = () => { }, setSimil
             <p className={styles.text}>{vacancy.experience}</p>
           </div>
         </li>
-      }
+      )}
     </>
   );
 };

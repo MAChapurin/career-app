@@ -1,0 +1,5 @@
+@media screen and (max-width: 767px) {
+  .filterItem:first-child {
+    flex-grow: 1;
+  }
+}

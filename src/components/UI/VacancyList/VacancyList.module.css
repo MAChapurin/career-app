@@ -13,10 +13,14 @@
 }
 
 .text {
-  max-width: 492px;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
   text-align: center;
   color: var(--neutral-600);
+
+  @media screen and (max-width: 1023px) {
+    font-size: var(--clamp-14-16);
+    line-height: var(--clamp-20-24);
+  }
 }
