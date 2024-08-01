@@ -29,6 +29,10 @@ export function Pagination({ page, setPage, pages, fetchCallback, disabled }) {
     isTouched && fetchCallback(page);
   }, [page]);
 
+  if (pages <= 1) {
+    return "";
+  }
+
   return (
     <div className={styles.pagination}>
       <ul className={styles.list} onClick={handlerClick}>
@@ -79,21 +83,17 @@ export function Pagination({ page, setPage, pages, fetchCallback, disabled }) {
           <p>...</p>
         </li>
 
-        {pages > 1 ? (
-          <li className={styles.item}>
-            <button
-              className={cn(styles.btn, {
-                [styles.active]: page == pages - 1,
-              })}
-              data-page={pages - 1}
-              disabled={disabled}
-            >
-              {pages}
-            </button>
-          </li>
-        ) : (
-          ""
-        )}
+        <li className={styles.item}>
+          <button
+            className={cn(styles.btn, {
+              [styles.active]: page == pages - 1,
+            })}
+            data-page={pages - 1}
+            disabled={disabled}
+          >
+            {pages}
+          </button>
+        </li>
       </ul>
     </div>
   );

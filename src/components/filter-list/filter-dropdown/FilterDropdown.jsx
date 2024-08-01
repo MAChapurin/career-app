@@ -5,6 +5,7 @@ import FilterDropdonwList from "../filter-dropdown-list/FilterDropdonwList";
 import { IconsFilter } from "../../icons-filter";
 import { Shield } from "../../shield/Shield";
 import useVacanciesStore from "../../../store/useVacanciesStore";
+import { getCountFilter } from "../../../utils/getCountFilter";
 
 export const FilterDropdown = ({ data = [], icon, placeholder }) => {
   const [opened, setOpened] = useState(false);
@@ -17,21 +18,15 @@ export const FilterDropdown = ({ data = [], icon, placeholder }) => {
   const [filterParams] = useVacanciesStore((state) => [state.filterParams]);
 
   const count = data.reduce(function (currentSum, currentItem) {
-    if (filterParams[currentItem.name]) {
-      if (typeof filterParams[currentItem.name] === "string") {
-        if (
-          filterParams[currentItem.name] === "0" ||
-          filterParams[currentItem.name] === "doesNotMatter"
-        ) {
-          return currentSum;
-        }
-        return currentSum + 1;
-      } else {
-        return currentSum + filterParams[currentItem.name].length;
-      }
+    let count = getCountFilter(filterParams[currentItem.name]);
+
+    if (currentItem.otherItems && currentItem.otherItems.length) {
+      currentItem.otherItems.forEach((el) => {
+        count += getCountFilter(filterParams[el.name]);
+      });
     }
 
-    return currentSum;
+    return currentSum + count;
   }, 0);
 
   return (

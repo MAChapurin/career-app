@@ -25,15 +25,14 @@ const VacancyList = ({ data }) => {
   return (
     <>
       <ul className={styles.wrapper}>{vacancyBlocks}</ul>
-      {paginationPages > 0 && (
-        <Pagination
-          page={paginationPage}
-          setPage={handleSetPaginationPage}
-          pages={paginationPages}
-          fetchCallback={fetchVacancyList}
-          disabled={isLoading}
-        />
-      )}
+
+      <Pagination
+        page={paginationPage}
+        setPage={handleSetPaginationPage}
+        pages={paginationPages}
+        fetchCallback={fetchVacancyList}
+        disabled={isLoading}
+      />
     </>
   );
 };

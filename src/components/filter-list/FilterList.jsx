@@ -4,6 +4,7 @@ import { FilterItem } from "./filter-item/FilterItem";
 import { filterList, sectionList } from "./mock";
 import cities from "../../data/cities.json";
 import styles from "./styles.module.css";
+import { cleanFilter } from "../../utils/cleanFilter";
 
 export function FilterList() {
   const [filterParams, resetFilterParams] = useVacanciesStore((state) => [
@@ -11,19 +12,7 @@ export function FilterList() {
     state.resetFilterParams,
   ]);
 
-  const copyFilterParams = { ...filterParams };
-
-  if (copyFilterParams["search_period"] === "0") {
-    delete copyFilterParams["search_period"];
-  }
-
-  if (copyFilterParams["experience"] === "doesNotMatter") {
-    delete copyFilterParams["experience"];
-  }
-
-  if (copyFilterParams["salary"] === "doesNotMatter") {
-    delete copyFilterParams["salary"];
-  }
+  const copyFilterParams = cleanFilter(filterParams);
 
   return (
     <div className={styles.block}>
@@ -54,16 +43,15 @@ export function FilterList() {
           />
         </li>
       </ul>
-      {!isEmptyObj(copyFilterParams) ? (
-        <button
-          className={`btn-reset ${styles.btn}`}
-          onClick={() => resetFilterParams()}
-        >
-          Сбросить все фильтры
-        </button>
-      ) : (
-        ""
-      )}
+
+      <button
+        className={`btn-reset ${styles.btn} ${
+          isEmptyObj(copyFilterParams) ? "opacity-0" : ""
+        }`}
+        onClick={() => resetFilterParams()}
+      >
+        Сбросить все фильтры
+      </button>
     </div>
   );
 }

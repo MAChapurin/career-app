@@ -32,7 +32,7 @@ export const FilterInput = ({ data, icon, placeholder }) => {
         <input
           type="text"
           placeholder={placeholder}
-          className={styles.input}
+          className={`js-input-city ${styles.input}`}
           value={input}
           onChange={handleSetInput}
           onFocus={handleSetFocus}

@@ -5,6 +5,7 @@ import { IconsFilter } from "../../icons-filter";
 import useVacanciesStore from "../../../store/useVacanciesStore";
 import { Shield } from "../../shield/Shield";
 import styles from "./styles.module.css";
+import { getCountFilter } from "../../../utils/getCountFilter";
 
 const FilterDropdonwList = ({ data, openedParent }) => {
   const [items, setItems] = useState(data);
@@ -33,20 +34,11 @@ const FilterDropdonwList = ({ data, openedParent }) => {
       }`}
     >
       {items.map((el) => {
-        let count = "";
-
-        if (filterParams[el.name]) {
-          if (typeof filterParams[el.name] === "string") {
-            count = "1";
-            if (
-              filterParams[el.name] === "0" ||
-              filterParams[el.name] === "doesNotMatter"
-            ) {
-              count = "";
-            }
-          } else {
-            count = filterParams[el.name].length;
-          }
+        let count = getCountFilter(filterParams[el.name]);
+        if (el.otherItems && el.otherItems.length) {
+          el.otherItems.forEach((subEl) => {
+            count += getCountFilter(filterParams[subEl.name]);
+          });
         }
 
         return el.items ? (
@@ -68,7 +60,7 @@ const FilterDropdonwList = ({ data, openedParent }) => {
 
                 <div className={styles["right-side"]}>
                   <Shield className={`${!count ? "opacity-0" : ""}`}>
-                    {count}
+                    {count > 0 ? count : ""}
                   </Shield>
                   <span className={styles.arrow}>
                     <IconsFilter icon={"arrow"} />
