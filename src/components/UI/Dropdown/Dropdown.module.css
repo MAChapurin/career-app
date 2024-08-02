@@ -100,7 +100,7 @@
 }
 
 .dropdownMenu.active {
-  max-height: 632px;
+  max-height: 60dvh;
   pointer-events: all;
   /* overflow-y: auto; */
 }
@@ -111,7 +111,7 @@
 }
 
 .dropdownList {
-  max-height: 632px;
+  max-height: 60dvh;
   list-style: none;
   overflow-y: auto;
   overflow-x: hidden;

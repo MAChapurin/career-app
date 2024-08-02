@@ -10,7 +10,7 @@
 .heading,
 .loader {
   position: sticky;
-  top: 86px;
+  top: 82px;
   z-index: 8;
   font-size: 24px;
   line-height: 32px;
@@ -20,10 +20,8 @@
   @media screen and (max-width: 1023px) {
     font-size: var(--clamp-20-24);
     line-height: var(--clamp-28-32);
-  }
-
-  @media screen and (max-width: 1023px) {
     margin-bottom: var(--clamp-16-32);
+    top: clamp(4.125rem, 3.546rem + 2.47vw, 5.125rem);
   }
 }
 

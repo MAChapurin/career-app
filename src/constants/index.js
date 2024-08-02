@@ -15,8 +15,11 @@ export const APP_PAGE = {
   vacancy: '/vacancy',
 };
 
-export const TABLET_START_WIDTH = 1024;
-export const MOBILE_START_WIDTH = 768;
+export const SCREEN_TYPES = {
+  DESKTOP: 3,
+  TABLET: 2,
+  MOBILE: 1,
+};
 
 export const LIMIT_CARD_FOR_MAIN_PAGE = 18;
 export const LIMIT_CAR_FOR_SIMILARY = 6;

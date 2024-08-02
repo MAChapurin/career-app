@@ -2,7 +2,7 @@ import { LogoSVG } from '@components/UI/IconsSVG/LogoSVG';
 import { MenuSVG } from '@components/UI/IconsSVG/MenuSVG';
 import { XMarkSolidSVG } from '@components/UI/IconsSVG/XMarkSolidSVG';
 import { Footer } from '@components/Footer/Footer';
-import { MOBILE_START_WIDTH } from '@constants';
+import { SCREEN_TYPES } from '@constants';
 import styles from './Header.module.css';
 import clsx from '@utils/clsx';
 import useResize from '@hooks/useResize';
@@ -25,7 +25,7 @@ const NavMenu = ({ className, onClick = () => {} }) => (
 
 export const Header = () => {
   const [isModalOpened, setIsModalOpened] = useState(false);
-  const currentWidth = useResize();
+  const currentScreenType = useResize();
 
   useEffect(() => {
     const body = document.querySelector('body');
@@ -36,10 +36,10 @@ export const Header = () => {
   }, [isModalOpened]);
 
   useEffect(() => {
-    if (currentWidth > MOBILE_START_WIDTH && isModalOpened) {
+    if (currentScreenType >= SCREEN_TYPES.MOBILE && isModalOpened) {
       setIsModalOpened(false);
     }
-  }, [currentWidth]);
+  }, [currentScreenType]);
 
   return (
     <>

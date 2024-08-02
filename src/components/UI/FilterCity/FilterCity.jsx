@@ -9,7 +9,7 @@ import clsx from '@utils/clsx';
 
 export const FilterCity = ({ name, icon: Icon, isMobile }) => {
   const { areas, city, setCity } = useFiltersStore();
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const ref = useOutsideClickObserver(() => setIsOpen(false));
 
@@ -19,7 +19,6 @@ export const FilterCity = ({ name, icon: Icon, isMobile }) => {
   ].filter((el) => el.name.toLowerCase().startsWith(city.toLowerCase()));
 
   const checkedCities = cities.filter((el) => areas.includes(el.id));
-
   const isBorderBottomShow =
     isOpen &&
     ((cities.length > 0 && city.length >= 3) ||
@@ -40,7 +39,11 @@ export const FilterCity = ({ name, icon: Icon, isMobile }) => {
           onChange={(e) => {
             setCity(e.target.value);
           }}
-          onFocus={() => setIsOpen(true)}
+          onFocus={() => {
+            if (checkedCities) {
+              setIsOpen(true);
+            }
+          }}
           count={areas.length}
           style={{
             borderRadius: isBorderBottomShow ? '16px 16px 0 0' : '16px',

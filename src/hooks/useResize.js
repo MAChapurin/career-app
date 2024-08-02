@@ -1,11 +1,38 @@
+import { SCREEN_TYPES } from '@constants';
 import { useState, useEffect } from 'react';
 
+const START_WIDTH = {
+  DESKTOP: 1024,
+  TABLET: 1023.9,
+  MOBILE: 767.9,
+};
+
 const useResize = () => {
-  const [width, setWidth] = useState(window.innerWidth);
+  const getCurrentScreenType = (width) => {
+    if (width <= START_WIDTH.MOBILE) {
+      return SCREEN_TYPES.MOBILE;
+    } else if (width <= START_WIDTH.TABLET) {
+      return SCREEN_TYPES.TABLET;
+    } else if (width >= START_WIDTH.DESKTOP) {
+      return SCREEN_TYPES.DESKTOP;
+    }
+    return null;
+  };
+
+  const [currentScreenType, setCurrentScreenType] = useState(
+    getCurrentScreenType(window.innerWidth)
+  );
 
   useEffect(() => {
     const handleResize = (event) => {
-      setWidth(event.target.innerWidth);
+      const screenType = getCurrentScreenType(
+        event.target.innerWidth,
+        currentScreenType
+      );
+      console.log(screenType, currentScreenType);
+      if (screenType) {
+        setCurrentScreenType(screenType);
+      }
     };
     window.addEventListener('resize', handleResize);
     return () => {
@@ -13,7 +40,7 @@ const useResize = () => {
     };
   }, []);
 
-  return width;
+  return currentScreenType;
 };
 
 export default useResize;

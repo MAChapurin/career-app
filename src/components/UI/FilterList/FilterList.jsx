@@ -2,7 +2,7 @@ import { useFiltersCounter } from '@hooks/useFiltersCounter';
 import { FilterItem } from './FilterItem/FilterItem';
 import styles from './FilterList.module.css';
 import clsx from '@utils/clsx';
-import { TABLET_START_WIDTH, MOBILE_START_WIDTH } from '@constants';
+import { SCREEN_TYPES } from '@constants';
 import { useFiltersStore } from '@store/useFiltersStore';
 import useResize from '@hooks/useResize';
 import { filterItems, filterInputItems } from '@constants';
@@ -10,10 +10,11 @@ import { filterItems, filterInputItems } from '@constants';
 export const FilterList = () => {
   const { allFilterLength, restAllLength } = useFiltersCounter();
   const { clearFilters } = useFiltersStore();
-  const screenWidth = useResize();
-  const isTablet = screenWidth < TABLET_START_WIDTH;
-  const isMobile = screenWidth < MOBILE_START_WIDTH;
+  const currentScreenType = useResize();
 
+  const isTablet = currentScreenType <= SCREEN_TYPES.TABLET;
+  const isMobile = currentScreenType <= SCREEN_TYPES.MOBILE;
+  console.log('isTablet', isTablet, 'isMobile', isMobile);
   const notRestFilterItems = filterItems.slice(0, -1);
   const restFilterItem = filterItems.at(-1);
 
