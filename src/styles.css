@@ -45,6 +45,11 @@
 
   --clamp-8-16: clamp(0.5rem, 0.211rem + 1.23vw, 1rem);
   --clamp-4-8: clamp(0.25rem, 0.105rem + 0.62vw, 0.5rem);
+
+  --main-indentation: 32px;
+  --main-padding: 40px;
+  --header-height: 72px;
+  --footer-height: 84px;
 }
 
 body {
@@ -79,13 +84,39 @@ li {
 h3 {
   font-weight: 700;
   font-size: 20px;
-  line-height: 140%;
+  line-height: 28px;
   color: var(--neutral-800);
 }
 
 h4 {
   font-weight: 700;
   font-size: 16px;
-  line-height: 150%;
+  line-height: 24px;
   color: var(--neutral-800);
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --main-indentation: 24px;
+    --footer-height: 68px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --main-indentation: 16px;
+    --main-padding: 20px;
+    --header-height: 56px;
+    --footer-height: 48px;
+  }
+
+  h3 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  h4 {
+    font-size: 14px;
+    line-height: 20px;
+  }
 }

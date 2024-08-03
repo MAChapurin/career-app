@@ -1,0 +1,280 @@
+.title,
+.wages,
+.requirements,
+.requirementsIcon,
+.requirementsName,
+.firstRequirementsName,
+.btn,
+.titleDescr,
+.description,
+.skillTitle,
+.skillItem,
+.published,
+.logo,
+.company,
+.address {
+  width: 100%;
+  background-color: var(--loader);
+  border-radius: 16px;
+}
+
+.title {
+  width: 336px;
+  height: 32px;
+  margin-bottom: 16px;
+}
+
+.wages {
+  width: 197px;
+  height: 28px;
+}
+
+.requirements {
+  width: 224px;
+  height: 24px;
+}
+
+.requirementsIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.requirementsName {
+  width: 188px;
+  height: 20px;
+}
+
+.firstRequirementsName {
+  width: 108px;
+}
+
+.btn {
+  width: 141px;
+  height: 52px;
+}
+
+.titleDescr {
+  width: 336px;
+  height: 28px;
+  margin-bottom: 24px;
+}
+
+.descriptionList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.description {
+  height: 24px;
+}
+
+.description_1 {
+  width: 640px;
+}
+
+.description_2 {
+  width: 544px;
+}
+
+.description_3 {
+  width: 594px;
+}
+
+.description_4 {
+  width: 482px;
+}
+
+.skillTitle {
+  width: 336px;
+  height: 28px;
+  margin-block: 24px;
+}
+
+.skillItem {
+  height: 28px;
+}
+
+.skillItem_1 {
+  width: 64px;
+}
+
+.skillItem_2 {
+  width: 89px;
+}
+
+.skillItem_3 {
+  width: 52px;
+}
+
+.skillItem_4 {
+  width: 57px;
+}
+
+.skillItem_5 {
+  width: 37px;
+}
+
+.skillItem_6 {
+  width: 44px;
+}
+
+.skillItem_7 {
+  width: 66px;
+}
+
+.skillItem_8 {
+  width: 71px;
+}
+
+.published {
+  width: 123px;
+  height: 20px;
+}
+
+.logo {
+  width: 108px;
+  height: 60px;
+  margin-bottom: 16px;
+}
+
+.company {
+  width: 166px;
+  height: 28px;
+  margin-bottom: 8px;
+}
+
+.address {
+  width: 71px;
+  height: 24px;
+}
+
+@media (max-width: 767px) {
+  .title {
+    width: 225px;
+    height: 28px;
+    margin-bottom: 8px;
+  }
+
+  .wages {
+    width: 131px;
+    height: 24px;
+  }
+
+  .requirements {
+    width: 181px;
+    height: 20px;
+  }
+
+  .requirementsIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .requirementsName {
+    width: 148px;
+    height: 16px;
+  }
+
+  .firstRequirementsName {
+    width: 86px;
+  }
+
+  .btn {
+    width: 109px;
+    height: 40px;
+  }
+
+  .titleDescr {
+    width: 225px;
+    height: 24px;
+    margin-bottom: 12px;
+  }
+
+  .descriptionList {
+    gap: 6px;
+  }
+
+  .description {
+    height: 20px;
+  }
+
+  .description_1 {
+    width: 303px;
+  }
+
+  .description_2 {
+    width: 248px;
+  }
+
+  .description_3 {
+    width: 282px;
+  }
+
+  .description_4 {
+    width: 209px;
+  }
+
+  .skillTitle {
+    width: 225px;
+    height: 24px;
+    margin-block: 12px;
+  }
+
+  .skillItem {
+    height: 24px;
+  }
+
+  .skillItem_1 {
+    width: 57px;
+  }
+
+  .skillItem_2 {
+    width: 89px;
+  }
+
+  .skillItem_3 {
+    width: 52px;
+  }
+
+  .skillItem_4 {
+    width: 57px;
+  }
+
+  .skillItem_5 {
+    width: 37px;
+  }
+
+  .skillItem_6 {
+    width: 44px;
+  }
+
+  .skillItem_7 {
+    width: 66px;
+  }
+
+  .skillItem_8 {
+    width: 71px;
+  }
+
+  .published {
+    width: 105px;
+    height: 16px;
+  }
+
+  .logo {
+    width: 100px;
+    height: 56px;
+    margin-bottom: 0;
+  }
+
+  .company {
+    width: 133px;
+    height: 24px;
+  }
+
+  .address {
+    width: 62px;
+    height: 20px;
+  }
+}

@@ -11,22 +11,21 @@
   display: flex;
   align-items: center;
   gap: 130px;
-  height: clamp(3.5rem, 2.543rem + 4.08vw, 4.5rem);
-  padding-inline: 40px;
+  height: var(--header-height);
+  padding-inline: var(--main-padding);
   margin-inline: auto;
   max-width: var(--container-max-width);
   min-width: var(--container-min-width);
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1023px) {
     justify-content: space-between;
-    padding-inline: var(--clamp-20-40);
   }
 }
 
 .logo {
-  @media screen and (max-width: 1023px) {
-    height: var(--clamp-16-24);
-    width: clamp(7.375rem, 5.494rem + 8.02vw, 10.625rem);
+  @media screen and (max-width: 767px) {
+    height: 16px;
+    width: 118px;
   }
 }
 
@@ -34,7 +33,7 @@
   display: flex;
   gap: 72px;
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1023px) {
     display: none;
   }
 }
@@ -47,7 +46,7 @@
 
   visibility: hidden;
   width: 100%;
-  height: calc(100vh - clamp(3.5rem, 2.543rem + 4.08vw, 4.5rem));
+  height: calc(100vh - var(--header-height) - var(--footer-height));
 
   opacity: 0;
   transition: opacity 0.2s ease-in;
@@ -60,7 +59,7 @@
   opacity: 1;
 }
 
-@media screen and (width > 767px) {
+@media screen and (width > 1023px) {
   .modal {
     display: none;
   }
@@ -76,7 +75,11 @@
 .menuMobile {
   display: flex;
   flex-direction: column;
-  gap: var(--clamp-24-32);
+  gap: 32px;
+
+  @media screen and (max-width: 767px) {
+    gap: 24px;
+  }
 }
 
 .button {
@@ -103,7 +106,7 @@
   border: none;
   cursor: pointer;
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1023px) {
     display: block;
   }
 }

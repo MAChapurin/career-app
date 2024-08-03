@@ -1,9 +1,5 @@
 .footer {
-  padding: 32px 40px;
-
-  @media screen and (max-width: 1023px) {
-    padding: var(--clamp-16-32) var(--clamp-20-40);
-  }
+  padding: var(--main-indentation) var(--main-padding);
 }
 
 .text {
@@ -13,8 +9,8 @@
   color: var(--neutral-600);
 
   @media screen and (max-width: 1023px) {
-    font-size: clamp(0.75rem, 0.678rem + 0.31vw, 0.875rem);
-    line-height: clamp(1rem, 0.855rem + 0.62vw, 1.25rem);
+    font-size: 12px;
+    line-height: 16px;
   }
 }
 
