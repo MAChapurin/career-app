@@ -1,21 +1,28 @@
-import React from 'react';
+import React, { useState } from "react";
+import Icon from "../../icon/Icon";
+import { cn } from "../../../utils";
+import Button from "../../button/Button";
+import styles from "./Header.module.css";
+import HeaderNav from "./header-nav/HeaderNav";
+import useMediaQuery from "../../../hooks/useMediaQuery";
 
-import Icon from '../../icon/Icon';
-import Button from '../../button/Button';
+const Header = ({ menuOpened, setMenuOpened }) => {
+  const isDesktop = useMediaQuery("(min-width:1024px)");
 
-import styles from './Header.module.css';
-
-const Header = () => {
   return (
     <header className={styles.wrapper}>
       <div className={styles.container}>
-        <Icon name={'logo'} className={styles.logo} />
-        <nav className={styles.controls}>
-          <Button className={styles.navButton}>{'Поиск вакансий'}</Button>
-          <Button className={styles.navButton} disabled={true}>
-            {'Избранные вакансии'}
-          </Button>
-        </nav>
+        <Icon name="logo" className={styles.logo} />
+        {isDesktop ? (
+          <HeaderNav />
+        ) : (
+          <button
+            className={cn("btn-reset", styles.burgerBtn)}
+            onClick={() => setMenuOpened((prev) => !prev)}
+          >
+            <Icon name={menuOpened ? "clear" : "menu"} />
+          </button>
+        )}
       </div>
     </header>
   );

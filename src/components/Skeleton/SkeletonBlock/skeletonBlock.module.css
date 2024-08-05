@@ -16,14 +16,122 @@
 .skeletonItem {
   display: flex;
   flex-direction: column;
-  padding: 32px;
   width: 100%;
+  padding: 32px;
+  border-radius: 16px;
   background-color: var(--white-full);
   box-shadow: var(--shadow);
+}
+
+.title {
+  max-width: 250px;
+  height: 32px;
+  border-radius: 16px;
+}
+
+.vacancyName {
+  max-width: 225px;
+  height: 24px;
+  margin-bottom: 4px;
+  border-radius: 16px;
+}
+
+.salary {
+  max-width: 131px;
+  height: 24px;
+  margin-bottom: 16px;
+  border-radius: 16px;
+}
+
+.companyName {
+  max-width: 96px;
+  height: 16px;
+  margin-bottom: 8px;
+  border-radius: 16px;
+}
+
+.city {
+  max-width: 55px;
+  height: 16px;
+  margin-bottom: 16px;
+  border-radius: 16px;
+}
+
+.expIcon {
+  width: 16px;
+  height: 16px;
+  border-radius: 16px;
+}
+
+.expValue {
+  max-width: 148px;
+  height: 16px;
   border-radius: 16px;
 }
 
 .skeletonBottom {
   display: flex;
   gap: 8px;
+}
+
+@media (max-width: 1023px) {
+  .wrapper {
+    gap: 24px;
+    padding: 24px 0;
+  }
+
+  .skeletonList {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .skeletonItem {
+    padding: 24px;
+  }
+
+  .salary {
+    margin-bottom: 12px;
+  }
+
+  .companyName {
+    margin-bottom: 6px;
+  }
+
+  .city {
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    gap: 16px;
+    padding: 16px 0;
+  }
+
+  .title {
+    max-width: 172px;
+    height: 28px;
+  }
+
+  .skeletonList {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .skeletonItem {
+    padding: 16px;
+  }
+
+  .vacancyName,
+  .salary {
+    height: 20px;
+  }
+
+  .companyName {
+    margin-bottom: 4px;
+  }
+
+  .city {
+    margin-bottom: 8px;
+  }
 }

@@ -1,14 +1,15 @@
 .skeleton {
-  width: 100%;
-  height: 50px;
   position: relative;
-  border-radius: 0;
-  overflow: hidden;
+  display: block;
+  height: 16px;
+  width: 100%;
+  border-radius: 16px;
   background: var(--skeleton);
+  overflow: hidden;
 }
 
 .skeleton::after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   top: 0;
@@ -17,7 +18,6 @@
   background: linear-gradient(to right, #e1e3e4 0%, #fff 50%, #e1e3e4 100%);
   animation: skeleton 1s ease-in-out infinite;
 }
-
 
 @keyframes skeleton {
   0% {

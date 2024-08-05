@@ -39,7 +39,7 @@ export const FilterDropdown = ({ data = [], icon, placeholder }) => {
         <span className={styles.placeholder}>{placeholder}</span>
         {data.length && (
           <div className={styles["right-side"]}>
-            <Shield className={`${!count ? "opacity-0" : ""}`}>{count}</Shield>
+            {!!count && <Shield>{count}</Shield>}
             <span className={styles.arrow}>
               <IconsFilter icon={"arrow"} />
             </span>

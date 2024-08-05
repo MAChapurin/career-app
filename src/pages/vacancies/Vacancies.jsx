@@ -40,8 +40,9 @@ const Vacancies = () => {
           <VacancyList data={vacancyList} />
         ) : !isEmptyObj(copyFilterParams) ? (
           <div className={styles.empty}>
-            Не удалось найти вакансии с выбранными параметрами. Попробуйте
-            другие.
+            Не удалось найти вакансии с выбранными параметрами.
+            <br />
+            Попробуйте другие.
           </div>
         ) : (
           ""

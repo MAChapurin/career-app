@@ -6,3 +6,17 @@
   padding: 32px 0 32px 0;
   margin: 0;
 }
+
+@media (max-width: 1023px) {
+  .wrapper {
+    gap: 24px;
+    margin: 0;
+    padding: 24px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    padding: 16px 0;
+  }
+}

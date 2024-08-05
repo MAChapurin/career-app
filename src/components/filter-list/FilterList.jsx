@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import useVacanciesStore from "../../store/useVacanciesStore";
 import { isEmptyObj } from "../../utils/isEmptyObj";
 import { FilterItem } from "./filter-item/FilterItem";
@@ -5,6 +6,9 @@ import { filterList, sectionList } from "./mock";
 import cities from "../../data/cities.json";
 import styles from "./styles.module.css";
 import { cleanFilter } from "../../utils/cleanFilter";
+import useMediaQuery from "../../hooks/useMediaQuery";
+import { IconsFilter } from "../icons-filter";
+import { cn } from "../../utils";
 
 export function FilterList() {
   const [filterParams, resetFilterParams] = useVacanciesStore((state) => [
@@ -13,6 +17,19 @@ export function FilterList() {
   ]);
 
   const copyFilterParams = cleanFilter(filterParams);
+  const isDesktop = useMediaQuery("(min-width:1024px)");
+  const additionalFilters = useMemo(() =>
+    isDesktop
+      ? sectionList
+      : [
+          ...filterList.map((item) => ({
+            ...item,
+            title: "Тип занятости",
+            icon: <IconsFilter icon={"bag"} />,
+          })),
+          ...sectionList,
+        ]
+  );
 
   return (
     <div className={styles.block}>
@@ -25,33 +42,35 @@ export function FilterList() {
           />
         </li>
 
-        <li>
-          <FilterItem
-            icon={"bag"}
-            placeholder={"Тип занятости"}
-            data={filterList}
-            dropdown
-          />
-        </li>
+        {isDesktop && (
+          <li>
+            <FilterItem
+              icon={"bag"}
+              placeholder={"Тип занятости"}
+              data={filterList}
+              dropdown
+            />
+          </li>
+        )}
 
         <li>
           <FilterItem
             icon={"additional"}
             placeholder={"Дополнительные фильтры"}
-            data={sectionList}
+            data={additionalFilters}
             dropdown
           />
         </li>
       </ul>
 
-      <button
-        className={`btn-reset ${styles.btn} ${
-          isEmptyObj(copyFilterParams) ? "opacity-0" : ""
-        }`}
-        onClick={() => resetFilterParams()}
-      >
-        Сбросить все фильтры
-      </button>
+      {!isEmptyObj(copyFilterParams) && (
+        <button
+          className={cn("btn-reset", styles.btn)}
+          onClick={() => resetFilterParams()}
+        >
+          Сбросить все фильтры
+        </button>
+      )}
     </div>
   );
 }

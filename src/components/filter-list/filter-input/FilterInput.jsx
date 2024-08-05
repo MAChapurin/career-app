@@ -1,9 +1,9 @@
 import useFilterFieldInput from "../../../hooks/useFilterFieldInput";
-import { IconCross } from "../../ui/icons";
 import { IconsFilter } from "../../icons-filter";
 import Checkbox from "../../ui/checkbox/Checkbox";
 import { Shield } from "../../shield/Shield";
 import styles from "./styles.module.css";
+import Icon from "../../icon/Icon";
 
 export const FilterInput = ({ data, icon, placeholder }) => {
   const {
@@ -46,16 +46,13 @@ export const FilterInput = ({ data, icon, placeholder }) => {
             }}
             className={`btn-reset ${styles.reset}`}
           >
-            <IconCross className={styles.cross} />
+            <Icon name="clear" />
           </button>
         )}
-        <Shield
-          className={`${!checkedCityList.length ? "opacity-0" : ""} ${
-            styles.shield
-          }`}
-        >
-          {checkedCityList.length}
-        </Shield>
+
+        {!!checkedCityList.length && (
+          <Shield className={styles.shield}>{checkedCityList.length}</Shield>
+        )}
       </label>
       <div
         className={`scrollbar-main ${styles.dropdown} ${

@@ -8,19 +8,16 @@ import styles from "./styles.module.css";
 import { getCountFilter } from "../../../utils/getCountFilter";
 
 const FilterDropdonwList = ({ data, openedParent }) => {
-  const [items, setItems] = useState(data);
+  const [openedItems, setOpenedItems] = useState([]);
 
   const handleShowSection = (id) => {
-    setItems(
-      items.map((el) => {
-        if (el.id === id) {
-          return { ...el, opened: !el.opened };
-        } else {
-          return el;
-        }
-      })
-    );
+    setOpenedItems((prev) => {
+      const isOpened = prev.some((itemId) => id === itemId);
+      return isOpened ? prev.filter((itemId) => id !== itemId) : [...prev, id];
+    });
   };
+
+  const isOpenedItem = (id) => openedItems.some((itemId) => itemId === id);
 
   const [setFilterParams, filterParams] = useVacanciesStore((state) => [
     state.setFilterParams,
@@ -33,7 +30,7 @@ const FilterDropdonwList = ({ data, openedParent }) => {
         openedParent ? styles.openedParent : ""
       }`}
     >
-      {items.map((el) => {
+      {data.map((el) => {
         let count = getCountFilter(filterParams[el.name]);
         if (el.otherItems && el.otherItems.length) {
           el.otherItems.forEach((subEl) => {
@@ -45,7 +42,7 @@ const FilterDropdonwList = ({ data, openedParent }) => {
           <li
             key={el.id}
             className={`${!el.title ? styles.nosection : `${styles.section}`} ${
-              (el.title && el.opened) || !el.title
+              (el.title && isOpenedItem(el.id)) || !el.title
                 ? styles.opened
                 : styles.closed
             }`}
@@ -59,9 +56,7 @@ const FilterDropdonwList = ({ data, openedParent }) => {
                 {el.title}
 
                 <div className={styles["right-side"]}>
-                  <Shield className={`${!count ? "opacity-0" : ""}`}>
-                    {count > 0 ? count : ""}
-                  </Shield>
+                  {!!count && <Shield>{count}</Shield>}
                   <span className={styles.arrow}>
                     <IconsFilter icon={"arrow"} />
                   </span>

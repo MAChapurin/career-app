@@ -10,21 +10,15 @@
 
 .container {
   display: grid;
+  align-items: center;
   width: 100%;
   padding: 24px 40px;
-  min-width: 1024px;
   max-width: 1200px;
 }
 
-.controls {
-  display: flex;
-  gap: 72px;
-}
-
-.navButton {
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: bold;
+.burgerBtn svg {
+  width: 24px;
+  height: 24px;
 }
 
 @media (min-width: 1600px) {
@@ -40,7 +34,28 @@
 }
 
 @media (max-width: 1279px) {
+  .wrapper {
+    border-radius: 8px;
+  }
+
   .container {
     grid-template-columns: 1fr 2.15fr;
+  }
+}
+
+@media (max-width: 1023px) {
+  .container {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 16px 20px;
+  }
+
+  .logo {
+    width: 118px;
+    height: 16px;
   }
 }

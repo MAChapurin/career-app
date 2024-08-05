@@ -6,6 +6,7 @@
   position: relative;
   display: flex;
   align-items: center;
+  height: 48px;
   border-radius: var(--border-radius);
   padding: 16px 24px;
   background-color: var(--bg-1);
@@ -18,7 +19,6 @@
   border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
-
 .shield {
   position: absolute;
   right: 24px;
@@ -29,10 +29,6 @@
 .hide-shield .shield {
   opacity: 0;
   z-index: -1;
-}
-
-.reset:hover .cross {
-  fill: var(--active-1)
 }
 
 .block:hover {
@@ -59,7 +55,12 @@
 
 .reset {
   font-size: 0;
+  color: var(--gray);
   cursor: pointer;
+}
+
+.reset:hover {
+  fill: var(--active-1);
 }
 
 .dropdown {

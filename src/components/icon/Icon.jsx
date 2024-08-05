@@ -15,6 +15,8 @@ import { Salary } from "./icons/Salary";
 import { TomeJob } from "./icons/TomeJob";
 import { MoreFilters } from "./icons/MoreFilters";
 import { OpenEye } from "./icons/OpenEye";
+import { Check } from "./icons/Check";
+import { Menu } from "./icons/Menu";
 
 const Icon = ({ name, ...props }) => {
   switch (name) {
@@ -50,6 +52,10 @@ const Icon = ({ name, ...props }) => {
       return <TomeJob {...props} />;
     case "moreFilters":
       return <MoreFilters {...props} />;
+    case "check":
+      return <Check {...props} />;
+    case "menu":
+      return <Menu {...props} />;
     default:
       return null;
   }

@@ -23,17 +23,18 @@
   transition: border-color 0.3s ease-in-out;
 }
 
-.icon {
+.field svg {
+  color: var(--active-1);
   transform: translateX(1px);
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
 
-.input:checked + .field{
+.input:checked + .field {
   border-color: var(--active-1);
 }
 
-.input:checked + .field .icon{
+.input:checked + .field svg {
   opacity: 1;
 }
 

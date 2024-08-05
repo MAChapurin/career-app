@@ -1,0 +1,26 @@
+.controls {
+  display: flex;
+  gap: 72px;
+}
+
+.navButton {
+  font-size: 14px;
+  line-height: 1.429;
+  font-weight: bold;
+}
+
+@media (max-width: 1023px) {
+  .controls {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    background: var(--white-cream);
+  }
+}
+
+@media (max-width: 767px) {
+  .controls {
+    gap: 24px;
+  }
+}

@@ -2,23 +2,34 @@ import { create } from "zustand";
 import daysApiFilter from "../utils/daysApiFilter";
 import { VacanciesService } from "../api/VacancyService";
 import { isEmptyObj } from "../utils/isEmptyObj";
-import cities from '../data/cities.json';
+import cities from "../data/cities.json";
 import { searchCityById } from "../utils/searchCity";
 
-const SESSION_FILTER_NAME = 'career-filter';
+const SESSION_FILTER_NAME = "career-filter";
 
 const radioInitial = {
-  search_period: '0',
-  experience: 'doesNotMatter',
-  salary: 'doesNotMatter'
+  search_period: "0",
+  experience: "doesNotMatter",
+  salary: "doesNotMatter",
 };
 
-const sessionParams = sessionStorage.getItem(SESSION_FILTER_NAME) ? JSON.parse(sessionStorage.getItem(SESSION_FILTER_NAME)) : {};
-const initialfilterParams = !isEmptyObj(sessionParams) ? sessionParams : radioInitial;
+const sessionParams = sessionStorage.getItem(SESSION_FILTER_NAME)
+  ? JSON.parse(sessionStorage.getItem(SESSION_FILTER_NAME))
+  : {};
+const initialfilterParams = !isEmptyObj(sessionParams)
+  ? sessionParams
+  : radioInitial;
 
 let initialCheckedCityList = [];
-if(!isEmptyObj(sessionParams) && sessionParams['area'] && sessionParams['area'].length) {
-  initialCheckedCityList = searchCityById(cities[0].areas, sessionParams['area']);
+if (
+  !isEmptyObj(sessionParams) &&
+  sessionParams["area"] &&
+  sessionParams["area"].length
+) {
+  initialCheckedCityList = searchCityById(
+    cities[0].areas,
+    sessionParams["area"]
+  );
 }
 
 const useVacanciesStore = create((set, get) => ({
@@ -30,11 +41,15 @@ const useVacanciesStore = create((set, get) => ({
   setPaginationPage: (paginationPage) => {
     set({ paginationPage });
   },
-  fetchVacancyList: async (page=0, isTodayOnly = false) => {
-
+  fetchVacancyList: async (page = 0, isTodayOnly = false) => {
     try {
       set({ isLoading: true });
-      const data = await VacanciesService.get(page, 18, isTodayOnly, get().filterParams);
+      const data = await VacanciesService.get(
+        page,
+        18,
+        isTodayOnly,
+        get().filterParams
+      );
 
       set({ paginationPages: data?.pages });
       const vacancyListData = data.items.map((item) => {
@@ -71,27 +86,25 @@ const useVacanciesStore = create((set, get) => ({
     set({ hiddenVacancies: get().tempHiddenVacancies });
   },
   filterParams: initialfilterParams,
-  setFilterParams: (key, value, multiple=false) => {
+  setFilterParams: (key, value, multiple = false) => {
     const params = get().filterParams;
 
-    if(multiple) {
-
-      if(!params[key]) {
+    if (multiple) {
+      if (!params[key]) {
         params[key] = [];
       }
 
-      const isset = params[key].find(el=>el===value);
+      const isset = params[key].find((el) => el === value);
 
-      if(isset) {
-        params[key] = params[key].filter(el=> el!==value);
+      if (isset) {
+        params[key] = params[key].filter((el) => el !== value);
       } else {
         params[key].push(value);
       }
 
-      if(!params[key].length) {
+      if (!params[key].length) {
         delete params[key];
       }
-
     } else {
       params[key] = value;
     }
@@ -99,26 +112,25 @@ const useVacanciesStore = create((set, get) => ({
     sessionStorage.setItem(SESSION_FILTER_NAME, JSON.stringify(params));
 
     get().fetchVacancyList();
-
   },
 
   checkedCityList: initialCheckedCityList,
   setCheckedCityList: (item) => {
     const list = get().checkedCityList;
-    const founded = list.find(el=>el.id === item.id);
+    const founded = list.find((el) => el.id === item.id);
 
-    if(founded) {
-      set({checkedCityList: list.filter(el=> el.id!==item.id)});
+    if (founded) {
+      set({ checkedCityList: list.filter((el) => el.id !== item.id) });
     } else {
-      set({checkedCityList: [...list, item]});
+      set({ checkedCityList: [...list, item] });
     }
 
-    get().setFilterParams('area', item.id, true);
+    get().setFilterParams("area", item.id, true);
   },
 
   resetFilterParams: () => {
-    set({filterParams: {}});
-    set({checkedCityList: []});
+    set({ filterParams: {} });
+    set({ checkedCityList: [] });
     sessionStorage.removeItem(SESSION_FILTER_NAME);
     get().fetchVacancyList();
   },

@@ -5,16 +5,47 @@
 
 .container {
   display: grid;
+  grid-template-rows: auto 1fr;
   width: 100%;
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 188px);
   /*Чтобы футер при первой загрузке не прилипал к хэдеру, на глазок*/
 }
 
 .empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 0;
   text-align: center;
   font-weight: 500;
   font-size: 16px;
-  line-height: 150%;
+  line-height: 1.5;
   text-align: center;
   color: var(--darkGrey);
+}
+
+@media (max-width: 1023px) {
+  .container {
+    min-height: calc(100vh - 172px);
+  }
+
+  .empty {
+    padding: 24px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    min-height: calc(100vh - 128px);
+  }
+
+  .wrapper {
+    padding-top: 24px;
+  }
+
+  .empty {
+    padding: 16px 0;
+    font-size: 14px;
+    line-height: 1.428;
+  }
 }

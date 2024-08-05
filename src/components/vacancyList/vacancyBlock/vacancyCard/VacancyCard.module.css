@@ -14,16 +14,10 @@
   box-shadow: var(--hover-shadow);
 }
 
-.card .salary {
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 500;
-  white-space: nowrap;
-}
-
 .main {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
 }
 
 .headerBlock {
@@ -35,9 +29,16 @@
   margin: 0;
   gap: 16px;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 1.5;
   font-weight: 700;
   color: var(--black);
+}
+
+.salary {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 .controlsBlock {
@@ -70,17 +71,17 @@
   opacity: 100;
 }
 
-.upContent {
-  display: grid;
-  gap: 8px;
-}
-
 .additional {
   display: grid;
   gap: 16px;
   font-size: 12px;
   line-height: 16px;
   font-weight: 500;
+}
+
+.upContent {
+  display: grid;
+  gap: 8px;
 }
 
 .experience {
@@ -98,20 +99,45 @@
   text-overflow: ellipsis;
 }
 
-@media (min-width: 1600px) {
+@media (max-width: 1023px) {
+  .card {
+    padding: 24px;
+    gap: 12px;
+  }
+
   .main {
-    grid-template-columns: 1fr 0.2fr;
+    gap: 24px;
+  }
+
+  .additional {
+    gap: 12px;
+  }
+
+  .upContent {
+    gap: 6px;
   }
 }
 
-@media (min-width: 1280px) and (max-width: 1599px) {
-  .main {
-    grid-template-columns: 1fr 0.3fr;
+@media (max-width: 767px) {
+  .card {
+    padding: 16px;
   }
-}
 
-@media (max-width: 1279px) {
   .main {
-    grid-template-columns: 1fr 0.8fr;
+    gap: 16px;
+  }
+
+  .title,
+  .salary {
+    font-size: 14px;
+    line-height: 1.428;
+  }
+
+  .additional {
+    gap: 8px;
+  }
+
+  .upContent {
+    gap: 4px;
   }
 }

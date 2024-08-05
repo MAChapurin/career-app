@@ -7,7 +7,22 @@
 
 .wrapper {
   margin: auto;
-  min-width: 1024px;
   max-width: 1200px;
   padding: 72px 40px 0 40px;
+}
+
+.wrapper.menuOpened {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  height: 100vh;
+}
+
+.wrapper.menuOpened .content {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    padding: 56px 20px 0 20px;
+  }
 }

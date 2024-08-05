@@ -1,9 +1,6 @@
 .block {
+  position: relative;
   padding: 16px 0 32px;
-  margin-bottom: 32px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 16px;
 }
 
 .list {
@@ -13,7 +10,9 @@
 }
 
 .btn {
-  margin-left: auto;
+  position: absolute;
+  right: 0;
+  bottom: 0;
   font-size: 12px;
   font-weight: 700;
   line-height: 16px;
@@ -22,9 +21,27 @@
   transition: color 0.3s;
 }
 
+@media (max-width: 1023px) {
+  .block {
+    padding: 0 0 24px;
+  }
 
-@media (hover: hover) {
-  .btn:hover {
-    color: var(--hover-1);
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .block {
+    padding: 0 0 16px;
+  }
+
+  .list {
+    gap: 20px;
+  }
+
+  .btn {
+    bottom: -8px;
   }
 }

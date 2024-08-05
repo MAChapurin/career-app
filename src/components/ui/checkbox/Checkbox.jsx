@@ -1,4 +1,4 @@
-import { IconCheck } from "../icons";
+import Icon from "../../icon/Icon";
 import styles from "./styles.module.css";
 
 const Checkbox = ({
@@ -18,7 +18,7 @@ const Checkbox = ({
         type="checkbox"
       />
       <span className={styles.field}>
-        <IconCheck className={styles.icon} />
+        <Icon name="check" />
       </span>
       {children && <span className={styles.text}>{children}</span>}
     </label>
