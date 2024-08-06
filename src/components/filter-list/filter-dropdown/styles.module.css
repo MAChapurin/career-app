@@ -5,7 +5,8 @@
 .btn {
   height: 48px;
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   border-radius: 16px;
   column-gap: 16px;
@@ -16,12 +17,15 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 133%;
+  text-align: left;
   cursor: pointer;
   transition: box-shadow 0.3s, background-color 0.3s;
 }
 
-.btn > svg {
-  flex: 0 0 auto;
+.placeholder {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .arrow {

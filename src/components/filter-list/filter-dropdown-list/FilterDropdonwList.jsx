@@ -53,7 +53,7 @@ const FilterDropdonwList = ({ data, openedParent }) => {
                 className={`btn-reset ${styles.title}`}
               >
                 {el.icon ? el.icon : ""}
-                {el.title}
+                <span className={styles.placeholder}>{el.title}</span>
 
                 <div className={styles["right-side"]}>
                   {!!count && <Shield>{count}</Shield>}

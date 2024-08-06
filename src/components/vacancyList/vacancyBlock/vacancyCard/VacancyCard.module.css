@@ -68,7 +68,7 @@
 }
 
 .card:hover .eye {
-  opacity: 100;
+  opacity: 1;
 }
 
 .additional {
@@ -107,6 +107,10 @@
 
   .main {
     gap: 24px;
+  }
+
+  .eye {
+    opacity: 1;
   }
 
   .additional {
