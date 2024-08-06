@@ -4,8 +4,9 @@ import Checkbox from "../../ui/checkbox/Checkbox";
 import { Shield } from "../../shield/Shield";
 import styles from "./styles.module.css";
 import Icon from "../../icon/Icon";
+import { cn } from "../../../utils";
 
-export const FilterInput = ({ data, icon, placeholder }) => {
+export const FilterInput = ({ data, icon, placeholder, setOpenedFilter }) => {
   const {
     input,
     inputFocus,
@@ -19,14 +20,17 @@ export const FilterInput = ({ data, icon, placeholder }) => {
     searchList,
     checkedCityList,
     setCheckedCityList,
-  } = useFilterFieldInput({ data });
+  } = useFilterFieldInput({ data, placeholder, setOpenedFilter });
 
   return (
-    <div className={`${styles.wrapper}`} ref={ref}>
+    <div className={styles.wrapper} ref={ref}>
       <label
-        className={`${styles.block} ${inputFocus ? styles.focus : ""} ${
-          opened ? styles.opened : ""
-        } ${showCross ? styles["hide-shield"] : ""}`}
+        className={cn(
+          styles.block,
+          inputFocus && styles.focus,
+          opened && styles.opened,
+          showCross && styles["hide-shield"]
+        )}
       >
         <IconsFilter icon={icon} />
         <input
@@ -55,9 +59,11 @@ export const FilterInput = ({ data, icon, placeholder }) => {
         )}
       </label>
       <div
-        className={`scrollbar-main ${styles.dropdown} ${
-          opened ? styles.opened : ""
-        }`}
+        className={cn(
+          "scrollbar-main",
+          styles.dropdown,
+          opened && styles.opened
+        )}
       >
         <ul className={`list-reset ${styles.list} `}>
           {searchList.length

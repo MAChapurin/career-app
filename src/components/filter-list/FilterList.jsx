@@ -1,16 +1,16 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import useVacanciesStore from "../../store/useVacanciesStore";
 import { isEmptyObj } from "../../utils/isEmptyObj";
 import { FilterItem } from "./filter-item/FilterItem";
 import { filterList, sectionList } from "./mock";
 import cities from "../../data/cities.json";
-import styles from "./styles.module.css";
 import { cleanFilter } from "../../utils/cleanFilter";
 import useMediaQuery from "../../hooks/useMediaQuery";
-import { IconsFilter } from "../icons-filter";
 import { cn } from "../../utils";
+import styles from "./styles.module.css";
 
 export function FilterList() {
+  const [openedFilter, setOpenedFilter] = useState(null);
   const [filterParams, resetFilterParams] = useVacanciesStore((state) => [
     state.filterParams,
     state.resetFilterParams,
@@ -18,27 +18,30 @@ export function FilterList() {
 
   const copyFilterParams = cleanFilter(filterParams);
   const isDesktop = useMediaQuery("(min-width:1024px)");
-  const additionalFilters = useMemo(() =>
-    isDesktop
-      ? sectionList
-      : [
-          ...filterList.map((item) => ({
-            ...item,
-            title: "Тип занятости",
-            icon: <IconsFilter icon={"bag"} />,
-          })),
-          ...sectionList,
-        ]
+  const isMobile = useMediaQuery("(max-width:767px)");
+  const additionalFilters = useMemo(
+    () => (isDesktop ? sectionList.slice(1) : sectionList),
+    [isDesktop]
   );
 
   return (
     <div className={styles.block}>
-      <ul className={styles.list}>
-        <li>
+      <ul
+        className={cn(
+          styles.list,
+          isMobile && openedFilter && styles.hasOpenedItem
+        )}
+      >
+        <li
+          className={cn(
+            isMobile && openedFilter && openedFilter !== "Город" && "d-none"
+          )}
+        >
           <FilterItem
             data={cities[0]}
             icon={"direction"}
             placeholder={"Город"}
+            setOpenedFilter={setOpenedFilter}
           />
         </li>
 
@@ -53,12 +56,21 @@ export function FilterList() {
           </li>
         )}
 
-        <li>
+        <li
+          className={cn(
+            isMobile &&
+              openedFilter &&
+              openedFilter !== "Дополнительные фильтры" &&
+              "d-none"
+          )}
+        >
           <FilterItem
             icon={"additional"}
             placeholder={"Дополнительные фильтры"}
             data={additionalFilters}
             dropdown
+            collapsed={isMobile && openedFilter !== "Дополнительные фильтры"}
+            setOpenedFilter={setOpenedFilter}
           />
         </li>
       </ul>

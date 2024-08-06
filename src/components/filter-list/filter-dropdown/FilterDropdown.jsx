@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 import { useOutsideAlerter } from "../../../hooks/useOutsideAlerter";
 import FilterDropdonwList from "../filter-dropdown-list/FilterDropdonwList";
@@ -6,10 +6,21 @@ import { IconsFilter } from "../../icons-filter";
 import { Shield } from "../../shield/Shield";
 import useVacanciesStore from "../../../store/useVacanciesStore";
 import { getCountFilter } from "../../../utils/getCountFilter";
+import { cn } from "../../../utils";
 
-export const FilterDropdown = ({ data = [], icon, placeholder }) => {
+export const FilterDropdown = ({
+  data = [],
+  icon,
+  placeholder,
+  setOpenedFilter = () => {},
+  collapsed,
+}) => {
   const [opened, setOpened] = useState(false);
   const ref = useRef(null);
+
+  useEffect(() => {
+    setOpenedFilter(opened ? placeholder : null);
+  }, [opened]);
 
   useOutsideAlerter(ref, () => {
     setOpened(false);
@@ -30,7 +41,14 @@ export const FilterDropdown = ({ data = [], icon, placeholder }) => {
   }, 0);
 
   return (
-    <div ref={ref} className={`${styles.block} ${opened ? styles.opened : ""}`}>
+    <div
+      ref={ref}
+      className={cn(
+        styles.block,
+        collapsed && styles.collapsed,
+        opened && styles.opened
+      )}
+    >
       <button
         className={`btn-reset ${styles.btn}`}
         onClick={() => setOpened(!opened)}
@@ -38,7 +56,7 @@ export const FilterDropdown = ({ data = [], icon, placeholder }) => {
         <IconsFilter icon={icon} />
         <span className={styles.placeholder}>{placeholder}</span>
         {data.length && (
-          <div className={styles["right-side"]}>
+          <div className={cn(styles["right-side"], count && styles.hasCount)}>
             {!!count && <Shield>{count}</Shield>}
             <span className={styles.arrow}>
               <IconsFilter icon={"arrow"} />

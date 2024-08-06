@@ -29,31 +29,31 @@ export const filterList = [
 ];
 
 export const sectionList = [
-  // {
-  //   id: 2,
-  //   title: "Тип занятости",
-  //   icon: <IconsFilter icon={"bag"} />,
-  //   multiple: true,
-  //   name: "employment",
-  //   items: [
-  //     {
-  //       name: "Полная занятость",
-  //       value: "full",
-  //     },
-  //     {
-  //       name: "Частичная занятость",
-  //       value: "part",
-  //     },
-  //     {
-  //       name: "Стажировка",
-  //       value: "probation",
-  //     },
-  //     {
-  //       name: "Проектная работа",
-  //       value: "project",
-  //     },
-  //   ],
-  // },
+  {
+    id: 2,
+    title: "Тип занятости",
+    icon: <IconsFilter icon={"bag"} />,
+    multiple: true,
+    name: "employment",
+    items: [
+      {
+        name: "Полная занятость",
+        value: "full",
+      },
+      {
+        name: "Частичная занятость",
+        value: "part",
+      },
+      {
+        name: "Стажировка",
+        value: "probation",
+      },
+      {
+        name: "Проектная работа",
+        value: "project",
+      },
+    ],
+  },
   {
     id: 3,
     title: "Дата публикации вакансии",

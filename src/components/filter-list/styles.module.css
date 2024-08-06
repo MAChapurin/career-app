@@ -38,7 +38,12 @@
   }
 
   .list {
+    grid-template-columns: 1fr auto;
     gap: 20px;
+  }
+
+  .list.hasOpenedItem {
+    grid-template-columns: 1fr;
   }
 
   .btn {

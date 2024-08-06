@@ -40,11 +40,11 @@
   box-shadow: var(--shadow-2);
 }
 
-.opened .arrow {
+.block.opened .arrow {
   transform: rotate(90deg);
 }
 
-.opened .btn {
+.block.opened .btn {
   color: var(--text-color);
   background-color: var(--hover-2);
   border-radius: 16px 16px 0 0;
@@ -55,4 +55,22 @@
   align-items: center;
   column-gap: 24px;
   margin-left: auto;
+}
+
+.block.collapsed .btn {
+  display: flex;
+  column-gap: 24px;
+}
+
+.block.collapsed .right-side {
+  display: none;
+}
+
+.block.collapsed .right-side.hasCount {
+  display: flex;
+}
+
+.block.collapsed .placeholder,
+.block.collapsed .arrow {
+  display: none;
 }
