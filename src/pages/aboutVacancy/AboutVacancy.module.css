@@ -5,7 +5,6 @@
   outline: none;
   background-color: transparent;
   border: none;
-  cursor: pointer;
   margin-top: 32px;
   padding: 0;
 }
@@ -28,7 +27,6 @@
 }
 
 .goBackBtnText {
-  font-family: Montserrat, sans-serif;
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
@@ -125,7 +123,6 @@
   border-radius: 16px;
   padding: 16px 24px;
   background-color: transparent;
-  cursor: pointer;
   width: fit-content;
   transition: background-color 0.2s;
 }
@@ -140,7 +137,6 @@
 }
 
 .hideBtnText {
-  font-family: Montserrat, sans-serif;
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;

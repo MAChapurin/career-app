@@ -56,7 +56,6 @@
 .reset {
   font-size: 0;
   color: var(--gray);
-  cursor: pointer;
 }
 
 .reset:hover {

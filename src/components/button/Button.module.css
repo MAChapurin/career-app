@@ -4,8 +4,6 @@
   outline: none;
   border: none;
   background: none;
-  font-family: Montserrat, sans-serif;
-  cursor: pointer;
   color: var(--blue);
   transition: color 0.2s;
 }

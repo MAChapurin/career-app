@@ -6,5 +6,7 @@
   height: 24px;
   font-size: 12px;
   line-height: 133%;
+  font-weight: 500;
+  color: var(--black);
   text-align: center;
 }

@@ -17,7 +17,6 @@
   font-weight: 700;
   line-height: 16px;
   color: var(--active-1);
-  cursor: pointer;
   transition: color 0.3s;
 }
 

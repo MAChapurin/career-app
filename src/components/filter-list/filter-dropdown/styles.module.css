@@ -18,7 +18,6 @@
   font-size: 12px;
   line-height: 133%;
   text-align: left;
-  cursor: pointer;
   transition: box-shadow 0.3s, background-color 0.3s;
 }
 
