@@ -1,0 +1,354 @@
+.block {
+  --common-gap: 32px;
+  --common-p: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--common-gap);
+  padding: var(--common-p) 0;
+}
+
+.goBackBtn {
+  display: flex;
+  align-items: center;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.arrowLeft {
+  transform: rotate(180deg);
+}
+
+.arrowLeft path {
+  transition: 0.2s;
+  stroke: var(--blue);
+}
+
+.goBackBtnText {
+  font-weight: 700;
+  text-align: center;
+  color: var(--blue);
+  transition: color 0.2s;
+}
+
+.vacancyInfo {
+  display: flex;
+  gap: var(--common-gap);
+}
+
+.asideRight {
+  --offset: 32px;
+  position: sticky;
+  top: calc(var(--header-h) + var(--offset));
+  height: fit-content;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--common-gap);
+  box-shadow: var(--shadow);
+  background: var(--white-full);
+  border-radius: 16px;
+  padding: var(--common-p);
+}
+
+.header,
+.subsection {
+  --gap: 24px;
+}
+
+.goBackBtn,
+.subsectionHeader {
+    --gap: 16px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.subsectionHeader,
+.subsection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.title {
+  --text: 24px;
+  --leading: 32px;
+  font-size: var(--text);
+  line-height: var(--leading);
+  font-weight: 700;
+  color: var(--black);
+}
+
+.salary {
+  --text: 20px;
+  --leading: 28px;
+  font-weight: 500;
+  font-size: var(--text);
+  line-height: var(--leading);
+  color: var(--black);
+}
+
+.requirements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--common-gap) / 2) var(--common-gap);
+}
+
+.requirementsTitle {
+  font-weight: 700;
+  color: var(--black);
+}
+
+.requirement {
+  --gap: 16px;
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+}
+
+.requirementIcon {
+  --size: 16px;
+  width: var(--size);
+  height: var(--size);
+}
+
+.requirementDescription {
+  font-weight: 500;
+  color: var(--black);
+}
+
+.hideBtn {
+  --gap: 16px;
+  --py: 16px;
+  --px: 24px;
+  --border-w: 2px;
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  border: var(--border-w) solid var(--blue);
+  border-radius: 16px;
+  padding: calc(var(--py) - var(--border-w)) calc(var(--px) - var(--border-w));
+  background-color: transparent;
+  width: fit-content;
+  transition: background-color 0.2s;
+}
+
+
+.hideBtnIcon path {
+  stroke: var(--blue);
+  fill: var(--blue);
+}
+
+.hideBtnText {
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.description {
+  --gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.subsectionTitle {
+  --text: 20px;
+  --leading: 28px;
+  font-size: var(--text);
+  line-height: var(--leading);
+  font-weight: 700;
+  color: var(--black);
+}
+
+.descriptionContent {
+  color: var(--black);
+}
+
+.descriptionContent li > p {
+  display: inline;
+}
+
+.descriptionContent ul > li {
+  list-style-type: "— ";
+  list-style-position: inside;
+}
+
+.skills {
+  --gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--gap)/2) var(--gap);
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  color: var(--black);
+  padding: 4px 8px;
+  background-color: var(--lighterBlue);
+  border-radius: 16px;
+}
+
+.date {
+  font-weight: 700;
+  color: var(--darkGrey);
+}
+
+.goBackBtnText,
+.date,
+.skill,
+.hideBtnText,
+.requirementDescription {
+  --text: 14px;
+  --leading: 20px;
+  font-size: var(--text);
+  line-height: var(--leading);
+}
+
+.descriptionContent,
+.requirementsTitle {
+  --text: 16px;
+  --leading: 24px;
+  font-size: var(--text);
+  line-height: var(--leading);
+}
+
+.descriptionContent p,
+.subsectionTitle,
+.descriptionContent ul:last-child,
+.descriptionContent ol:last-child,
+.title,
+.requirementsTitle {
+    margin: 0;
+}
+
+.descriptionContent > strong,
+.descriptionContent > p,
+.descriptionContent ol,
+.descriptionContent ul {
+  --mb: 24px;
+  margin-bottom: var(--mb);
+}
+
+@media (min-width: 1024px) {
+
+  .hideBtn:hover {
+    background-color: var(--btn-color);
+  }
+  .goBackBtn:hover .goBackBtnText {
+    color: var(--lightBlue);
+  }
+  
+  .goBackBtn:hover .arrowLeft path {
+    stroke: var(--lightBlue);
+  }
+}
+
+@media (max-width: 1023.98px) {
+  .block {
+    --common-gap: 24px;
+    --common-p: 24px;
+  }
+
+  .vacancyInfo {
+    flex-direction: column;
+  }
+
+  .header,
+  .description,
+  .subsection {
+    --gap: 16px;
+  }
+
+  .skills,
+  .subsectionHeader {
+    --gap: 12px;
+  }
+
+  .descriptionContent > strong,
+  .descriptionContent > p,
+  .descriptionContent ol,
+  .descriptionContent ul {
+    --mb: 16px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .block {
+    --common-gap: 16px;
+    --common-p: 16px;
+  }
+  
+  .title {
+    --text: 20px;
+    --leading: 140%;
+  }
+
+  .salary,
+  .subsectionTitle {
+    --text: 16px;
+    --leading: 150%;
+  }
+
+  .requirementsTitle,
+  .descriptionContent {
+    --text: 14px;
+    --leading: 143%;
+  }
+
+  .date,
+  .hideBtnText,
+  .requirementDescription,
+  .goBackBtnText,
+  .skill {
+    --text: 12px;
+    --leading: 133%;
+  }
+  .skills,
+  .requirement,
+  .subsectionHeader {
+    --gap: 8px;
+  }
+
+  .requirementIcon {
+    --size: 12px;
+  }
+
+  .header,
+  .hideBtn,
+  .description,
+  .subsection {
+    --gap: 12px;
+  }
+
+  .hideBtn {
+    --px: 16px;
+    --py: 12px;
+  }
+  .descriptionContent > strong,
+  .descriptionContent > p,
+  .descriptionContent ol,
+  .descriptionContent ul {
+    --mb: 12px;
+  }
+}
+
+@media (max-width: 576.98px) {
+  .header {
+    --gap: 12px;
+  }
+}

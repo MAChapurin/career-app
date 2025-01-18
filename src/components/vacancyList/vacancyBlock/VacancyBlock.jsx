@@ -69,7 +69,7 @@ const VacancyBlock = ({
   const localDate = new Date();
   const publishedDate = new Date(title);
   return (
-    <li className={styles.wrapper}>
+    <div className={styles.wrapper}>
       {title && (
         <h3 className={styles.title}>
           {publishedDate.getDate() === localDate.getDate() &&
@@ -95,7 +95,7 @@ const VacancyBlock = ({
       ) : (
         <ul className={styles.cardsBlock}>{cardsJsx}</ul>
       )}
-    </li>
+    </div>
   );
 };
 

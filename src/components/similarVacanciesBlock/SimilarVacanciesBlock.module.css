@@ -1,29 +1,38 @@
 .block {
+  --common-gap: 32px;
+  --common-p: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--common-gap);
+  padding: var(--common-p) 0;
 }
 
 .title {
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 32px;
+  --text: 24px;
+  --leading: 32px;
+  font-size: var(--text);
+  line-height: var(--leading);
   color: var(--black);
   margin: 0;
-  padding-block: 32px;
 }
 
 .btnWrapper {
   text-align: center;
-  padding-block: 32px;
 }
 
 .btn {
+  --text: 14px;
+  --leading: 143%;
+  --py: 16px;
+  --px: 24px;
+  font-size: var(--text);
+  line-height: var(--leading);
   font-weight: 700;
-  font-size: 14px;
-  line-height: 143%;
   color: var(--white-full);
   border: none;
   border-radius: 16px;
   background-color: var(--blue);
-  padding: 16px 24px;
+  padding: var(--py) var(--px);
   transition: background-color 0.2s;
 }
 
@@ -32,6 +41,35 @@
   background-color: var(--lightBlue);
 }
 
-.btn:hover {
-  background-color: var(--lightBlue);
+
+@media (min-width: 1024px) {
+  .btn:hover {
+    background-color: var(--lightBlue);
+  }
+}
+
+@media (max-width: 1023.98px) {
+  .block {
+    --common-gap: 24px;
+    --common-p: 24px;
+  }
+
+}
+
+@media (max-width: 767.98px) {
+  .block {
+    --common-gap: 16px;
+    --common-p: 16px;
+  }
+  .title {
+    --text: 20px;
+    --leading: 140%;
+  }
+
+  .btn{
+    --text: 12px;
+    --leading: 133%;
+    --px: 16px;
+    --py: 12px;
+  }
 }

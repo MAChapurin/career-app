@@ -1,10 +1,10 @@
 import VacancyBlock from "../vacancyList/vacancyBlock/VacancyBlock";
-import styles from "./SimilarVacanciesBlock.module.css";
 import useSimilarVacanciesStore from "../../store/useSimilarVacanciesStore";
 import SkeletonBlock from "../Skeleton/SkeletonBlock/SkeletonBlock";
 import { scrollUp } from "../../utils";
 import { useEffect } from "react";
 import SIMILAR_VACANCIES_PER_PAGE from "../../constants/SIMILAR_VACANCIES_PER_PAGE";
+import styles from "./SimilarVacanciesBlock.module.css";
 const SimilarVacanciesBlock = ({ vacancyId }) => {
   const {
     incrementSimilarVacanciesPage,

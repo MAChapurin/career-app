@@ -29,3 +29,5 @@ Task 7: Игорь, igorschetinkin
 upd:
 
 Фильтры адаптированы под мобилки.
+
+Task 7: Михаил, MikhailShmagin

@@ -1,8 +1,8 @@
 import PAGES from "./constants/PAGES";
 import Layout from "./components/layout/Layout";
 import Vacancies from "./pages/vacancies/Vacancies";
-import AboutVacancy from "./pages/aboutVacancy/AboutVacancy";
 import usePages from "./store/usePages";
+import DetailVacancyPage from "./pages/detailVacancyPage/DetailVacancyPage";
 
 const App = () => {
   const { currentPage } = usePages();
@@ -10,7 +10,7 @@ const App = () => {
   return (
     <Layout>
       {currentPage === PAGES.vacancies && <Vacancies />}
-      {currentPage === PAGES.vacancyDescription && <AboutVacancy />}
+      {currentPage === PAGES.vacancyDescription && <DetailVacancyPage />}
     </Layout>
   );
 };
