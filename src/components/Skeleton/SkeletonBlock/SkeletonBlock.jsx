@@ -1,9 +1,13 @@
+import { cn } from "../../../utils";
 import Skeleton from "../Skeleton";
 import styles from "./skeletonBlock.module.css";
 
 const SkeletonBlock = ({ count = 18, hasTitle = true }) => {
+
   return (
-    <div className={styles.wrapper}>
+    <div className={cn(styles.wrapper, {
+      [styles.wrapperNoPadding]: !hasTitle
+    })}>
       {hasTitle && <Skeleton className={styles.title} />}
       <ul className={styles.skeletonList}>
         {Array.from({ length: count }, (_, index) => (

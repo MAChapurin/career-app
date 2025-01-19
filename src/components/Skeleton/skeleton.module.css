@@ -6,6 +6,7 @@
   border-radius: 16px;
   background: var(--skeleton);
   overflow: hidden;
+  max-width: 100%;
 }
 
 .skeleton::after {

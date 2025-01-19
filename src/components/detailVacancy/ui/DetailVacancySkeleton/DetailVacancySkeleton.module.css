@@ -1,0 +1,289 @@
+.descriptions{
+    --gap: 12px;
+}
+
+.subsectionHeader {
+    --gap: 16px;
+}
+
+.header,
+.subsection {
+    --gap: 24px;
+}
+
+.requirements {
+    gap: calc(var(--common-gap) / 2) var(--common-gap);
+}
+
+.skills {
+    --gap: 16px;
+    gap: calc(var(--gap) / 2) var(--gap);
+}
+
+
+.requirement {
+    --gap: 16px;
+    align-items: center;
+}
+
+.title {
+    --w: 336px;
+    --h: 32px;
+}
+
+.subsectionTitle,
+.salary,
+.skill > div  {
+    --h: 28px;
+}
+
+.subsectionTitle {
+    --w: 336px;
+}
+
+.salary {
+    --w: 197px;
+    --h: 28px;
+}
+
+.requirementsTitle {
+    --w: 224px;
+    --h: 24px;
+}
+
+.requirementIcon,
+.requirementDescription,
+.date {
+    --h: 20px;
+}
+.requirementIcon {
+    --w: 20px;
+    flex: none;
+}
+
+
+.requirement:nth-child(1) .requirementDescription {
+    --w: 108px;
+}
+
+.requirement:nth-child(2) .requirementDescription,
+.requirement:nth-child(3) .requirementDescription {
+    --w: 188px;
+}
+.description > div {
+    --h: 24px;
+}
+.description:nth-child(1) > div {
+    --w: 640px;
+}
+
+.description:nth-child(2) > div {
+    --w: 544px;
+}
+
+.description:nth-child(3) > div {
+    --w: 594px;
+}
+
+.description:nth-child(4) > div {
+    --w: 482px;
+}
+
+.hideBtn {
+    --w: 141px;
+    --h: 52px;
+}
+
+.skill:nth-child(1) > div {
+    --w:64px;
+}
+.skill:nth-child(2) > div {
+    --w:89px;
+}
+.skill:nth-child(3) > div {
+    --w:52px;
+}
+.skill:nth-child(4) > div {
+    --w:57px;
+}
+.skill:nth-child(5) > div {
+    --w:37px;
+}
+.skill:nth-child(6) > div {
+    --w:44px;
+}
+.skill:nth-child(7) > div {
+    --w:66px;
+}
+.skill:nth-child(8) > div {
+    --w:71px;
+}
+
+.date {
+    --w:123px;
+}
+
+.title,
+.salary,
+.titleBlock,
+.requirementsTitle,
+.requirementIcon,
+.requirementDescription,
+.hideBtn,
+.subsectionTitle,
+.description > div,
+.skill > div,
+.date {
+    width: var(--w);
+    height: var(--h);
+}
+
+
+.header,
+.subsectionHeader,
+.subsection,
+.descriptions{
+    flex-direction: column;
+}
+
+.header,
+.subsectionHeader,
+.subsection,
+.descriptions,
+.skills,
+.requirements,
+.requirement{
+    display: flex;
+}
+
+.skills,
+.requirements {
+    flex-wrap: wrap;
+}
+
+.requirement,
+.header,
+.subsectionHeader,
+.subsection,
+.descriptions {
+    gap: var(--gap);
+}
+
+@media (max-width: 1023.98px) {
+
+    .header,
+    .subsection,
+    .skills {
+        --gap: 16px;
+    }
+    .subsectionHeader {
+        --gap: 12px;
+    }
+
+    .descriptions {
+        --gap: 8px;
+    }
+}
+
+@media (max-width: 767.98px) {
+
+    .subsectionHeader {
+        --gap: 8px;
+    }
+
+    .header {
+        --gap: 12px;
+    }
+
+    .title {
+        --w: 225px;
+        --h: 28px;
+    }
+
+    .salary,
+    .subsectionTitle,
+    .skill > div {
+        --h: 24px;
+    }
+
+    .salary {
+        --w: 131px;
+    }
+
+    .description > div,
+    .requirementsTitle {
+        --h: 20px;
+    }
+
+    .requirementsTitle {
+        --w: 181px;
+    }
+
+    .requirementDescription,
+    .requirementIcon {
+        --h: 16px;
+    }
+
+    .requirement:nth-child(1) .requirementDescription {
+        --w: 86px;
+    }
+    
+    .requirement:nth-child(2) .requirementDescription,
+    .requirement:nth-child(3) .requirementDescription {
+        --w: 148px;
+    }
+    .requirementIcon {
+        --w: 16px;
+    }
+
+    .requirement {
+        --gap: 8px;
+    }
+
+    .hideBtn {
+        --w: 109px;
+        --h: 40px;
+    }
+
+    .subsectionTitle {
+        --w: 225px;
+    }
+
+    .descriptions {
+        --gap: 6px;
+    }
+
+
+    .description:nth-child(1) > div {
+        --w: 303px;
+    }
+    
+    .description:nth-child(2) > div {
+        --w: 248px;
+    }
+    
+    .description:nth-child(3) > div {
+        --w: 282px;
+    }
+    
+    .description:nth-child(4) > div {
+        --w: 209px;
+    }
+
+    .subsection {
+        --gap: 12px;
+    }
+
+    .skills {
+        --gap: 8px;
+    }
+    
+    .skill:nth-child(1) > div {
+        --w: 57px;
+    }
+
+    .date {
+        --w: 105px;
+        --h: 16px;
+    }
+}

@@ -54,15 +54,15 @@
     --w: 293px;
   }
 }
+
 @media (max-width: 1023.98px) {
   .card {
     --gap: 24px;
     --p: 24px;
     --w: 378px;
-    flex-direction: row;
+    flex-direction: row-reverse;
   }
   .logo {
-    order: 1;
     flex: none;
   }
   .info {
@@ -89,8 +89,4 @@
     --text: 14px;
     --leading: 143%;
   }
-}
-
-@media (max-width: 576.98px) {
-
 }

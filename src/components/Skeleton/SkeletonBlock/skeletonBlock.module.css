@@ -7,6 +7,10 @@
   cursor: auto;
 }
 
+.wrapperNoPadding {
+  padding: 0;
+}
+
 .skeletonList {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
