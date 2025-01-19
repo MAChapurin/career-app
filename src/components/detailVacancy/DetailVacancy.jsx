@@ -34,7 +34,7 @@ const DetailVacancy = () => {
     ) || null;
 
   
- const loading = !isLoading || !vacancyDescription;
+ const loading = isLoading || !vacancyDescription;
 
   return (
     <div className={styles.block}>
@@ -48,7 +48,7 @@ const DetailVacancy = () => {
             className={styles.goBackBtn}
           >
             <Icon name="chevron" className={styles.arrowLeft}></Icon>
-            <p className={styles.goBackBtnText}>К результатам поиска</p>
+            <div className={styles.goBackBtnText}>К результатам поиска</div>
           </button>
           <div className={styles.vacancyInfo}>
             <main className={styles.main}>

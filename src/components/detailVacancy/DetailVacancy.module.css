@@ -19,9 +19,15 @@
   background-color: transparent;
   border: none;
   padding: 0;
+  gap: var(--gap);
 }
 
 .arrowLeft {
+  --w: 16px;
+  --h: 16px;
+  flex: none;
+  width: var(--w);
+  height: var(--h);
   transform: rotate(180deg);
 }
 
@@ -328,7 +334,7 @@
   .requirementIcon {
     --size: 12px;
   }
-
+  .goBackBtn,
   .header,
   .hideBtn,
   .description,
@@ -345,6 +351,13 @@
   .descriptionContent ol,
   .descriptionContent ul {
     --mb: 12px;
+  }
+
+  .arrowLeft {
+    --w: 12px;
+    --h: 12px;
+    position: relative;
+    top: -1px;
   }
 }
 

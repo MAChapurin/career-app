@@ -26,6 +26,11 @@ const SimilarVacanciesBlock = ({ vacancyId }) => {
     expandSimilarVacancies(vacancyId);
   }, [vacancyId]);
 
+
+  if(!similarVacancies.length) {
+    return '';
+  }
+
   return (
     <section className={styles.block}>
       <h3 className={styles.title}>Похожие вакансии</h3>
