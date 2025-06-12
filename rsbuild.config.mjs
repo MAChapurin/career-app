@@ -6,5 +6,5 @@ export default defineConfig({
   html: {
     title: "Career App",
   },
-  outputDir: "public",
+  outputDir: "dist",
 });
