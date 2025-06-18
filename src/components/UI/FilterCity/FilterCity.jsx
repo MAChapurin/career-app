@@ -16,7 +16,7 @@ export const FilterCity = ({ name, icon: Icon, isMobile }) => {
   const cities = [
     ...AREA_DB[0].areas.map((area) => area.areas).flat(),
     ...AREA_DB[0].areas.map(({ name, id }) => ({ name, id })),
-  ].filter((el) => el.name.toLowerCase().startsWith(city.toLowerCase()));
+  ].filter((el) => el?.name.toLowerCase().startsWith(city.toLowerCase()));
 
   const checkedCities = cities.filter((el) => areas.includes(el.id));
   const isBorderBottomShow =
