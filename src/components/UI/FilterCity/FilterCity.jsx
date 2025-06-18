@@ -13,10 +13,12 @@ export const FilterCity = ({ name, icon: Icon, isMobile }) => {
 
   const ref = useOutsideClickObserver(() => setIsOpen(false));
 
-  const cities = [
-    ...AREA_DB[0].areas.map((area) => area.areas).flat(),
-    ...AREA_DB[0].areas.map(({ name, id }) => ({ name, id })),
-  ].filter((el) => el?.name.toLowerCase().startsWith(city.toLowerCase()));
+  // const cities = [
+  //   ...AREA_DB[0].areas.map((area) => area.areas).flat(),
+  //   ...AREA_DB[0].areas.map(({ name, id }) => ({ name, id })),
+  // ].filter((el) => el?.name.toLowerCase().startsWith(city.toLowerCase()));
+
+  const cities = []
 
   const checkedCities = cities.filter((el) => areas.includes(el.id));
   const isBorderBottomShow =
