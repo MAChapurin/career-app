@@ -29,7 +29,6 @@ const useResize = () => {
         event.target.innerWidth,
         currentScreenType
       );
-      console.log(screenType, currentScreenType);
       if (screenType) {
         setCurrentScreenType(screenType);
       }

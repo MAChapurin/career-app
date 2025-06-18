@@ -14,7 +14,6 @@ export const FilterList = () => {
 
   const isTablet = currentScreenType <= SCREEN_TYPES.TABLET;
   const isMobile = currentScreenType <= SCREEN_TYPES.MOBILE;
-  console.log('isTablet', isTablet, 'isMobile', isMobile);
   const notRestFilterItems = filterItems.slice(0, -1);
   const restFilterItem = filterItems.at(-1);
 
